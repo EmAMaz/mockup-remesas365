@@ -38,12 +38,12 @@
           class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
         >
           <div class="flex flex-col">
-            <span class="font-semibold text-zinc-700 text-sm"
+            <span class="nexa_bold"
               >Saldo en EUR</span
             >
             <div class="flex items-center gap-2 pt-3">
               <img src="./public/eurmon.png" width="30" height="30" alt="" />
-              <span class="font-bold">11.00 EUR</span>
+              <span class="nexa_bold text-lg">11.00 EUR</span>
             </div>
           </div>
           <div
@@ -57,12 +57,12 @@
           class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
         >
           <div class="flex flex-col">
-            <span class="font-semibold text-zinc-700 text-sm"
+            <span class="nexa_bold"
               >Saldo en USD</span
             >
             <div class="flex items-center gap-2 pt-3">
               <img src="./public/dolmon.png" width="30" height="30" alt="" />
-              <span class="font-bold">11.00 USD</span>
+              <span class="nexa_bold text-lg">11.00 USD</span>
             </div>
           </div>
           <div
@@ -280,7 +280,7 @@
           <a href="index.html">
             <div class="flex flex-col items-center">
               <img src="/public/inicio.png" width="20" height="20" alt="" />
-              <span>Inicio</span>
+              <span class="nexa_bold text-gray-600">Inicio</span>
             </div>
           </a>
         </li>
@@ -288,18 +288,69 @@
           <a href="recargar.html">
             <div class="flex flex-col items-center">
               <img src="/public/recargar.png" width="20" height="20" alt="" />
-              <span>Recargar</span>
+              <span class="nexa_bold text-gray-600">Recargar</span>
             </div>
           </a>
         </li>
-        <span>
-          <img src="/public/botonCentral.png" width="45" height="45" alt="" />
+        <!-- BOTON PRINCIPAL -->
+        <span class="boton_central" id="btnCentral">
+
+          <div class="container_boton">
+            <div class="grid justify-center w-full ml-4">
+              <ul class="flex h-20 items-center w-full cntner_item-central" style="background: #7fb733">
+                <li class="w-max">
+                  <a href="/" class="flex flex-col items-center">
+                    <img src="/public/efectivo.svg" width="25" height="25" alt="">
+                    <span class="nexa_bold text-white" style="font-size: 0.8em;text-wrap: nowrap;">
+                      USD Efectivo
+                    </span>              
+                  </a>
+                </li>
+                <li class="w-max">
+                  <a href="/" class="flex flex-col items-center">
+                    <img src="/public/enviop2p.svg" width="25" height="25" alt="">
+                    <span class="nexa_bold text-white" style="font-size: 0.8em;text-wrap: nowrap;">
+                      Envío P2P
+                    </span>              
+                  </a>
+                </li>
+                <li class="w-max">
+                  <a href="/" class="flex flex-col items-center">
+                    <img src="/public/tasas.svg" width="25" height="25" alt="">
+                    <span class="nexa_bold text-white" style="font-size: 0.8em;text-wrap: nowrap;">
+                      Tasas
+                    </span>              
+                  </a>
+                </li>
+                <li class="w-max">
+                    <a href="/contactanos.html" class="flex flex-col items-center">
+                      <img class="text-center" src="/public/whatsapp.svg" width="25" height="25" alt="">
+                      <span class="nexa_bold text-white" style="font-size: 0.8em;text-wrap: nowrap;">
+                        Soporte
+                      </span>  
+                    </a>            
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="ldoIzq"></div>
+          <div class="cntner__img-boton">
+            <div class="cntner__img-boton-btn">
+              <img src="/public/fondoIconoCentral.png" width="45" height="45" alt="">
+              <img src="/public/iconoCentralOpen.png" id="iconOpen" class="iconCentral" width="30" height="30" alt="">
+              <img src="/public/close.svg" id="iconClose" class="display_none" width="25" height="25" alt="">
+            </div>
+          </div>
+          <div id="ldoDer"></div>
+
         </span>
+        <!-- BOTON PRINCIPAL -->
         <li class="text-xs flex flex-col items-center">
           <a href="servicios.html">
             <div class="flex flex-col items-center">
               <img src="/public/servicios.png" width="23" height="23" alt="" />
-              <span>Servicios</span>
+              <span class="nexa_bold text-gray-600">Servicios</span>
             </div>
           </a>
         </li>
@@ -307,7 +358,7 @@
           <a href="micuenta.html">
             <div class="flex flex-col items-center">
               <img src="/public/miCuenta.png" width="20" height="20" alt="" />
-              <span>Mi cuenta</span>
+              <span class="nexa_bold text-gray-600">Mi cuenta</span>
             </div>
           </a>
         </li>
@@ -315,8 +366,8 @@
     </div>
 
     
-      <!-- MENU -->
-      <div class="side-menu p-2" id="menu">
+    <!-- MENU -->
+    <div class="side-menu p-2" id="menu">
         <div>
           <div class="flex items-center bg_green text-white rounded-lg p-2 gap-2">
             <img src="/public/userMenu.png" class="object-contain" width="45" height="45" alt="" />
@@ -402,9 +453,9 @@
           />
           <img src="/public/gradientmenu.png" width="270px" class="" alt="" />
         </div>
-      </div>
-      <div class="overlay"></div>
-      <!-- MENU -->
+    </div>
+    <div class="overlay"></div>
+    <!-- MENU -->
     <script src="./index.js"></script>
   </body>
 </html>

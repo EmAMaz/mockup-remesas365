@@ -5,13 +5,34 @@ const conteinerMain = document.querySelector("#conteinerMain");
 const listItems = document.querySelectorAll(".enlace_menu");
 const arrowMenus = document.querySelectorAll(".arrow_menu");
 
+const ldoIzq = document.getElementById("ldoIzq");
+const btnCentral = document.getElementById("btnCentral");
+const ldoDer = document.getElementById("ldoDer");
+const containerBoton = document.querySelector(".container_boton");
+const iconCentral = document.querySelector(".iconCentral");
+
+const iconOpen = document.getElementById("iconOpen");
+const iconClose = document.getElementById("iconClose");
+
 document.addEventListener("DOMContentLoaded", function (event) {
   menuButton.addEventListener("click", function () {
     conteinerMain.classList.toggle("overflow-y-hidden");
     menu.classList.toggle("open");
     this.classList.toggle("open");
   });
+  btnCentral.addEventListener("click", function () {
+    this.classList.toggle("boton_central-active");
 
+    iconOpen.classList.toggle("iconCentral");
+    iconOpen.classList.toggle("display_none");
+    iconClose.classList.toggle("iconCentral");
+    iconClose.classList.toggle("animation__close");
+    iconClose.classList.toggle("display_none");
+
+    ldoIzq.classList.toggle("bordeizq");
+    containerBoton.classList.toggle("container-menu-bottom");
+    ldoDer.classList.toggle("bordeder");
+  });
   // listItems.forEach(function (listItem, index) {
   //   listItem.addEventListener("click", function (event) {
   //     console.log(event);
