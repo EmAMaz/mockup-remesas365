@@ -65,6 +65,7 @@ a {
   transition: left 0.3s ease; /* Efecto suave de transición */
   z-index: 9999; /* Por delante del overlay */
   min-height: calc(100vh - 56px);
+  overflow: scroll !important;
   /* overflow-y: hidden; */
 }
 
