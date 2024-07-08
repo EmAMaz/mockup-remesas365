@@ -367,95 +367,111 @@
 
     
     <!-- MENU -->
-    <div class="side-menu p-2" id="menu">
-        <div>
-          <div class="flex items-center bg_green text-white rounded-lg p-2 gap-2">
-            <img src="/public/userMenu.png" class="object-contain" width="45" height="45" alt="" />
-            <div class="flex flex-col">
-              <span class="text-sm">Hola,</span>
-              <span class="text-sm">Daniela Gonzales Nuñez<span>
-            </div>
-            <div class="flex flex-col items-center">
-              <span class="nexa_bold" style="font-size: 0.7em; text-wrap: nowrap;">Modo Luz</span>
-              <div class='toggle-switch'>
-                <label>
-                    <input type="checkbox">
-                    <span class="slider"></span>
-                </label>
-            </div>
+    <div class="side-menu" id="menu">
+      <div class="flex flex-col justify-between h-full">
+
+        <div class="p-2">
+          <div>
+            <div class="flex items-center bg_green text-white rounded-lg p-2 gap-2">
+              <img src="/public/userMenu.png" class="object-contain" width="45" height="45" alt="" />
+              <div class="flex flex-col">
+                <span class="text-sm">Hola,</span>
+                <span class="text-sm">Daniela Gonzales Nuñez<span>
+              </div>
+              <div class="flex flex-col items-center">
+                <span class="nexa_bold" style="font-size: 0.7em; text-wrap: nowrap;">Modo Luz</span>
+                <div class='toggle-switch'>
+                  <label>
+                      <input type="checkbox">
+                      <span class="slider"></span>
+                  </label>
+              </div>
+              </div>
             </div>
           </div>
+            <ul class="mb-8 list__menu max-h-min">
+              <li class="flex items-center gap-2 enlace_menu">
+                <img src="/public/home-menu.png" width="15" height="15" alt="">
+                <a href="index.html" class="w-full">Home</a>
+                <div class="flex justify-end">
+                  <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
+                </div>
+              </li>
+              <li class="flex items-center gap-2 enlace_menu relative" id="miperfilMenu">
+                <img src="/public/perfil-menu.png" width="15" height="15" alt="">
+                <a class="text__nowrap w-full" href="#">Mi Perfil</a>
+                <div class="flex justify-end">
+                  <img id="masPerfil" class="flex arrow_menu arrow_menu-active" src="/public/despliegue.svg" width="20" height="20" alt="">
+                  <img id="menosPerfil" class="flex arrow_menu arrow_menu-active display_none" src="/public/menos.svg" width="20" height="20" alt="">
+                </div>
+                <div class="dropdown-menu" id="dropdownPerfil">
+                  <a href="#" class="dropdown-item">Perfil<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></a>
+                  <a href="#" class="dropdown-item">Seguridad<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></a>
+                </div>
+              </li>
+              <li class="flex items-center gap-2 enlace_menu">
+                <img src="/public/recargar-menu.png" width="15" height="15" alt="">
+                <a class="text__nowrap w-full" href="/recargar.html">Recargar</a>
+                <div class="flex justify-end">
+                  <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
+                </div>
+              </li>
+              <li class="flex items-center gap-2 enlace_menu">
+                <img src="/public/retirar-menu.png" width="15" height="15" alt="">
+                <a class="text__nowrap w-full" href="#">Retira</a>
+                <div class="flex justify-end">
+                  <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
+                </div>
+              </li>
+              <li class="flex items-center gap-2 enlace_menu relative" id="miServicioMenu">
+                <img src="/public/servicio-menu.png" width="15" height="15" alt="">
+                <a class="text__nowrap w-full" href="#">Pago Servicios</a>
+                <div class="flex justify-end">
+                  <img id="masServicios" class="flex arrow_menu arrow_menu-active" src="/public/despliegue.svg" width="20" height="20" alt="">
+                  <img id="menosServicios" class="flex arrow_menu arrow_menu-active display_none" src="/public/menos.svg" width="20" height="20" alt="">
+                </div>
+                <div class="dropdown-menu" id="dropdownServicios">
+                  <a href="#" class="dropdown-item">Recarga Movistar<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></a>
+                  <a href="#" class="dropdown-item">Recarga Cantv<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></a>
+                  <a href="#" class="dropdown-item">Pago Inter<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></a>
+                </div>
+              </li>
+              <li class="flex items-center gap-2 enlace_menu">
+                <img src="/public/tasas-menu.png" width="15" height="15" alt="">
+                <a class="text__nowrap w-full" href="#">Calcular Tasas</a>
+                <div class="flex justify-end">
+                  <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
+                </div>
+              </li>
+              <li class="flex items-center gap-2 enlace_menu">
+                <img src="/public/contactanos-menu.png" width="15" height="15" alt="">
+                <a class="text__nowrap w-full" href="/contactanos.html">Contáctanos</a>
+                <div class="flex justify-end">
+                  <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
+                </div>
+              </li>
+            </ul>
+            <div class="flex items-center justify-center gap-2">
+              <img src="/public/cerrarsesion.png" width="20" height="20" alt="" />
+              <span>Cerrar Sesión</span>
+            </div>
         </div>
-        <ul class="mb-8 list__menu max-h-min">
-          <li class="flex items-center gap-2 enlace_menu">
-            <img src="/public/home-menu.png" width="15" height="15" alt="">
-            <a href="index.html" class="w-full">Home</a>
-            <div class="flex justify-end">
-              <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
-            </div>
-          </li>
-          <li class="flex items-center gap-2 enlace_menu">
-            <img src="/public/perfil-menu.png" width="15" height="15" alt="">
-            <a class="text__nowrap w-full" href="#">Mi Perfil</a>
-            <div class="flex justify-end">
-              <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
-            </div>
-          </li>
-          <li class="flex items-center gap-2 enlace_menu">
-            <img src="/public/recargar-menu.png" width="15" height="15" alt="">
-            <a class="text__nowrap w-full" href="/recargar.html">Recargar</a>
-            <div class="flex justify-end">
-              <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
-            </div>
-          </li>
-          <li class="flex items-center gap-2 enlace_menu">
-            <img src="/public/retirar-menu.png" width="15" height="15" alt="">
-            <a class="text__nowrap w-full" href="#">Retira</a>
-            <div class="flex justify-end">
-              <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
-            </div>
-          </li>
-          <li class="flex items-center gap-2 enlace_menu">
-            <img src="/public/servicio-menu.png" width="15" height="15" alt="">
-            <a class="text__nowrap w-full" href="#">Pago Servicios</a>
-            <div class="flex justify-end">
-              <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
-            </div>
-          </li>
-          <li class="flex items-center gap-2 enlace_menu">
-            <img src="/public/tasas-menu.png" width="15" height="15" alt="">
-            <a class="text__nowrap w-full" href="#">Calcular Tasas</a>
-            <div class="flex justify-end">
-              <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
-            </div>
-          </li>
-          <li class="flex items-center gap-2 enlace_menu">
-            <img src="/public/contactanos-menu.png" width="15" height="15" alt="">
-            <a class="text__nowrap w-full" href="/contactanos.html">Contáctanos</a>
-            <div class="flex justify-end">
-              <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
-            </div>
-          </li>
-        </ul>
 
-
-        <div class="flex items-center justify-center gap-2">
-          <img src="/public/cerrarsesion.png" width="20" height="20" alt="" />
-          <span>Cerrar Sesión</span>
+        <div class="flex flex-col items-center">
+            <img
+              src="/public/iconMarca.png"
+              width="65"
+              height="65"
+              class=""
+              alt=""
+            />
+            <img src="/public/gradientmenu.png" width="270px" class="" alt="" />
         </div>
-        <div class="flex flex-col items-center absolute bottom-0 left-0">
-          <img
-            src="/public/iconMarca.png"
-            width="65"
-            height="65"
-            class=""
-            alt=""
-          />
-          <img src="/public/gradientmenu.png" width="270px" class="" alt="" />
-        </div>
+      </div>
     </div>
     <div class="overlay"></div>
     <!-- MENU -->
+     
     <script src="./index.js"></script>
   </body>
 </html>

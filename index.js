@@ -14,6 +14,16 @@ const iconCentral = document.querySelector(".iconCentral");
 const iconOpen = document.getElementById("iconOpen");
 const iconClose = document.getElementById("iconClose");
 
+const miperfilMenu = document.getElementById("miperfilMenu");
+const miServicioMenu = document.getElementById("miServicioMenu");
+const dropdownPerfil = document.getElementById("dropdownPerfil");
+const dropdownServicios = document.getElementById("dropdownServicios");
+
+const masPerfil = document.getElementById("masPerfil");
+const menosPerfil = document.getElementById("menosPerfil");
+const masServicios = document.getElementById("masServicios");
+const menosServicios = document.getElementById("menosServicios");
+
 document.addEventListener("DOMContentLoaded", function (event) {
   menuButton.addEventListener("click", function () {
     conteinerMain.classList.toggle("overflow-y-hidden");
@@ -32,6 +42,42 @@ document.addEventListener("DOMContentLoaded", function (event) {
     ldoIzq.classList.toggle("bordeizq");
     containerBoton.classList.toggle("container-menu-bottom");
     ldoDer.classList.toggle("bordeder");
+  });
+  miperfilMenu.addEventListener("click", function () {
+    if (miServicioMenu.classList.contains("marginn")) {
+      miServicioMenu.classList.remove("marginn");
+      menosServicios.classList.add("display_none");
+      masServicios.classList.remove("display_none");
+      dropdownServicios.classList.remove("showServicio");
+
+      this.classList.toggle("marginn");
+      menosPerfil.classList.toggle("display_none");
+      masPerfil.classList.toggle("display_none");
+      dropdownPerfil.classList.toggle("showPerfil");
+    } else{
+      this.classList.toggle("marginn");
+      menosPerfil.classList.toggle("display_none");
+      masPerfil.classList.toggle("display_none");
+      dropdownPerfil.classList.toggle("showPerfil");
+    }
+  });
+  miServicioMenu.addEventListener("click", function () {
+    if (miperfilMenu.classList.contains("marginn")) {
+      miperfilMenu.classList.remove("marginn");
+      menosPerfil.classList.add("display_none");
+      masPerfil.classList.remove("display_none");
+      dropdownPerfil.classList.remove("showPerfil");
+
+      this.classList.toggle("marginn");
+      menosServicios.classList.toggle("display_none");
+      masServicios.classList.toggle("display_none");
+      dropdownServicios.classList.toggle("showServicio");
+    }else{
+      this.classList.toggle("marginn");
+      menosServicios.classList.toggle("display_none");
+      masServicios.classList.toggle("display_none");
+      dropdownServicios.classList.toggle("showServicio");
+    }
   });
   // listItems.forEach(function (listItem, index) {
   //   listItem.addEventListener("click", function (event) {

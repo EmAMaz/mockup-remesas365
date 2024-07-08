@@ -64,8 +64,8 @@ a {
   box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
   transition: left 0.3s ease; /* Efecto suave de transición */
   z-index: 9999; /* Por delante del overlay */
-  height: calc(100vh - 56px);
-  overflow-y: hidden;
+  min-height: calc(100vh - 56px);
+  /* overflow-y: hidden; */
 }
 
 .side-menu ul {
@@ -264,4 +264,48 @@ a {
 }
 .cntner_item-central li {
   width: calc(100vw / 4 - 0.7em);
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  width: 100%;
+  background-color: #f3f4f6;
+  border: 1px solid #ccc;
+  border-bottom: 2px solid #577858;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-menu.showServicio {
+  display: block;
+}
+.dropdown-menu.showPerfil {
+  display: block;
+}
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  font-size: 15px !important;
+}
+
+.dropdown-item:hover {
+  background-color: #f2f2f2;
+}
+.marginn {
+  border-bottom: none !important;
+  margin-bottom: 6em;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+.svgStyleMenu{
+  width: 6px;
+  height: 10px;
 }
