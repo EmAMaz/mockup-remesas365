@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       dropdownServicios.classList.toggle("showServicio");
     }
   });
+
   // listItems.forEach(function (listItem, index) {
   //   listItem.addEventListener("click", function (event) {
   //     console.log(event);

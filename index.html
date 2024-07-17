@@ -28,269 +28,408 @@
           ><span class="font-bold">Daniela Gonzales Nuñez</span>
         </div>
         <div class="flex justify-end w-full">
-          <img src="./public/iconMarca.png" width="50" height="50" alt="" />
+          <img src="./public/iconMarca.png" width="60" height="60" alt="" />
         </div>
       </div>
 
-      <!-- Divisas -->
-      <div class="flex flex-col gap-3">
-        <div
-          class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
-        >
-          <div class="flex flex-col">
-            <span class="nexa_bold"
-              >Saldo en EUR</span
+      <div id="app"></div>
+
+      <template id="homeComponent">
+        <!-- Divisas -->
+        <div class="flex flex-col gap-3">
+          <div
+            class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+          >
+            <div class="flex flex-col">
+              <span class="nexa_bold"
+                >Saldo en EUR</span
+              >
+              <div class="flex items-center gap-2 pt-3">
+                <img src="./public/eurmon.png" width="30" height="30" alt="" />
+                <span class="nexa_bold text-lg">11.00 EUR</span>
+              </div>
+            </div>
+            <div
+              class="flex flex-col font-semibold text-zinc-700 text-xs text-center"
             >
-            <div class="flex items-center gap-2 pt-3">
-              <img src="./public/eurmon.png" width="30" height="30" alt="" />
-              <span class="nexa_bold text-lg">11.00 EUR</span>
+              <span>Creada</span>
+              <span>10/06/2024</span>
             </div>
           </div>
           <div
-            class="flex flex-col font-semibold text-zinc-700 text-xs text-center"
+            class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
           >
-            <span>Creada</span>
-            <span>10/06/2024</span>
+            <div class="flex flex-col">
+              <span class="nexa_bold"
+                >Saldo en USD</span
+              >
+              <div class="flex items-center gap-2 pt-3">
+                <img src="./public/dolmon.png" width="30" height="30" alt="" />
+                <span class="nexa_bold text-lg">11.00 USD</span>
+              </div>
+            </div>
+            <div
+              class="flex flex-col font-semibold text-zinc-700 text-xs text-center"
+            >
+              <span>Creada</span>
+              <span>10/06/2024</span>
+            </div>
           </div>
         </div>
-        <div
-          class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
-        >
-          <div class="flex flex-col">
-            <span class="nexa_bold"
-              >Saldo en USD</span
+
+        <!-- Acciones rapidas -->
+        <section class="my-4">
+          <span class="title_section">Acciones rápidas</span>
+
+          <div class="flex justify-center gap-5 py-5">
+            <div class="text-center">
+              <div class="bg-white w-24 rounded-lg justify-center flex py-3">
+                <svg
+                  width="64px"
+                  height="54px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  transform="rotate(180)"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M8 12L12 8M12 8L16 12M12 8V20M4 4H20"
+                      stroke="#000000"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <span class="font-semibold">Recargar</span>
+            </div>
+            <div class="text-center">
+              <div class="bg-white w-24 rounded-lg justify-center flex py-3">
+                <svg
+                  width="64px"
+                  height="54px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  transform="rotate(0)"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M8 12L12 8M12 8L16 12M12 8V20M4 4H20"
+                      stroke="#000000"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <span class="font-semibold">Retirar</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Movimientos -->
+        <div class="flex flex-col gap-2 mb-14">
+          <div class="flex justify-between py-2 items-center">
+            <span class="title_section">Movimientos</span>
+            <span class="nexa_bold">Ver Todos</span>
+          </div>
+          <!-- CARDS -->
+          <div
+            class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+          >
+            <div class="flex gap-2">
+              <img
+                src="./public/eurmon.png"
+                class="object-contain"
+                width="35"
+                height="35"
+                alt=""
+              />
+              <div class="flex flex-col">
+                <span class="nexa_bold text-zinc-700 text-sm">TeleIngreso</span>
+                <span class="text-zinc-700" style="font-size: 0.7em"
+                  >09:00 pm 24 Abr 2024</span
+                >
+              </div>
+            </div>
+            <div
+              class="flex flex-col items-center font-semibold text-zinc-700 text-xs text-center gap-1"
             >
-            <div class="flex items-center gap-2 pt-3">
-              <img src="./public/dolmon.png" width="30" height="30" alt="" />
-              <span class="nexa_bold text-lg">11.00 USD</span>
+              <div class="flex gap-2">
+                <span class="nexa_bold text_small">EUR</span>
+                <span class="nexa_bold text-base leading-none">12.00</span>
+              </div>
+              <span
+                class="bg-green-600 px-4 h-4 text-white rounded-full nexa_bold"
+                >Procesado</span
+              >
             </div>
           </div>
           <div
-            class="flex flex-col font-semibold text-zinc-700 text-xs text-center"
+            class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
           >
-            <span>Creada</span>
-            <span>10/06/2024</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Acciones rapidas -->
-      <section class="my-4">
-        <span class="nexa_bold">Acciones rápidas</span>
-
-        <div class="flex justify-center gap-5 py-5">
-          <div class="text-center">
-            <div class="bg-white w-24 rounded-lg justify-center flex py-3">
-              <svg
-                width="64px"
-                height="54px"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                transform="rotate(180)"
-              >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path
-                    d="M8 12L12 8M12 8L16 12M12 8V20M4 4H20"
-                    stroke="#000000"
-                    stroke-width="1"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </g>
-              </svg>
+            <div class="flex gap-2">
+              <img
+                src="./public/bcp.png"
+                class="object-contain"
+                width="35"
+                height="35"
+                alt=""
+              />
+              <div class="flex flex-col">
+                <span class="nexa_bold text-zinc-700 text-sm">BCP $</span>
+                <span class="text-zinc-700" style="font-size: 0.7em"
+                  >09:00 pm 24 Abr 2024</span
+                >
+              </div>
             </div>
-            <span class="font-semibold">Recargar</span>
-          </div>
-          <div class="text-center">
-            <div class="bg-white w-24 rounded-lg justify-center flex py-3">
-              <svg
-                width="64px"
-                height="54px"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                transform="rotate(0)"
+            <div
+              class="flex flex-col items-center font-semibold text-zinc-700 text-xs text-center gap-1"
+            >
+              <div class="flex gap-2">
+                <span class="nexa_bold text_small">EUR</span>
+                <span class="nexa_bold text-base leading-none">5.00</span>
+              </div>
+              <span
+                class="bg-green-600 px-4 h-4 text-white rounded-full nexa_bold"
+                >Procesado</span
               >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path
-                    d="M8 12L12 8M12 8L16 12M12 8V20M4 4H20"
-                    stroke="#000000"
-                    stroke-width="1"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </g>
-              </svg>
             </div>
-            <span class="font-semibold">Retirar</span>
+          </div>
+          <div
+            class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+          >
+            <div class="flex gap-2">
+              <img
+                src="./public/bcp.png"
+                class="object-contain"
+                width="35"
+                height="35"
+                alt=""
+              />
+              <div class="flex flex-col">
+                <span class="nexa_bold text-zinc-700 text-sm">BCP $</span>
+                <span class="text-zinc-700" style="font-size: 0.7em"
+                  >09:00 pm 24 Abr 2024</span
+                >
+              </div>
+            </div>
+            <div
+              class="flex flex-col items-center font-semibold text-zinc-700 text-xs text-center gap-1"
+            >
+              <div class="flex gap-2">
+                <span class="nexa_bold text_small">EUR</span>
+                <span class="nexa_bold text-base leading-none">25.00</span>
+              </div>
+              <span class="bg-red-600 px-4 h-4 text-white rounded-full nexa_bold"
+                >Cancelado</span
+              >
+            </div>
+          </div>
+          <div
+            class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+          >
+            <div class="flex gap-2">
+              <img
+                src="./public/bcp.png"
+                class="object-contain"
+                width="35"
+                height="35"
+                alt=""
+              />
+              <div class="flex flex-col">
+                <span class="nexa_bold text-zinc-700 text-sm">BCP $</span>
+                <span class="text-zinc-700" style="font-size: 0.7em"
+                  >09:00 pm 24 Abr 2024</span
+                >
+              </div>
+            </div>
+            <div
+              class="flex flex-col items-center font-semibold text-zinc-700 text-xs text-center gap-1"
+            >
+              <div class="flex gap-2">
+                <span class="nexa_bold text_small">EUR</span>
+                <span class="nexa_bold text-base leading-none">25.00</span>
+              </div>
+              <span
+                class="px-4 h-4 bg-yellow-400 text-black rounded-full nexa_bold"
+                >Procesando</span
+              >
+            </div>
           </div>
         </div>
-      </section>
+      </template>
 
-      <!-- Movimientos -->
-      <div class="flex flex-col gap-2 mb-14">
-        <div class="flex justify-between py-2">
-          <span class="nexa_bold">Movimientos</span>
-          <span class="nexa_bold text-xs">Ver Todos</span>
+      <template id="recargarComponent">
+        <div class="flex items-center gap-4">
+          <img src="/public/enviarRemesa.png" width="90" height="90" alt="" />
+          <span class="nexa_bold text-lg">Enviar Remesa</span>
         </div>
+  
+        <h2 class="text-md nexa_bold mx-auto text-center my-8 w-2/3" style="line-height: 0.8em;">
+          Seleccione el método de retiro de tu remesa
+        </h2>
+  
         <!-- CARDS -->
-        <div
-          class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
-        >
-          <div class="flex gap-2">
-            <img
-              src="./public/eurmon.png"
-              class="object-contain"
-              width="35"
-              height="35"
-              alt=""
-            />
-            <div class="flex flex-col">
-              <span class="nexa_bold text-zinc-700 text-sm">TeleIngreso</span>
-              <span class="text-zinc-700" style="font-size: 0.7em"
-                >09:00 pm 24 Abr 2024</span
+        <div class="flex flex-col gap-4 mt-8 mb-16">
+          <div
+            class="flex justify-between p-2 bg-white rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+          >
+            <div class="flex flex-col w-1/3 p-2">
+              <img
+                src="./public/transferenciaBancaria.png"
+                width="120"
+                height="120"
+                alt=""
+              />
+            </div>
+            <div class="flex flex-col font-semibold text-zinc-700 text-xs w-2/3">
+              <span class="nexa_bold" style="font-size: 1.2em"
+                >Transferencia Bancaria Tradicional</span
+              >
+              <span class="text-green-600 text-xs font-semibold mt-1"
+                >Tiempo de espera 30min a 1h.</span
+              >
+              <span class="text-xs font-semibold" style="color: orange"
+                >Disponibles Lunes a Sabado de 9am a 6pm. hs.</span
               >
             </div>
           </div>
+  
           <div
-            class="flex flex-col items-center font-semibold text-zinc-700 text-xs text-center gap-1"
+            class="flex justify-between p-2 bg-white rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
           >
-            <div class="flex gap-2">
-              <span class="nexa_bold text_small">EUR</span>
-              <span class="nexa_bold text-base leading-none">12.00</span>
+            <div class="flex flex-col w-1/3 p-2">
+              <img src="./public/pagoMovil.png" width="120" height="120" alt="" />
             </div>
-            <span
-              class="bg-green-600 px-4 h-4 text-white rounded-full nexa_bold"
-              >Procesado</span
-            >
-          </div>
-        </div>
-        <div
-          class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
-        >
-          <div class="flex gap-2">
-            <img
-              src="./public/bcp.png"
-              class="object-contain"
-              width="35"
-              height="35"
-              alt=""
-            />
-            <div class="flex flex-col">
-              <span class="nexa_bold text-zinc-700 text-sm">BCP $</span>
-              <span class="text-zinc-700" style="font-size: 0.7em"
-                >09:00 pm 24 Abr 2024</span
+            <div class="flex flex-col font-semibold text-zinc-700 text-xs w-2/3">
+              <span class="nexa_bold" style="font-size: 1.2em"
+                >Enviar usando Pagomovil a cualquier banco</span
+              >
+              <span class="text-green-600 text-xs font-semibold mt-1"
+                >Acreditación Instantanea</span
+              >
+              <span class="text-xs font-semibold" style="color: orange"
+                >Retiros disponibles las 24 hs.</span
               >
             </div>
           </div>
-          <div
-            class="flex flex-col items-center font-semibold text-zinc-700 text-xs text-center gap-1"
-          >
-            <div class="flex gap-2">
-              <span class="nexa_bold text_small">EUR</span>
-              <span class="nexa_bold text-base leading-none">5.00</span>
-            </div>
-            <span
-              class="bg-green-600 px-4 h-4 text-white rounded-full nexa_bold"
-              >Procesado</span
-            >
-          </div>
         </div>
-        <div
-          class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
-        >
-          <div class="flex gap-2">
-            <img
-              src="./public/bcp.png"
-              class="object-contain"
-              width="35"
-              height="35"
-              alt=""
-            />
-            <div class="flex flex-col">
-              <span class="nexa_bold text-zinc-700 text-sm">BCP $</span>
-              <span class="text-zinc-700" style="font-size: 0.7em"
-                >09:00 pm 24 Abr 2024</span
+  
+        <div class="flex justify-center">
+          <img
+            src="./public/iconMarcaTransparent.png"
+            width="80"
+            height="80"
+            alt=""
+          />
+        </div>
+      </template>
+
+      <template id="serviciosComponent">
+        <div>
+          <h1>Servicios</h1>
+        </div>
+      </template>
+
+      <template id="micuentaComponent">
+        <div>
+          <h1>Mi cuenta</h1>
+        </div>
+      </template>
+
+      <template id="contactanosComponent">
+        <h2 class="text-xl text-center font-bold py-2">Contactanos!</h2>
+        <img src="/public/contactanosbanner.png" alt="" />
+  
+        <!-- CARDS -->
+        <div class="flex flex-col gap-4 my-8">
+          <div
+            class="flex justify-between p-2 bg-white rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+          >
+            <div class="flex flex-col w-1/3">
+              <img src="./public/whatsapps.png" width="55" height="55" alt="" />
+            </div>
+            <div class="flex flex-col font-semibold text-zinc-700 text-xs w-2/3">
+              <span class="title_section">Contacta nuestro Soporte Whatsapp</span
               >
+              <span class="text-sm font-light " style="line-height: 0.9em;">Resuelve tu dudas en vivo.</span>
+  
+              <div class="flex text-end justify-end py-1 gap-1 mt-3">
+                <span class="font-bold">Estado: </span>
+                <span class="text-green-600">Online</span>
+              </div>
             </div>
           </div>
+  
           <div
-            class="flex flex-col items-center font-semibold text-zinc-700 text-xs text-center gap-1"
+            class="flex justify-between p-2 bg-white rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
           >
-            <div class="flex gap-2">
-              <span class="nexa_bold text_small">EUR</span>
-              <span class="nexa_bold text-base leading-none">25.00</span>
+            <div class="flex flex-col w-1/3">
+              <img src="./public/soporte.png" width="55" height="55" alt="" />
             </div>
-            <span class="bg-red-600 px-4 h-4 text-white rounded-full nexa_bold"
-              >Cancelado</span
-            >
-          </div>
-        </div>
-        <div
-          class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
-        >
-          <div class="flex gap-2">
-            <img
-              src="./public/bcp.png"
-              class="object-contain"
-              width="35"
-              height="35"
-              alt=""
-            />
-            <div class="flex flex-col">
-              <span class="nexa_bold text-zinc-700 text-sm">BCP $</span>
-              <span class="text-zinc-700" style="font-size: 0.7em"
-                >09:00 pm 24 Abr 2024</span
+            <div class="flex flex-col font-semibold text-zinc-700 text-xs w-2/3">
+              <span class="title_section">Envianos un ticket de soporte</span>
+              <span class="text-sm font-light " style="line-height: 0.9em;"
+                >Dejanos tu consulta y te respondemos via e-mail.</span
               >
+  
+              <div class="flex text-end justify-end py-1 gap-1 mt-3">
+                <span class="font-bold">Tiempo de espera: </span>
+                <span class="text-green-600">3 hs</span>
+              </div>
             </div>
-          </div>
-          <div
-            class="flex flex-col items-center font-semibold text-zinc-700 text-xs text-center gap-1"
-          >
-            <div class="flex gap-2">
-              <span class="nexa_bold text_small">EUR</span>
-              <span class="nexa_bold text-base leading-none">25.00</span>
-            </div>
-            <span
-              class="px-4 h-4 bg-yellow-400 text-black rounded-full nexa_bold"
-              >Procesando</span
-            >
           </div>
         </div>
-      </div>
-    </div>
+  
+        <!-- UBICACION -->
+        <div class="flex flex-col text-center items-center gap-4 mb-14">
+          <span class="font-bold text-pretty" style="font-size: 0.8em"
+            >Calle Boulevard 162, Edificio Metropolis oficina 803, Surco, Lima,
+            Perú</span
+          >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d975.2943459406425!2d-76.9699783!3d-12.100005999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c7a3fd15db99%3A0x8e6dc017ec7ea47!2sMetr%C3%B3polis%20Oficina%20de%20Arquitectura!5e0!3m2!1ses!2sar!4v1720157947344!5m2!1ses!2sar"
+            width="300"
+            height="300"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </template>
 
     <!-- TABS -->
     <div id="nav-tab">
       <ul class="flex items-center justify-around w-full">
-        <li class="text-xs flex flex-col items-center">
-          <a href="index.html">
-            <div class="flex flex-col items-center">
-              <img src="/public/inicio.png" width="20" height="20" alt="" />
-              <span class="nexa_bold text-gray-600">Inicio</span>
-            </div>
-          </a>
+        <li class="text-xs flex flex-col items-center" id="controllerHome">
+          <div class="flex flex-col items-center">
+            <img src="/public/inicio.png" width="20" height="20" alt=""/>
+            <span class="nexa_bold text-gray-600 select-none">Inicio</span>
+          </div>
         </li>
-        <li class="text-xs flex flex-col items-center">
-          <a href="recargar.html">
-            <div class="flex flex-col items-center">
-              <img src="/public/recargar.png" width="20" height="20" alt="" />
-              <span class="nexa_bold text-gray-600">Recargar</span>
-            </div>
-          </a>
+        <li class="text-xs flex flex-col items-center" id="controllerRecarga">
+          <div class="flex flex-col items-center">
+            <img src="/public/recargar.png" width="20" height="20" alt="" />
+            <span class="nexa_bold text-gray-600">Recargar</span>
+          </div>
         </li>
         <!-- BOTON PRINCIPAL -->
         <span class="boton_central" id="btnCentral">
@@ -301,7 +440,7 @@
                 <li class="w-max">
                   <a href="/" class="flex flex-col items-center">
                     <img src="/public/efectivo.svg" width="25" height="25" alt="">
-                    <span class="nexa_bold text-white" style="font-size: 0.8em;text-wrap: nowrap;">
+                    <span class="nexa_bold text-white" style="font-size: 0.8em;text-wrap: nowrap;z-index: 999;">
                       USD Efectivo
                     </span>              
                   </a>
@@ -322,13 +461,11 @@
                     </span>              
                   </a>
                 </li>
-                <li class="w-max">
-                    <a href="/contactanos.html" class="flex flex-col items-center">
-                      <img class="text-center" src="/public/whatsapp.svg" width="25" height="25" alt="">
-                      <span class="nexa_bold text-white" style="font-size: 0.8em;text-wrap: nowrap;">
-                        Soporte
-                      </span>  
-                    </a>            
+                <li class="w-max flex flex-col items-center" id="controllerContactanos">
+                  <img class="text-center" src="/public/whatsapp.svg" width="25" height="25" alt="">
+                  <span class="nexa_bold text-white" style="font-size: 0.8em;text-wrap: nowrap;text-align: center;">
+                    Soporte
+                  </span>  
                 </li>
               </ul>
             </div>
@@ -346,26 +483,21 @@
 
         </span>
         <!-- BOTON PRINCIPAL -->
-        <li class="text-xs flex flex-col items-center">
-          <a href="servicios.html">
+        <li class="text-xs flex flex-col items-center" id="controllerServicios">
             <div class="flex flex-col items-center">
               <img src="/public/servicios.png" width="23" height="23" alt="" />
               <span class="nexa_bold text-gray-600">Servicios</span>
             </div>
-          </a>
         </li>
-        <li class="text-xs flex flex-col items-center">
-          <a href="micuenta.html">
+        <li class="text-xs flex flex-col items-center" id="controllerMiCuenta">
             <div class="flex flex-col items-center">
               <img src="/public/miCuenta.png" width="20" height="20" alt="" />
-              <span class="nexa_bold text-gray-600">Mi cuenta</span>
+              <span class="nexa_bold text-gray-600" style="text-wrap: nowrap;">Mi cuenta</span>
             </div>
-          </a>
         </li>
       </ul>
     </div>
 
-    
     <!-- MENU -->
     <div class="side-menu" id="menu">
       <div class="flex flex-col justify-between h-full">
@@ -443,9 +575,9 @@
                   <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
                 </div>
               </li>
-              <li class="flex items-center gap-2 enlace_menu">
+              <li class="flex items-center gap-2 enlace_menu" id="controllerContactanosMenu">
                 <img src="/public/contactanos-menu.png" width="15" height="15" alt="">
-                <a class="text__nowrap w-full" href="/contactanos.html">Contáctanos</a>
+                <a class="text__nowrap w-full" >Contáctanos</a>
                 <div class="flex justify-end">
                   <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
                 </div>
@@ -460,8 +592,8 @@
         <div class="flex flex-col items-center">
             <img
               src="/public/iconMarca.png"
-              width="65"
-              height="65"
+              width="70"
+              height="70"
               class=""
               alt=""
             />
@@ -473,5 +605,6 @@
     <!-- MENU -->
      
     <script src="./index.js"></script>
+    <script src="./controllerTabs.js"></script>
   </body>
 </html>
