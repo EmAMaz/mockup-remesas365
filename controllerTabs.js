@@ -36,7 +36,6 @@ const elements = document.querySelectorAll(".custom");
 // }
 
 function mountComponent(componentSelected) {
-  // controllerHome.classList.toggle("shadow-animated-active");
   app.innerHTML = "";
   isMounted = false;
   if (!isMounted) {
@@ -48,16 +47,46 @@ function mountComponent(componentSelected) {
 
 document.addEventListener("DOMContentLoaded", () => {
   mountComponent(homeComponent);
-  controllerHome.addEventListener("click", () => mountComponent(homeComponent));
-  controllerRecarga.addEventListener("click", () =>
-    mountComponent(recargarComponent)
-  );
-  controllerServicios.addEventListener("click", () =>
-    mountComponent(serviciosComponent)
-  );
-  controllerMiCuenta.addEventListener("click", () =>
-    mountComponent(micuentaComponent)
-  );
+  controllerHome.addEventListener("click", () => {
+    if (!controllerHome.classList.contains("button")) {
+      controllerRecarga.classList.remove("button");
+      controllerServicios.classList.remove("button");
+      controllerMiCuenta.classList.remove("button");
+
+      controllerHome.classList.toggle("button");
+    }
+    mountComponent(homeComponent);
+  });
+  controllerRecarga.addEventListener("click", () => {
+    if (!controllerRecarga.classList.contains("button")) {
+      controllerHome.classList.remove("button");
+      controllerServicios.classList.remove("button");
+      controllerMiCuenta.classList.remove("button");
+
+      controllerRecarga.classList.toggle("button");
+    }
+    mountComponent(recargarComponent);
+  });
+  controllerServicios.addEventListener("click", () => {
+    if (!controllerServicios.classList.contains("button")) {
+      controllerHome.classList.remove("button");
+      controllerRecarga.classList.remove("button");
+      controllerMiCuenta.classList.remove("button");
+
+      controllerServicios.classList.toggle("button");
+    }
+    mountComponent(serviciosComponent);
+  });
+  controllerMiCuenta.addEventListener("click", () => {
+    if (!controllerMiCuenta.classList.contains("button")) {
+      controllerHome.classList.remove("button");
+      controllerRecarga.classList.remove("button");
+      controllerServicios.classList.remove("button");
+
+      controllerMiCuenta.classList.toggle("button");
+    }
+    mountComponent(micuentaComponent);
+  });
   controllerContactanos.addEventListener("click", () =>
     mountComponent(contactanosComponent)
   );
