@@ -46,7 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("dsad")
   const template = document.getElementById("serviciosComponent");
   
-  mountComponent(homeComponent);
+  // mountComponent(homeComponent);
+  mountComponent(accionServicioComponent);
   controllerHome.addEventListener("click", () => {
     if (!controllerHome.classList.contains("button")) {
       controllerRecarga.classList.remove("button");

@@ -17,7 +17,7 @@
   cursor: pointer;
 }
 
-input {
+.input {
   position: absolute;
   display: none;
 }
