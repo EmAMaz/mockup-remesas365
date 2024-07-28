@@ -365,12 +365,6 @@
         </div>
       </template>
 
-      <template id="micuentaComponent">
-        <div class="p-4">
-          <h1>Mi cuenta</h1>
-        </div>
-      </template>
-
       <template id="contactanosComponent">
         <div class="p-4">
           <h2 class="text-xl text-center font-bold py-2">Contactanos!</h2>
@@ -452,16 +446,22 @@
             </div>
           </div>
           <div class="flex justify-between gap-2">
-            <input type="text" class="p-4 text_small" placeholder="Número (0414 o 0424)" style="letter-spacing: -0.05em;">
+            <input type="number" class="p-4 text_small" placeholder="Número (0414 o 0424)" style="letter-spacing: -0.05em;">
             <div class="flex btn_favoritos items-center p-2 gap-2" style="width: max-content;">
               <img class="object-contain" width="30px" height="25px" src="/public/servicios/FAVORITOS.png" alt="">
               <span class="" style="width: min-content;">Favoritos</span>
             </div>
           </div>
           <div class="flex flex-col gap-4 mb-5">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between justify-center">
               <span class="nexa_bold" style="height: min-content;">Monto en Bs. que recargas: </span>
-              <input type="number" min="45" max="2200" style="width: 70px;" placeholder="45" class="p-2">
+              <div class="input-container">
+                <input type="number" id="number-input" value="45" min="45" max="2200" class="p-2">
+                <div class="flex flex-col">
+                  <svg id="increment-button" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.6806 13.9783L15.4706 10.7683L13.5106 8.79828C12.6806 7.96828 11.3306 7.96828 10.5006 8.79828L5.32056 13.9783C4.64056 14.6583 5.13056 15.8183 6.08056 15.8183H11.6906H17.9206C18.8806 15.8183 19.3606 14.6583 18.6806 13.9783Z" fill="#292D32"></path> </g></svg>
+                  <svg id="decrement-button" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.6806 13.9783L15.4706 10.7683L13.5106 8.79828C12.6806 7.96828 11.3306 7.96828 10.5006 8.79828L5.32056 13.9783C4.64056 14.6583 5.13056 15.8183 6.08056 15.8183H11.6906H17.9206C18.8806 15.8183 19.3606 14.6583 18.6806 13.9783Z" fill="#292D32"></path> </g></svg>
+                </div>
+            </div>
             </div>
             <span class="text-center" style="font-size: 0.7em; letter-spacing: -0.02em;">*El monto a recargar debe ser mayor o igual a Bs. 45 hasta un máximo de Bs. 2200, el incremento es de Bs. 45</span>
           </div>
@@ -693,8 +693,8 @@
                 <div class="flex flex-col items-center">
                   <span class="nexa_bold" style="font-size: 0.7em; text-wrap: nowrap;">Modo Luz</span>
                   <div class="toggle-switch-menu">
-                    <input class="toggle-input-menu" id="togglePassword" type="checkbox">
-                    <label class="toggle-label-menu" for="togglePassword"></label>
+                    <input class="toggle-input-menu" id="toggleTheme" type="checkbox">
+                    <label class="toggle-label-menu" for="toggleTheme"></label>
                   </div>
                 </div>
               </div>
@@ -741,9 +741,11 @@
                     <img id="menosServicios" class="flex arrow_menu arrow_menu-active display_none" src="/public/menos.svg" width="20" height="20" alt="">
                   </div>
                   <div class="dropdown-menu" id="dropdownServicios">
-                    <a href="#" class="dropdown-item">Recarga Movistar<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></a>
-                    <a href="#" class="dropdown-item">Recarga Cantv<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></a>
-                    <a href="#" class="dropdown-item">Pago Inter<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></a>
+                    <span class="dropdown-item" id="recargaMovistarMenu">Recarga Movistar<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
+                    <span class="dropdown-item" id="recargaDigitelMenu">Recarga Digitel<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
+                    <span class="dropdown-item" id="recargaMovilnetMenu">Recarga Movilnet<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
+                    <span class="dropdown-item" id="recargaCantvMenu">Recarga Cantv<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
+                    <span class="dropdown-item" id="recargaInterMenu">Pago Inter<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
                   </div>
                 </li>
                 <li class="flex items-center gap-2 enlace_menu">

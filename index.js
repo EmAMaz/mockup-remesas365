@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       menosPerfil.classList.toggle("display_none");
       masPerfil.classList.toggle("display_none");
       dropdownPerfil.classList.toggle("showPerfil");
-    } else{
+    } else {
       this.classList.toggle("marginn");
       menosPerfil.classList.toggle("display_none");
       masPerfil.classList.toggle("display_none");
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       menosServicios.classList.toggle("display_none");
       masServicios.classList.toggle("display_none");
       dropdownServicios.classList.toggle("showServicio");
-    }else{
+    } else {
       this.classList.toggle("marginn");
       menosServicios.classList.toggle("display_none");
       masServicios.classList.toggle("display_none");
