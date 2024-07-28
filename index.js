@@ -80,25 +80,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
   });
 
-  // listItems.forEach(function (listItem, index) {
-  //   listItem.addEventListener("click", function (event) {
-  //     console.log(event);
-  //     event.preventDefault(); // Evita que el enlace se siga al hacer clic
-
-  //     const arrowMenu = arrowMenus[index];
-
-  //     // Verificar si la clase 'arrow_menu-active' ya está presente
-  //     if (!arrowMenu.classList.contains("arrow_menu-active")) {
-  //       arrowMenu.classList.add("arrow_menu-active");
-  //     }
-
-  //     arrowMenu.classList.add("clicked");
-  //     console.log(arrowMenu.target.innerText);
-  //     setTimeout(function () {
-  //       arrowMenu.classList.remove("clicked");
-  //     }, 100);
-  //   });
-  // });
 });
 
 let touchStartX = 0;
