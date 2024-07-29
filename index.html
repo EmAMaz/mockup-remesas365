@@ -603,6 +603,55 @@
         </div>
       </template>
 
+      <template id="recargaComponent">
+        <div class="p-4 text-center flex flex-col" style="height: 75vh;">
+          <h2 class="nexa_bold text-xl mb-4">Moneda en la que Recargas:</h2>
+          <div class="flex gap-4">
+            <div class="bgCard p-4 rounded-lg" id="recargaDolaresBtn">
+              <img src="./public/recarga/logodolares.png" alt="">
+              <span class="nexa_bold text-xs mt-2">Recarga Dólares</span>
+            </div>
+            <div class="bgCard p-4 rounded-lg" id="recargaEurosBtn">
+              <img src="./public/recarga/logoeuros.png" alt="">
+              <span class="nexa_bold text-xs mt-2">Recarga Euros</span>
+            </div>
+          </div>
+          <div class="mt-4 h-full flex justify-center items-end">
+            <img
+                src="/public/iconMarca.png"
+                width="70"
+                height="70"
+                class=""
+                style="opacity: 0.5;"
+                alt=""
+              />
+          </div>
+        </div>
+      </template>
+
+      <template id="metodosRecarga">
+        <div class="p-4">
+          <h2 class="mb-12 nexa_bold text-lg text-center">Selecciona tu Método de Recarga</h2>
+          <div class="flex flex-col gap-4">
+            <div class="grid bgCard p-4 gap-6 rounded-xl items-center" style="grid-template-columns: 0.5fr 1fr;">
+              <img src="/public/recarga/logovisa.png" alt="">
+              <div class="flex flex-col">
+                <span class="nexa_bold text-sm text-center mb-4">Recarga con Tarjeta Visa o Mastercard</span>
+                <span class="text-xs nexa_bold" style="color: #7fb733;">Abono Inmediato Activo las 24hs</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-4">
+              <div class="grid bgCard p-4 gap-6 rounded-xl items-center" style="grid-template-columns: 0.5fr 1fr;">
+                <img src="/public/recarga/logobinance.png" alt="">
+                <div class="flex flex-col">
+                  <span class="nexa_bold text-sm text-center mb-4" >Recarga con Binance Pay</span>
+                  <span class="text-xs nexa_bold" style="color: #7fb733;">Abono Inmediato Activo las 24hs</span>
+                </div>
+              </div>
+          </div>
+        </div>
+      </template>
+
       <div id="myModal" class="modalCustom">
         <div class="modal-content bgCard">
           <div>

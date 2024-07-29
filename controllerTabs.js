@@ -23,6 +23,8 @@ const recargarComponent = document.getElementById("recargarComponent");
 const micuentaComponent = document.getElementById("micuentaComponent");
 const contactanosComponent = document.getElementById("contactanosComponent");
 const enviarComponent = document.getElementById("enviarComponent");
+const recargaComponent = document.getElementById("recargaComponent");
+const metodosRecarga = document.getElementById("metodosRecarga");
 const accionServicioComponent = document.getElementById(
   "accionServicioComponent"
 );
@@ -81,21 +83,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       controllerRecarga.classList.toggle("button");
     }
-    mountComponent(recargarComponent);
-    const transferenciaBancaria = document.getElementById(
-      "transferenciaBancaria"
-    );
-    transferenciaBancaria.addEventListener("click", () => {
-      mountComponent(enviarComponent);
-      const nuevoBeneficiarioBtn = document.getElementById(
-        "nuevoBeneficiarioBtn"
-      );
-      const nuevoBeneficiarioForm = document.querySelector(
-        ".nuevoBeneficiarioForm"
-      );
-      nuevoBeneficiarioBtn.addEventListener("click", () => {
-        nuevoBeneficiarioForm.classList.toggle("active");
-      });
+    mountComponent(recargaComponent);
+    const recargaDolaresBtn = document.getElementById("recargaDolaresBtn");
+    const recargaEurosBtn = document.getElementById("recargaEurosBtn");
+    recargaDolaresBtn.addEventListener("click", () => {
+      mountComponent(metodosRecarga);
+    });
+    recargaEurosBtn.addEventListener("click", () => {
+      mountComponent(metodosRecarga);
     });
   });
   controllerServicios.addEventListener("click", () => {
