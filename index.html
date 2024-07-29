@@ -12,12 +12,12 @@
     <link rel="stylesheet" href="./switch.css"/>
   </head>
   <body id="conteinerMain">
-    <div class="bg-gray-100 min-h-screen" style="height: 100vh!important;overflow-y: scroll!important;" id="childrenBody">
+    <div class="min-h-screen" style="height: 100vh!important;overflow-y: scroll!important;" id="childrenBody">
       <!-- Header -->
       <div class="flex justify-between mb-5 pt-4 px-4">
         <div class="grid w-full" style="grid-template-columns: 0.5fr 1fr 0.45fr;">
-          <div id="menuButton" class="menu-btn">
-              <img src="./public/menu-burger.png"width="35"height="35"alt=""/>
+          <div id="menuButton" class="menu-btn pt-2">
+              <img src="./public/menu-burger.png"width="35"height="35"alt="" id="menuIconBurger"/>
           </div>
           <div class="text-center">
             <span class="text-sm text-green-600">Bienvenid@: </span>
@@ -34,7 +34,7 @@
         <div class="p-4">
           <div class="flex flex-col gap-3">
             <div
-              class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px bgCard"
             >
               <div class="flex flex-col">
                 <span class="nexa_bold"
@@ -53,7 +53,7 @@
               </div>
             </div>
             <div
-              class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px bgCard"
             >
               <div class="flex flex-col">
                 <span class="nexa_bold"
@@ -77,7 +77,7 @@
             <span class="title_section">Acciones rápidas</span>
             <div class="flex justify-center gap-5 py-5">
               <div class="text-center">
-                <div class="bg-white w-24 rounded-lg justify-center flex py-3">
+                <div class="bgCard w-24 rounded-lg justify-center flex py-3">
                   <svg
                     width="64px"
                     height="54px"
@@ -106,7 +106,7 @@
                 <span class="font-semibold">Recargar</span>
               </div>
               <div class="text-center">
-                <div class="bg-white w-24 rounded-lg justify-center flex py-3">
+                <div class="bgCard w-24 rounded-lg justify-center flex py-3">
                   <svg
                     width="64px"
                     height="54px"
@@ -144,7 +144,7 @@
             </div>
             <!-- CARDS -->
             <div
-              class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
             >
               <div class="flex gap-2">
                 <img
@@ -175,7 +175,7 @@
               </div>
             </div>
             <div
-              class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
             >
               <div class="flex gap-2">
                 <img
@@ -206,7 +206,7 @@
               </div>
             </div>
             <div
-              class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
             >
               <div class="flex gap-2">
                 <img
@@ -236,7 +236,7 @@
               </div>
             </div>
             <div
-              class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
             >
               <div class="flex gap-2">
                 <img
@@ -282,7 +282,7 @@
           <!-- CARDS -->
           <div class="flex flex-col gap-4 mt-8 mb-16">
             <div
-              class="flex justify-between p-2 bg-white rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 bgCard rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;" id="transferenciaBancaria"
             >
               <div class="flex flex-col w-1/3 p-2">
                 <img
@@ -305,7 +305,7 @@
               </div>
             </div>
             <div
-              class="flex justify-between p-2 bg-white rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 bgCard rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;" id="pagoMovil"
             >
               <div class="flex flex-col w-1/3 p-2">
                 <img src="./public/pagoMovil.png" width="120" height="120" alt="" />
@@ -333,30 +333,80 @@
           </div>
         </div>
       </template>
-
+      <template id="enviarComponent">
+        <div class="p-4 flex flex-col gap-8">
+          <div class="flex flex-col items-center justify-center text-center ">
+            <h2 class="text-xl nexa_bold">¿A quién le envías?</h2>
+            <span>Selecciona a quién deseas enviarle la transferencia. Si aún no está registrado, presiona Nuevo Beneficiario.</span>
+          </div>
+          <div>
+            <ul>
+              <li class="nexa_bold" id="nuevoBeneficiarioBtn">Nuevo Benefíciario</li>
+              <div class="w-full flex flex-col bg-card p-4 gap-2 rounded-lg nuevoBeneficiarioForm">
+                <div class="w-full grid items-center gap-2">
+                  <input
+                  class="p-2 border text-xs"
+                  style="border-left: 2px solid #7fb733;"
+                  type="text"
+                  placeholder="Alias para guardar en favoritos"
+                  />
+                </div>
+                <div class="w-full grid items-center gap-2">
+                  <input
+                  class="p-2 border text-xs"
+                  style="border-left: 2px solid #7fb733;"
+                  type="text"
+                  placeholder="Número de Cuenta"
+                  />
+                </div>
+                <div class="w-full grid items-center gap-2">
+                  <input
+                  class="p-2 border text-xs"
+                  style="border-left: 2px solid #7fb733;"
+                  type="text"
+                  placeholder="Nombre de Titular de la Cuenta"
+                  />
+                </div>
+                <div class="w-full grid items-center gap-2">
+                  <input
+                  class="p-2 border text-xs"
+                  style="border-left: 2px solid #7fb733;"
+                  type="text"
+                  placeholder="Cédula o RIF (empezando en V,E o J)"
+                  />
+                </div>
+                <div>
+                  <button class="bg-btn-recarga text-white text-sm font-bold p-4 rounded-2xl w-full" style="letter-spacing: 0.05em;" id="textDinamicoBtn">SIGUIENTE ></button>
+                </div>
+              </div>
+              <li class="nexa_bold">Tus Beneficios</li>
+            </ul>
+          </div>
+        </div>
+      </template>
       <template id="serviciosComponent">
         <div class="flex flex-col pb-20">
           <div>
             <img src="/public/servicios/banner.png" height="135px" alt="">
           </div>
           <div class="grid grid-cols-2 gap-4 p-4" style="margin-top: 3em;">
-            <div class="rounded-2xl bg_card-services flex flex-col items-center justify-center z-9999" id="recargaMovistar">
+            <div class="rounded-2xl bg_card-services flex flex-col items-center justify-center bgCard" id="recargaMovistar">
               <img class="p-4 object-contain" height="112px" src="/public/servicios/logomovistar.png" alt="">
               <span class="text__nowrap text_small font-bold">Recarga Movistar</span>
             </div>
-            <div class="rounded-2xl bg_card-services flex flex-col items-center justify-center" id="recargaDigitel">
+            <div class="rounded-2xl bg_card-services flex flex-col items-center justify-center bgCard" id="recargaDigitel">
               <img class="p-4 h-full object-contain" height="112px" src="/public/servicios/logodigitel.png" alt="">
               <span class="text__nowrap text_small font-bold">Recarga Digitel</span>
             </div>
-            <div class="rounded-2xl bg_card-services flex flex-col items-center justify-center" id="recargaMovilnet">
+            <div class="rounded-2xl bg_card-services flex flex-col items-center justify-center bgCard" id="recargaMovilnet">
               <img class="p-4 object-contain" height="112px" src="/public/servicios/logomovilnet.png" alt="">
               <span class="text__nowrap text_small font-bold">Recarga Movilnet</span>
             </div>
-            <div class="rounded-2xl bg_card-services flex flex-col items-center justify-center" id="recargaCantv">
+            <div class="rounded-2xl bg_card-services flex flex-col items-center justify-center bgCard" id="recargaCantv">
               <img class="p-4 object-contain" height="112px" src="/public/servicios/logocantv.png" alt="">
               <span class="text__nowrap text_small font-bold">Recarga Cantv</span>
             </div>
-            <div class="rounded-2xl bg_card-services flex flex-col items-center justify-center" id="recargaInter">
+            <div class="rounded-2xl bg_card-services flex flex-col items-center justify-center bgCard" id="recargaInter">
               <img class="p-4 object-contain" height="112px" src="/public/servicios/logointer.png" alt="">
               <span class="text__nowrap text_small font-bold">Recarga Inter</span>
             </div>
@@ -372,7 +422,7 @@
           <!-- CARDS -->
           <div class="flex flex-col gap-4 my-8">
             <div
-              class="flex justify-between p-2 bg-white rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 bgCard rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
             >
               <div class="flex flex-col w-1/3">
                 <img src="./public/whatsapps.png" width="55" height="55" alt="" />
@@ -388,7 +438,7 @@
               </div>
             </div>
             <div
-              class="flex justify-between p-2 bg-white rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 bgCard rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
             >
               <div class="flex flex-col w-1/3">
                 <img src="./public/soporte.png" width="55" height="55" alt="" />
@@ -435,11 +485,11 @@
                 
                 <div class="flex items-center gap-1">
                   <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300">
-                  <label for="default-radio-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Móvil</label>
+                  <label for="default-radio-1" class="ms-2 text-sm font-medium">Móvil</label>
                 </div>
                 <div class="flex items-center gap-1">
                   <input checked id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300">
-                  <label for="default-radio-2" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Fijo</label>
+                  <label for="default-radio-2" class="ms-2 text-sm font-medium">Fijo</label>
                 </div>
 
               </div>
@@ -455,11 +505,11 @@
           <div class="flex flex-col gap-4 mb-5">
             <div class="flex items-center justify-between justify-center">
               <span class="nexa_bold" style="height: min-content;">Monto en Bs. que recargas: </span>
-              <div class="input-container">
-                <input type="number" id="number-input" value="45" min="45" max="2200" class="p-2">
+              <div class="input-container gap-2">
+                <input type="number" style="color: #000;" id="number-input" value="45" min="45" max="2200" class="p-2">
                 <div class="flex flex-col">
-                  <svg id="increment-button" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.6806 13.9783L15.4706 10.7683L13.5106 8.79828C12.6806 7.96828 11.3306 7.96828 10.5006 8.79828L5.32056 13.9783C4.64056 14.6583 5.13056 15.8183 6.08056 15.8183H11.6906H17.9206C18.8806 15.8183 19.3606 14.6583 18.6806 13.9783Z" fill="#292D32"></path> </g></svg>
-                  <svg id="decrement-button" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.6806 13.9783L15.4706 10.7683L13.5106 8.79828C12.6806 7.96828 11.3306 7.96828 10.5006 8.79828L5.32056 13.9783C4.64056 14.6583 5.13056 15.8183 6.08056 15.8183H11.6906H17.9206C18.8806 15.8183 19.3606 14.6583 18.6806 13.9783Z" fill="#292D32"></path> </g></svg>
+                  <svg id="increment-button" class="bgCard" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.6806 13.9783L15.4706 10.7683L13.5106 8.79828C12.6806 7.96828 11.3306 7.96828 10.5006 8.79828L5.32056 13.9783C4.64056 14.6583 5.13056 15.8183 6.08056 15.8183H11.6906H17.9206C18.8806 15.8183 19.3606 14.6583 18.6806 13.9783Z" fill="#292D32"></path> </g></svg>
+                  <svg id="decrement-button" class="bgCard" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.6806 13.9783L15.4706 10.7683L13.5106 8.79828C12.6806 7.96828 11.3306 7.96828 10.5006 8.79828L5.32056 13.9783C4.64056 14.6583 5.13056 15.8183 6.08056 15.8183H11.6906H17.9206C18.8806 15.8183 19.3606 14.6583 18.6806 13.9783Z" fill="#292D32"></path> </g></svg>
                 </div>
             </div>
             </div>
@@ -468,7 +518,7 @@
           <div class="flex flex-col text-center">
             <h3 class="nexa_bold mb-5">Recargar Usando:</h3>
             <div class="flex flex-col gap-4">
-              <div class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; focused-btn activeBtn" id="recargaEnEUR">
+              <div class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; focused-btn activeBtn" id="recargaEnEUR">
               <div class="flex flex-col" >
                 <span class="nexa_bold"
                   >Saldo en EUR</span
@@ -485,7 +535,7 @@
                 <span>10/06/2024</span>
               </div>
               </div>
-              <div class="flex justify-between p-2 bg-white rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; focused-btn" id="recargaEnUSD">
+              <div class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; focused-btn" id="recargaEnUSD">
                 <div class="flex flex-col">
                   <span class="nexa_bold"
                     >Saldo en USD</span
@@ -519,7 +569,7 @@
 
       <template id="perfilComponent">
         <div class="p-4 flex flex-col gap-5 mb-14">
-          <div class="flex items-center gap-4 bg-fondoCard rounded-xl p-2">
+          <div class="flex items-center gap-4 rounded-xl p-2 bgCard">
             <img src="./public/userMenu.png" alt="">
             <div class="flex flex-col">
               <span>Daniela Gonzales Nuñez</span>
@@ -527,13 +577,13 @@
             </div>
           </div>
           <div class="flex flex-col gap-2">
-            <span class="nexa_bold text-gray-600">Datos Personales</span>
+            <span class="nexa_bold">Datos Personales</span>
             <ul class="flex flex-col gap-2">
-              <li class="bg-fondoCard border flex flex-col p-2"><span style="font-size: 0.65em;">Nombre Completo</span><span>DANIELA GONZALES NUÑEZ</span></li>
-              <li class="bg-fondoCard border flex flex-col p-2"><span style="font-size: 0.65em;">País Verificado</span><span>España</span></li>
-              <li class="bg-fondoCard border flex flex-col p-2"><span style="font-size: 0.65em;">Email</span><span>danielagonzalesnunez@me.com</span></li>
-              <li class="bg-fondoCard border flex flex-col p-2"><span style="font-size: 0.65em;">Telefóno</span><span>362165151</span></li>
-              <li class="bg-fondoCard border flex flex-col p-2"><span style="font-size: 0.65em;">Documento</span><span>0123231233</span></li>
+              <li class="bgCard border flex flex-col p-2"><span style="font-size: 0.65em;">Nombre Completo</span><span>DANIELA GONZALES NUÑEZ</span></li>
+              <li class="bgCard border flex flex-col p-2"><span style="font-size: 0.65em;">País Verificado</span><span>España</span></li>
+              <li class="bgCard border flex flex-col p-2"><span style="font-size: 0.65em;">Email</span><span>danielagonzalesnunez@me.com</span></li>
+              <li class="bgCard border flex flex-col p-2"><span style="font-size: 0.65em;">Telefóno</span><span>362165151</span></li>
+              <li class="bgCard border flex flex-col p-2"><span style="font-size: 0.65em;">Documento</span><span>0123231233</span></li>
             </ul>
           </div>
         </div>
@@ -541,7 +591,7 @@
 
       <template id="seguridadComponent">
         <div class="p-4 flex flex-col gap-5 mb-14">
-          <div class="flex items-center gap-4 bg-fondoCard rounded-xl p-2">
+          <div class="flex items-center gap-4 rounded-xl p-2 bgCard">
             <img src="./public/userMenu.png" alt="">
             <div class="flex flex-col">
               <span>Daniela Gonzales Nuñez</span>
@@ -550,7 +600,7 @@
           </div>
           <div class="flex flex-col gap-4">
             <span class="nexa_bold">Opciones de Seguridad</span>
-            <ul class="grid grid-cols-1 gap-4 bg-fondoCard rounded-xl p-2">
+            <ul class="grid grid-cols-1 gap-4 bgCard rounded-xl p-2">
               <li class="flex flex-col">
                 <div class="grid" style="grid-template-columns: 0.2fr 1fr;">
                   <div class="toggle-switch">
@@ -597,18 +647,18 @@
       </template>
 
       <!-- TABS -->
-      <div id="nav-tab">
+      <div id="nav-tab" class="bgCard">
         <ul class="flex items-center justify-around w-full">
           <li class="text-xs flex flex-col items-center button" id="controllerHome">
             <div class="flex flex-col items-center">
               <img src="/public/inicio.png" width="20" height="20" alt=""/>
-              <span class="nexa_bold text-gray-600 select-none">Inicio</span>
+              <span class="nexa_bold textColorMenuBottom select-none">Inicio</span>
             </div>
           </li>
           <li class="text-xs flex flex-col items-center" id="controllerRecarga">
             <div class="flex flex-col items-center">
               <img src="/public/recargar.png" width="20" height="20" alt="" />
-              <span class="nexa_bold text-gray-600">Recargar</span>
+              <span class="nexa_bold textColorMenuBottom">Recargar</span>
             </div>
           </li>
           <!-- BOTON PRINCIPAL -->
@@ -666,20 +716,20 @@
           <li class="text-xs flex flex-col items-center" id="controllerServicios">
               <div class="flex flex-col items-center">
                 <img src="/public/servicios.png" width="23" height="23" alt="" />
-                <span class="nexa_bold text-gray-600">Servicios</span>
+                <span class="nexa_bold textColorMenuBottom">Servicios</span>
               </div>
           </li>
           <li class="text-xs flex flex-col items-center" id="controllerMiCuenta">
               <div class="flex flex-col items-center">
                 <img src="/public/miCuenta.png" width="20" height="20" alt="" />
-                <span class="nexa_bold text-gray-600" style="text-wrap: nowrap;">Mi cuenta</span>
+                <span class="nexa_bold textColorMenuBottom" style="text-wrap: nowrap;">Mi cuenta</span>
               </div>
           </li>
         </ul>
       </div>
 
       <!-- MENU -->
-      <div class="side-menu" id="menu">
+      <div class="side-menu bgCard" id="menu">
         <div class="flex flex-col justify-between h-full">
 
           <div class="p-2">
@@ -700,66 +750,66 @@
               </div>
             </div>
               <ul class="mb-8 list__menu max-h-min">
-                <li class="flex items-center gap-2 enlace_menu">
-                  <img src="/public/home-menu.png" width="15" height="15" alt="">
-                  <a href="index.html" class="w-full">Home</a>
+                <li class="items-center gap-2 enlace_menu">
+                  <img src="/public/home-menu.png"width="15" height="15" alt="">
+                  <a href="index.html" class="w-full textColor">Home</a>
                   <div class="flex justify-end">
-                    <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
+                    <img class="flex arrow_menu arrow_menu-active svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt="">
                   </div>
                 </li>
-                <li class="flex items-center gap-2 enlace_menu relative" id="miperfilMenu">
+                <li class="items-center gap-2 enlace_menu relative" id="miperfilMenu">
                   <img src="/public/perfil-menu.png" width="15" height="15" alt="">
-                  <a class="text__nowrap w-full" href="#">Mi Perfil</a>
+                  <a class="text__nowrap w-full textColor" href="#">Mi Perfil</a>
                   <div class="flex justify-end">
-                    <img id="masPerfil" class="flex arrow_menu arrow_menu-active" src="/public/despliegue.svg" width="20" height="20" alt="">
-                    <img id="menosPerfil" class="flex arrow_menu arrow_menu-active display_none" src="/public/menos.svg" width="20" height="20" alt="">
+                    <img id="masPerfil" class="flex arrow_menu arrow_menu-active svgStyleMenuMas" src="/public/despliegue.svg" width="20" height="20" alt="">
+                    <img id="menosPerfil" class="flex arrow_menu arrow_menu-active display_none svgStyleMenuMenos" src="/public/menos.svg" width="20" height="20" alt="">
                   </div>
-                  <div class="dropdown-menu" id="dropdownPerfil">
-                    <span class="dropdown-item" id="controllerPerfil">Perfil<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
-                    <span class="dropdown-item" id="controllerSeguridad">Seguridad<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
+                  <div class="dropdown-menu bgCard" id="dropdownPerfil">
+                    <span class="dropdown-item textColor" id="controllerPerfil">Perfil<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
+                    <span class="dropdown-item textColor" id="controllerSeguridad">Seguridad<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
                   </div>
                 </li>
-                <li class="flex items-center gap-2 enlace_menu">
+                <li class="items-center gap-2 enlace_menu">
                   <img src="/public/recargar-menu.png" width="15" height="15" alt="">
-                  <a class="text__nowrap w-full" href="/recargar.html">Recargar</a>
+                  <a class="text__nowrap w-full textColor">Recargar</a>
                   <div class="flex justify-end">
-                    <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
+                    <img class="flex arrow_menu arrow_menu-active svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt="">
                   </div>
                 </li>
-                <li class="flex items-center gap-2 enlace_menu">
+                <li class="items-center gap-2 enlace_menu" id="controllerRetiroMenu">
                   <img src="/public/retirar-menu.png" width="15" height="15" alt="">
-                  <a class="text__nowrap w-full" href="#">Retira</a>
+                  <a class="text__nowrap w-full textColor">Retira</a>
                   <div class="flex justify-end">
-                    <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
+                    <img class="flex arrow_menu arrow_menu-active svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt="">
                   </div>
                 </li>
-                <li class="flex items-center gap-2 enlace_menu relative" id="miServicioMenu">
+                <li class="items-center gap-2 enlace_menu relative" id="miServicioMenu">
                   <img src="/public/servicio-menu.png" width="15" height="15" alt="">
-                  <a class="text__nowrap w-full" href="#">Pago Servicios</a>
+                  <a class="text__nowrap w-full textColor">Pago Servicios</a>
                   <div class="flex justify-end">
-                    <img id="masServicios" class="flex arrow_menu arrow_menu-active" src="/public/despliegue.svg" width="20" height="20" alt="">
-                    <img id="menosServicios" class="flex arrow_menu arrow_menu-active display_none" src="/public/menos.svg" width="20" height="20" alt="">
+                    <img id="masServicios" class="flex arrow_menu arrow_menu-active svgStyleMenuMas" src="/public/despliegue.svg" width="20" height="20" alt="">
+                    <img id="menosServicios" class="flex arrow_menu arrow_menu-active display_none svgStyleMenuMenos" src="/public/menos.svg" width="20" height="20" alt="">
                   </div>
-                  <div class="dropdown-menu" id="dropdownServicios">
-                    <span class="dropdown-item" id="recargaMovistarMenu">Recarga Movistar<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
-                    <span class="dropdown-item" id="recargaDigitelMenu">Recarga Digitel<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
-                    <span class="dropdown-item" id="recargaMovilnetMenu">Recarga Movilnet<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
-                    <span class="dropdown-item" id="recargaCantvMenu">Recarga Cantv<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
-                    <span class="dropdown-item" id="recargaInterMenu">Pago Inter<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
+                  <div class="dropdown-menu bgCard" id="dropdownServicios">
+                    <span class="dropdown-item textColor" id="recargaMovistarMenu">Recarga Movistar<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
+                    <span class="dropdown-item textColor" id="recargaDigitelMenu">Recarga Digitel<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
+                    <span class="dropdown-item textColor" id="recargaMovilnetMenu">Recarga Movilnet<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
+                    <span class="dropdown-item textColor" id="recargaCantvMenu">Recarga Cantv<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
+                    <span class="dropdown-item textColor" id="recargaInterMenu">Pago Inter<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
                   </div>
                 </li>
-                <li class="flex items-center gap-2 enlace_menu">
+                <li class="items-center gap-2 enlace_menu">
                   <img src="/public/tasas-menu.png" width="15" height="15" alt="">
-                  <a class="text__nowrap w-full" href="#">Calcular Tasas</a>
+                  <a class="text__nowrap w-full textColor">Calcular Tasas</a>
                   <div class="flex justify-end">
-                    <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
+                    <img class="flex arrow_menu arrow_menu-active svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt="">
                   </div>
                 </li>
-                <li class="flex items-center gap-2 enlace_menu" id="controllerContactanosMenu">
+                <li class="items-center gap-2 enlace_menu" id="controllerContactanosMenu">
                   <img src="/public/contactanos-menu.png" width="15" height="15" alt="">
-                  <a class="text__nowrap w-full" >Contáctanos</a>
+                  <a class="text__nowrap w-full textColor">Contáctanos</a>
                   <div class="flex justify-end">
-                    <img class="flex arrow_menu arrow_menu-active" src="/public/arrow-menu.png" width="7" height="7" alt="">
+                    <img class="flex arrow_menu arrow_menu-active svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt="">
                   </div>
                 </li>
               </ul>
@@ -785,6 +835,7 @@
       <!-- MENU -->
     <div id="app" ></div>
     <script src="./index.js"></script>
+    <script src="./logicToggleMode.js"></script>
     <script src="./controllerTabs.js"></script>
   </body>
 </html>

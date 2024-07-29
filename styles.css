@@ -22,9 +22,39 @@
   --text-color: #000;
   --btn-recarga: #72B432;
   --btn-border: #7fb733;
+  --background-color-light: #ffffff;
+  --background-color-dark: #2a2d32;
+  --background-color-dark-card: #22252a;
+  --text-color-dark: #ffffff;
+  --tw-text-color: rgba(75, 85, 99, 1);
+
 }
 body {
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
   margin: 0;
+}
+body.dark-mode{
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+.bgCard{
+  background-color: var(--bg-card);
+  transition: background-color 0.3s, color 0.3s;
+}
+body.dark-mode .bgCard{
+  background-color: var(--background-color-dark-card)!important;
+}
+body.dark-mode .textColor{
+  color: var(--text-color-dark)!important;
+}
+.textColorMenuBottom{
+  color: var(--tw-text-color);
+  z-index: 9999;
+}
+body.dark-mode .textColorMenuBottom{
+  color: var(--text-color-dark)!important;
 }
 * {
   font-family: "Nexa-Light";
@@ -322,8 +352,9 @@ a {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 .svgStyleMenu {
-  width: 6px;
-  height: 10px;
+  width: 8px;
+  height: 12px;
+  margin-right: 2px;
 }
 .title_section {
   font-family: "Nexa-Bold";
@@ -514,4 +545,15 @@ input[type="checkbox"]:checked + label span:nth-of-type(2) {
 }
 .input-container button:active {
   background-color: #ddd;
+}
+.nuevoBeneficiarioForm{
+  display: none;
+}
+.nuevoBeneficiarioForm.active{
+  display: flex;
+}
+.enlace_menu{
+  display: grid;
+  grid-template-columns: 0.2fr 1fr 0.5fr!important;
+  justify-content: space-between;
 }

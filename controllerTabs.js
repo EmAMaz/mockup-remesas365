@@ -3,6 +3,7 @@ const controllerRecarga = document.getElementById("controllerRecarga");
 const controllerServicios = document.getElementById("controllerServicios");
 const controllerMiCuenta = document.getElementById("controllerMiCuenta");
 const controllerContactanos = document.getElementById("controllerContactanos");
+const controllerRetiroMenu = document.getElementById("controllerRetiroMenu");
 const controllerContactanosMenu = document.getElementById(
   "controllerContactanosMenu"
 );
@@ -21,9 +22,8 @@ const homeComponent = document.getElementById("homeComponent");
 const recargarComponent = document.getElementById("recargarComponent");
 const micuentaComponent = document.getElementById("micuentaComponent");
 const contactanosComponent = document.getElementById("contactanosComponent");
-const accionServicioComponent = document.getElementById(
-  "accionServicioComponent"
-);
+const enviarComponent = document.getElementById("enviarComponent");
+const accionServicioComponent = document.getElementById("accionServicioComponent");
 const serviciosComponent = document.getElementById("serviciosComponent");
 const perfilComponent = document.getElementById("perfilComponent");
 const seguridadComponent = document.getElementById("seguridadComponent");
@@ -42,7 +42,8 @@ function mountComponent(componentSelected) {
 document.addEventListener("DOMContentLoaded", () => {
  
   mountComponent(homeComponent);
- 
+  //mountComponent(enviarComponent);
+
   controllerHome.addEventListener("click", () => {
     if (!controllerHome.classList.contains("button")) {
       controllerRecarga.classList.remove("button");
@@ -62,6 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
       controllerRecarga.classList.toggle("button");
     }
     mountComponent(recargarComponent);
+    const transferenciaBancaria = document.getElementById("transferenciaBancaria"); 
+    transferenciaBancaria.addEventListener("click", () => {
+      mountComponent(enviarComponent);
+      const nuevoBeneficiarioBtn = document.getElementById("nuevoBeneficiarioBtn");
+      const nuevoBeneficiarioForm = document.querySelector(".nuevoBeneficiarioForm");
+      nuevoBeneficiarioBtn.addEventListener("click", () => {
+        nuevoBeneficiarioForm.classList.toggle("active");
+      })
+    });
   });
   controllerServicios.addEventListener("click", () => {
     if (!controllerServicios.classList.contains("button")) {
@@ -350,6 +360,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const changePassword = document.getElementById("changePassword");
     togglePassword.addEventListener("click", (e) => {
       changePassword.classList.toggle("container_boton");
+    });
+  });
+  controllerRetiroMenu.addEventListener("click", () => {
+    mountComponent(recargarComponent);
+    menu.classList.remove("open");
+    const transferenciaBancaria = document.getElementById("transferenciaBancaria"); 
+    transferenciaBancaria.addEventListener("click", () => {
+      mountComponent(enviarComponent);
+      const nuevoBeneficiarioBtn = document.getElementById("nuevoBeneficiarioBtn");
+      const nuevoBeneficiarioForm = document.querySelector(".nuevoBeneficiarioForm");
+      nuevoBeneficiarioBtn.addEventListener("click", () => {
+        nuevoBeneficiarioForm.classList.toggle("active");
+      })
     });
   });
 
