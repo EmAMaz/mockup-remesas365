@@ -30,7 +30,7 @@
 
 }
 body {
-  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+  background-color: rgba(243, 244, 246, 1);
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
   margin: 0;
@@ -552,8 +552,56 @@ input[type="checkbox"]:checked + label span:nth-of-type(2) {
 .nuevoBeneficiarioForm.active{
   display: flex;
 }
+#nuevoBeneficiarioBtn:focus{
+  color: #72B432!important;
+  border: none!important;
+  outline: none!important;
+}
 .enlace_menu{
   display: grid;
   grid-template-columns: 0.2fr 1fr 0.5fr!important;
   justify-content: space-between;
+}
+/* styles.css */
+
+/* El modal (fondo) */
+.modalCustom {
+  display: none; /* Ocultar el modal por defecto */
+  position: fixed;
+  z-index: 1; /* Asegurarse de que esté sobre otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Agregar scroll si es necesario */
+  background-color: rgb(0,0,0); /* Color de fondo del modal */
+  background-color: rgba(0,0,0,0.4); /* Color de fondo con opacidad */
+}
+
+/* El contenido del modal */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* Centrar el modal */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ancho del modal */
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* El botón de cerrar (x) */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 0px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

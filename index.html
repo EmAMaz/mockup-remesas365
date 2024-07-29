@@ -78,59 +78,13 @@
             <div class="flex justify-center gap-5 py-5">
               <div class="text-center">
                 <div class="bgCard w-24 rounded-lg justify-center flex py-3">
-                  <svg
-                    width="64px"
-                    height="54px"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    transform="rotate(180)"
-                  >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <path
-                        d="M8 12L12 8M12 8L16 12M12 8V20M4 4H20"
-                        stroke="#000000"
-                        stroke-width="1"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>
-                    </g>
-                  </svg>
+                  <img class="iconDinamicRapid" src="./public/recargarRapidas.svg" alt="">
                 </div>
                 <span class="font-semibold">Recargar</span>
               </div>
               <div class="text-center">
                 <div class="bgCard w-24 rounded-lg justify-center flex py-3">
-                  <svg
-                    width="64px"
-                    height="54px"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    transform="rotate(0)"
-                  >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <path
-                        d="M8 12L12 8M12 8L16 12M12 8V20M4 4H20"
-                        stroke="#000000"
-                        stroke-width="1"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>
-                    </g>
-                  </svg>
+                  <img class="iconDinamicRapid" src="./public/retirarRapidas.svg" alt="">
                 </div>
                 <span class="font-semibold">Retirar</span>
               </div>
@@ -341,7 +295,7 @@
           </div>
           <div>
             <ul>
-              <li class="nexa_bold" id="nuevoBeneficiarioBtn">Nuevo Benefíciario</li>
+              <button class="nexa_bold nuevoBeneficiarioBtn" id="nuevoBeneficiarioBtn">Nuevo Beneficiario</button>
               <div class="w-full flex flex-col bg-card p-4 gap-2 rounded-lg nuevoBeneficiarioForm">
                 <div class="w-full grid items-center gap-2">
                   <input
@@ -496,13 +450,13 @@
             </div>
           </div>
           <div class="flex justify-between gap-2">
-            <input type="number" class="p-4 text_small" placeholder="Número (0414 o 0424)" style="letter-spacing: -0.05em;">
-            <div class="flex btn_favoritos items-center p-2 gap-2" style="width: max-content;">
+            <input type="number" class="p-4 text_small" placeholder="Número (0414 o 0424)" style="letter-spacing: -0.05em;" id="inputNumber">
+            <div class="flex btn_favoritos items-center p-2 gap-2" style="width: max-content;" id="btnFavoritos">
               <img class="object-contain" width="30px" height="25px" src="/public/servicios/FAVORITOS.png" alt="">
               <span class="" style="width: min-content;">Favoritos</span>
             </div>
           </div>
-          <div class="flex flex-col gap-4 mb-5">
+          <div class="flex flex-col gap-4 mb-5" id="divMontos">
             <div class="flex items-center justify-between justify-center">
               <span class="nexa_bold" style="height: min-content;">Monto en Bs. que recargas: </span>
               <div class="input-container gap-2">
@@ -514,6 +468,9 @@
             </div>
             </div>
             <span class="text-center" style="font-size: 0.7em; letter-spacing: -0.02em;">*El monto a recargar debe ser mayor o igual a Bs. 45 hasta un máximo de Bs. 2200, el incremento es de Bs. 45</span>
+          </div>
+          <div id="btnInter" class="hidden">
+            <button class="bg-btn-recarga text-white text-sm font-bold p-4 rounded-2xl w-full" style="letter-spacing: 0.05em;" >CONSULTAR DEUDA</button>
           </div>
           <div class="flex flex-col text-center">
             <h3 class="nexa_bold mb-5">Recargar Usando:</h3>
@@ -646,18 +603,26 @@
         </div>
       </template>
 
+      <div id="myModal" class="modalCustom">
+        <div class="modal-content bgCard">
+          <div>
+            <span class="close">&times;</span>
+          </div>
+          <p>Aun no tiene favoritos</p>
+      </div>
+      </div>
       <!-- TABS -->
       <div id="nav-tab" class="bgCard">
         <ul class="flex items-center justify-around w-full">
           <li class="text-xs flex flex-col items-center button" id="controllerHome">
             <div class="flex flex-col items-center">
-              <img src="/public/inicio.png" width="20" height="20" alt=""/>
+              <img src="/public/inicio.png" class="iconDinamic" width="20" height="20" alt=""/>
               <span class="nexa_bold textColorMenuBottom select-none">Inicio</span>
             </div>
           </li>
           <li class="text-xs flex flex-col items-center" id="controllerRecarga">
             <div class="flex flex-col items-center">
-              <img src="/public/recargar.png" width="20" height="20" alt="" />
+              <img src="/public/recargar.png" class="iconDinamic" width="20" height="20" alt="" />
               <span class="nexa_bold textColorMenuBottom">Recargar</span>
             </div>
           </li>
@@ -715,13 +680,13 @@
           <!-- BOTON PRINCIPAL -->
           <li class="text-xs flex flex-col items-center" id="controllerServicios">
               <div class="flex flex-col items-center">
-                <img src="/public/servicios.png" width="23" height="23" alt="" />
+                <img src="/public/servicios.png" class="iconDinamic" width="23" height="23" alt="" />
                 <span class="nexa_bold textColorMenuBottom">Servicios</span>
               </div>
           </li>
           <li class="text-xs flex flex-col items-center" id="controllerMiCuenta">
               <div class="flex flex-col items-center">
-                <img src="/public/miCuenta.png" width="20" height="20" alt="" />
+                <img src="/public/miCuenta.png" class="iconDinamic" width="20" height="20" alt="" />
                 <span class="nexa_bold textColorMenuBottom" style="text-wrap: nowrap;">Mi cuenta</span>
               </div>
           </li>
@@ -751,14 +716,14 @@
             </div>
               <ul class="mb-8 list__menu max-h-min">
                 <li class="items-center gap-2 enlace_menu">
-                  <img src="/public/home-menu.png"width="15" height="15" alt="">
+                  <img class="iconDinamic" src="/public/home-menu.png"width="15" height="15" alt="">
                   <a href="index.html" class="w-full textColor">Home</a>
                   <div class="flex justify-end">
                     <img class="flex arrow_menu arrow_menu-active svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt="">
                   </div>
                 </li>
                 <li class="items-center gap-2 enlace_menu relative" id="miperfilMenu">
-                  <img src="/public/perfil-menu.png" width="15" height="15" alt="">
+                  <img class="iconDinamic" src="/public/perfil-menu.png" width="15" height="15" alt="">
                   <a class="text__nowrap w-full textColor" href="#">Mi Perfil</a>
                   <div class="flex justify-end">
                     <img id="masPerfil" class="flex arrow_menu arrow_menu-active svgStyleMenuMas" src="/public/despliegue.svg" width="20" height="20" alt="">
@@ -770,21 +735,21 @@
                   </div>
                 </li>
                 <li class="items-center gap-2 enlace_menu">
-                  <img src="/public/recargar-menu.png" width="15" height="15" alt="">
+                  <img class="iconDinamic" src="/public/recargar-menu.png" width="15" height="15" alt="">
                   <a class="text__nowrap w-full textColor">Recargar</a>
                   <div class="flex justify-end">
                     <img class="flex arrow_menu arrow_menu-active svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt="">
                   </div>
                 </li>
                 <li class="items-center gap-2 enlace_menu" id="controllerRetiroMenu">
-                  <img src="/public/retirar-menu.png" width="15" height="15" alt="">
+                  <img class="iconDinamic" src="/public/retirar-menu.png" width="15" height="15" alt="">
                   <a class="text__nowrap w-full textColor">Retira</a>
                   <div class="flex justify-end">
                     <img class="flex arrow_menu arrow_menu-active svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt="">
                   </div>
                 </li>
                 <li class="items-center gap-2 enlace_menu relative" id="miServicioMenu">
-                  <img src="/public/servicio-menu.png" width="15" height="15" alt="">
+                  <img class="iconDinamic" src="/public/servicio-menu.png" width="15" height="15" alt="">
                   <a class="text__nowrap w-full textColor">Pago Servicios</a>
                   <div class="flex justify-end">
                     <img id="masServicios" class="flex arrow_menu arrow_menu-active svgStyleMenuMas" src="/public/despliegue.svg" width="20" height="20" alt="">
@@ -799,14 +764,14 @@
                   </div>
                 </li>
                 <li class="items-center gap-2 enlace_menu">
-                  <img src="/public/tasas-menu.png" width="15" height="15" alt="">
+                  <img class="iconDinamic" src="/public/tasas-menu.png" width="15" height="15" alt="">
                   <a class="text__nowrap w-full textColor">Calcular Tasas</a>
                   <div class="flex justify-end">
                     <img class="flex arrow_menu arrow_menu-active svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt="">
                   </div>
                 </li>
                 <li class="items-center gap-2 enlace_menu" id="controllerContactanosMenu">
-                  <img src="/public/contactanos-menu.png" width="15" height="15" alt="">
+                  <img class="iconDinamic" src="/public/contactanos-menu.png" width="15" height="15" alt="">
                   <a class="text__nowrap w-full textColor">Contáctanos</a>
                   <div class="flex justify-end">
                     <img class="flex arrow_menu arrow_menu-active svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt="">
@@ -814,7 +779,7 @@
                 </li>
               </ul>
               <div class="flex items-center justify-center gap-2">
-                <img src="/public/cerrarsesion.png" width="20" height="20" alt="" />
+                <img class="iconDinamic" src="/public/cerrarsesion.png" width="20" height="20" alt="" />
                 <span>Cerrar Sesión</span>
               </div>
           </div>

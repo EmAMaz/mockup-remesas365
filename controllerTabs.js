@@ -23,7 +23,9 @@ const recargarComponent = document.getElementById("recargarComponent");
 const micuentaComponent = document.getElementById("micuentaComponent");
 const contactanosComponent = document.getElementById("contactanosComponent");
 const enviarComponent = document.getElementById("enviarComponent");
-const accionServicioComponent = document.getElementById("accionServicioComponent");
+const accionServicioComponent = document.getElementById(
+  "accionServicioComponent"
+);
 const serviciosComponent = document.getElementById("serviciosComponent");
 const perfilComponent = document.getElementById("perfilComponent");
 const seguridadComponent = document.getElementById("seguridadComponent");
@@ -40,8 +42,25 @@ function mountComponent(componentSelected) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
- 
   mountComponent(homeComponent);
+  const iconDinamicRapid = document.querySelectorAll(".iconDinamicRapid");
+  document.addEventListener("cambiarIconosDinamic", () => {
+    iconDinamicRapid.forEach((element) => {
+      let url = element.src;
+      const regex = /white/;
+      const validacion = regex.test(url);
+      let stringToAdd = "-white";
+      let lastDotIndex = url.lastIndexOf(".");
+      let beforeDot = url.substring(0, lastDotIndex);
+      let afterDot = url.substring(lastDotIndex);
+      let newUrl = beforeDot + stringToAdd + afterDot;
+      if (!validacion) {
+        element.src = newUrl;
+      } else {
+        element.src = url.replace("-white", "");
+      }
+    });
+  });
   //mountComponent(enviarComponent);
 
   controllerHome.addEventListener("click", () => {
@@ -63,14 +82,20 @@ document.addEventListener("DOMContentLoaded", () => {
       controllerRecarga.classList.toggle("button");
     }
     mountComponent(recargarComponent);
-    const transferenciaBancaria = document.getElementById("transferenciaBancaria"); 
+    const transferenciaBancaria = document.getElementById(
+      "transferenciaBancaria"
+    );
     transferenciaBancaria.addEventListener("click", () => {
       mountComponent(enviarComponent);
-      const nuevoBeneficiarioBtn = document.getElementById("nuevoBeneficiarioBtn");
-      const nuevoBeneficiarioForm = document.querySelector(".nuevoBeneficiarioForm");
+      const nuevoBeneficiarioBtn = document.getElementById(
+        "nuevoBeneficiarioBtn"
+      );
+      const nuevoBeneficiarioForm = document.querySelector(
+        ".nuevoBeneficiarioForm"
+      );
       nuevoBeneficiarioBtn.addEventListener("click", () => {
         nuevoBeneficiarioForm.classList.toggle("active");
-      })
+      });
     });
   });
   controllerServicios.addEventListener("click", () => {
@@ -99,6 +124,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const decrementButton = document.getElementById("decrement-button");
         const incrementButton = document.getElementById("increment-button");
         const numberInput = document.getElementById("number-input");
+        const modal = document.getElementById("myModal");
+const btn = document.getElementById("btnFavoritos");
+const span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function () {
+        modal.style.display = "block";
+      };
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
         const minValue = parseInt(numberInput.getAttribute("min"));
         const maxValue = parseInt(numberInput.getAttribute("max"));
         numberInput.addEventListener("input", function () {
@@ -113,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
           numberInput.stepDown();
           numberInput;
         });
-  
+
         incrementButton.addEventListener("click", function () {
           numberInput.stepUp();
         });
@@ -137,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("accionServicioComponent template not found");
       }
     });
-  
+
     recargaDigitel.addEventListener("click", () => {
       mountComponent(accionServicioComponent);
       menu.classList.remove("open");
@@ -147,26 +187,41 @@ document.addEventListener("DOMContentLoaded", () => {
       const txtDinamicoFst = document.getElementById("txtDinamicoFst");
       const txtDinamicoSnd = document.getElementById("txtDinamicoSnd");
       const decrementButton = document.getElementById("decrement-button");
-        const incrementButton = document.getElementById("increment-button");
-        const numberInput = document.getElementById("number-input");
-        const minValue = parseInt(numberInput.getAttribute("min"));
-        const maxValue = parseInt(numberInput.getAttribute("max"));
-        numberInput.addEventListener("input", function () {
-          let currentValue = parseInt(numberInput.value);
-          if (isNaN(currentValue) || currentValue < minValue) {
-            numberInput.value = minValue;
-          } else if (currentValue > maxValue) {
-            numberInput.value = maxValue;
-          }
-        });
-        decrementButton.addEventListener("click", function () {
-          numberInput.stepDown();
-          numberInput;
-        });
-  
-        incrementButton.addEventListener("click", function () {
-          numberInput.stepUp();
-        });
+      const incrementButton = document.getElementById("increment-button");
+      const numberInput = document.getElementById("number-input");
+      const modal = document.getElementById("myModal");
+const btn = document.getElementById("btnFavoritos");
+const span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function () {
+        modal.style.display = "block";
+      };
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+      const minValue = parseInt(numberInput.getAttribute("min"));
+      const maxValue = parseInt(numberInput.getAttribute("max"));
+      numberInput.addEventListener("input", function () {
+        let currentValue = parseInt(numberInput.value);
+        if (isNaN(currentValue) || currentValue < minValue) {
+          numberInput.value = minValue;
+        } else if (currentValue > maxValue) {
+          numberInput.value = maxValue;
+        }
+      });
+      decrementButton.addEventListener("click", function () {
+        numberInput.stepDown();
+        numberInput;
+      });
+
+      incrementButton.addEventListener("click", function () {
+        numberInput.stepUp();
+      });
       recargaEnEUR.addEventListener("click", () => {
         if (recargaEnUSD.classList.contains("activeBtn")) {
           recargaEnUSD.classList.remove("activeBtn");
@@ -185,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       imageRecarga.src = "./public/servicios/logodigitel.png";
     });
-  
+
     recargaMovilnet.addEventListener("click", () => {
       mountComponent(accionServicioComponent);
       menu.classList.remove("open");
@@ -195,26 +250,41 @@ document.addEventListener("DOMContentLoaded", () => {
       const txtDinamicoFst = document.getElementById("txtDinamicoFst");
       const txtDinamicoSnd = document.getElementById("txtDinamicoSnd");
       const decrementButton = document.getElementById("decrement-button");
-        const incrementButton = document.getElementById("increment-button");
-        const numberInput = document.getElementById("number-input");
-        const minValue = parseInt(numberInput.getAttribute("min"));
-        const maxValue = parseInt(numberInput.getAttribute("max"));
-        numberInput.addEventListener("input", function () {
-          let currentValue = parseInt(numberInput.value);
-          if (isNaN(currentValue) || currentValue < minValue) {
-            numberInput.value = minValue;
-          } else if (currentValue > maxValue) {
-            numberInput.value = maxValue;
-          }
-        });
-        decrementButton.addEventListener("click", function () {
-          numberInput.stepDown();
-          numberInput;
-        });
-  
-        incrementButton.addEventListener("click", function () {
-          numberInput.stepUp();
-        });
+      const incrementButton = document.getElementById("increment-button");
+      const numberInput = document.getElementById("number-input");
+      const minValue = parseInt(numberInput.getAttribute("min"));
+      const maxValue = parseInt(numberInput.getAttribute("max"));
+      const modal = document.getElementById("myModal");
+const btn = document.getElementById("btnFavoritos");
+const span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function () {
+        modal.style.display = "block";
+      };
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+      numberInput.addEventListener("input", function () {
+        let currentValue = parseInt(numberInput.value);
+        if (isNaN(currentValue) || currentValue < minValue) {
+          numberInput.value = minValue;
+        } else if (currentValue > maxValue) {
+          numberInput.value = maxValue;
+        }
+      });
+      decrementButton.addEventListener("click", function () {
+        numberInput.stepDown();
+        numberInput;
+      });
+
+      incrementButton.addEventListener("click", function () {
+        numberInput.stepUp();
+      });
       recargaEnEUR.addEventListener("click", () => {
         if (recargaEnUSD.classList.contains("activeBtn")) {
           recargaEnUSD.classList.remove("activeBtn");
@@ -233,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       imageRecarga.src = "./public/servicios/logomovilnet.png";
     });
-  
+
     recargaCantv.addEventListener("click", () => {
       mountComponent(accionServicioComponent);
       menu.classList.remove("open");
@@ -243,26 +313,43 @@ document.addEventListener("DOMContentLoaded", () => {
       const txtDinamicoFst = document.getElementById("txtDinamicoFst");
       const txtDinamicoSnd = document.getElementById("txtDinamicoSnd");
       const decrementButton = document.getElementById("decrement-button");
-        const incrementButton = document.getElementById("increment-button");
-        const numberInput = document.getElementById("number-input");
-        const minValue = parseInt(numberInput.getAttribute("min"));
-        const maxValue = parseInt(numberInput.getAttribute("max"));
-        numberInput.addEventListener("input", function () {
-          let currentValue = parseInt(numberInput.value);
-          if (isNaN(currentValue) || currentValue < minValue) {
-            numberInput.value = minValue;
-          } else if (currentValue > maxValue) {
-            numberInput.value = maxValue;
-          }
-        });
-        decrementButton.addEventListener("click", function () {
-          numberInput.stepDown();
-          numberInput;
-        });
-  
-        incrementButton.addEventListener("click", function () {
-          numberInput.stepUp();
-        });
+      const incrementButton = document.getElementById("increment-button");
+      const numberInput = document.getElementById("number-input");
+      const minValue = parseInt(numberInput.getAttribute("min"));
+      const maxValue = parseInt(numberInput.getAttribute("max"));
+      const modal = document.getElementById("myModal");
+      const btn = document.getElementById("btnFavoritos");
+      const span = document.getElementsByClassName("close")[0];
+      const inputNumber = document.getElementById("inputNumber");
+      const divMontos = document.getElementById("divMontos");
+      const btnInter = document.getElementById("btnInter");
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+      numberInput.addEventListener("input", function () {
+        let currentValue = parseInt(numberInput.value);
+        if (isNaN(currentValue) || currentValue < minValue) {
+          numberInput.value = minValue;
+        } else if (currentValue > maxValue) {
+          numberInput.value = maxValue;
+        }
+      });
+      decrementButton.addEventListener("click", function () {
+        numberInput.stepDown();
+        numberInput;
+      });
+
+      incrementButton.addEventListener("click", function () {
+        numberInput.stepUp();
+      });
       recargaEnEUR.addEventListener("click", () => {
         if (recargaEnUSD.classList.contains("activeBtn")) {
           recargaEnUSD.classList.remove("activeBtn");
@@ -279,9 +366,12 @@ document.addEventListener("DOMContentLoaded", () => {
           txtDinamicoSnd.textContent = "Monto a Descontar en USD";
         }
       });
+      divMontos.style.display = "none";
+      btnInter.classList.remove("hidden");
+      inputNumber.placeholder = "Número (02XX)";
       imageRecarga.src = "./public/servicios/logocantv.png";
     });
-  
+
     recargaInter.addEventListener("click", () => {
       mountComponent(accionServicioComponent);
       menu.classList.remove("open");
@@ -292,26 +382,32 @@ document.addEventListener("DOMContentLoaded", () => {
       const txtDinamicoFst = document.getElementById("txtDinamicoFst");
       const txtDinamicoSnd = document.getElementById("txtDinamicoSnd");
       const decrementButton = document.getElementById("decrement-button");
-        const incrementButton = document.getElementById("increment-button");
-        const numberInput = document.getElementById("number-input");
-        const minValue = parseInt(numberInput.getAttribute("min"));
-        const maxValue = parseInt(numberInput.getAttribute("max"));
-        numberInput.addEventListener("input", function () {
-          let currentValue = parseInt(numberInput.value);
-          if (isNaN(currentValue) || currentValue < minValue) {
-            numberInput.value = minValue;
-          } else if (currentValue > maxValue) {
-            numberInput.value = maxValue;
-          }
-        });
-        decrementButton.addEventListener("click", function () {
-          numberInput.stepDown();
-          numberInput;
-        });
-  
-        incrementButton.addEventListener("click", function () {
-          numberInput.stepUp();
-        });
+      const incrementButton = document.getElementById("increment-button");
+      const numberInput = document.getElementById("number-input");
+      const minValue = parseInt(numberInput.getAttribute("min"));
+      const maxValue = parseInt(numberInput.getAttribute("max"));
+      const divMontos = document.getElementById("divMontos");
+      const btnInter = document.getElementById("btnInter");
+      const inputNumber = document.getElementById("inputNumber");
+      const modal = document.getElementById("myModal");
+      const btn = document.getElementById("btnFavoritos");
+      const span = document.getElementsByClassName("close")[0];
+      numberInput.addEventListener("input", function () {
+        let currentValue = parseInt(numberInput.value);
+        if (isNaN(currentValue) || currentValue < minValue) {
+          numberInput.value = minValue;
+        } else if (currentValue > maxValue) {
+          numberInput.value = maxValue;
+        }
+      });
+      decrementButton.addEventListener("click", function () {
+        numberInput.stepDown();
+        numberInput;
+      });
+
+      incrementButton.addEventListener("click", function () {
+        numberInput.stepUp();
+      });
       recargaEnEUR.addEventListener("click", () => {
         if (recargaEnUSD.classList.contains("activeBtn")) {
           recargaEnUSD.classList.remove("activeBtn");
@@ -328,6 +424,20 @@ document.addEventListener("DOMContentLoaded", () => {
           txtDinamicoSnd.textContent = "Monto a Descontar en USD";
         }
       });
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+      inputNumber.placeholder = "(10 Dígitos)";
+      divMontos.style.display = "none";
+      btnInter.classList.remove("hidden");
       imageRecarga.src = "./public/servicios/logointer.png";
       textDinamicoBtn.textContent = "EFECTUAR PAGO";
     });
@@ -365,14 +475,20 @@ document.addEventListener("DOMContentLoaded", () => {
   controllerRetiroMenu.addEventListener("click", () => {
     mountComponent(recargarComponent);
     menu.classList.remove("open");
-    const transferenciaBancaria = document.getElementById("transferenciaBancaria"); 
+    const transferenciaBancaria = document.getElementById(
+      "transferenciaBancaria"
+    );
     transferenciaBancaria.addEventListener("click", () => {
       mountComponent(enviarComponent);
-      const nuevoBeneficiarioBtn = document.getElementById("nuevoBeneficiarioBtn");
-      const nuevoBeneficiarioForm = document.querySelector(".nuevoBeneficiarioForm");
+      const nuevoBeneficiarioBtn = document.getElementById(
+        "nuevoBeneficiarioBtn"
+      );
+      const nuevoBeneficiarioForm = document.querySelector(
+        ".nuevoBeneficiarioForm"
+      );
       nuevoBeneficiarioBtn.addEventListener("click", () => {
         nuevoBeneficiarioForm.classList.toggle("active");
-      })
+      });
     });
   });
 
@@ -435,26 +551,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const txtDinamicoFst = document.getElementById("txtDinamicoFst");
     const txtDinamicoSnd = document.getElementById("txtDinamicoSnd");
     const decrementButton = document.getElementById("decrement-button");
-      const incrementButton = document.getElementById("increment-button");
-      const numberInput = document.getElementById("number-input");
-      const minValue = parseInt(numberInput.getAttribute("min"));
-      const maxValue = parseInt(numberInput.getAttribute("max"));
-      numberInput.addEventListener("input", function () {
-        let currentValue = parseInt(numberInput.value);
-        if (isNaN(currentValue) || currentValue < minValue) {
-          numberInput.value = minValue;
-        } else if (currentValue > maxValue) {
-          numberInput.value = maxValue;
-        }
-      });
-      decrementButton.addEventListener("click", function () {
-        numberInput.stepDown();
-        numberInput;
-      });
+    const incrementButton = document.getElementById("increment-button");
+    const numberInput = document.getElementById("number-input");
+    const minValue = parseInt(numberInput.getAttribute("min"));
+    const maxValue = parseInt(numberInput.getAttribute("max"));
+    numberInput.addEventListener("input", function () {
+      let currentValue = parseInt(numberInput.value);
+      if (isNaN(currentValue) || currentValue < minValue) {
+        numberInput.value = minValue;
+      } else if (currentValue > maxValue) {
+        numberInput.value = maxValue;
+      }
+    });
+    decrementButton.addEventListener("click", function () {
+      numberInput.stepDown();
+      numberInput;
+    });
 
-      incrementButton.addEventListener("click", function () {
-        numberInput.stepUp();
-      });
+    incrementButton.addEventListener("click", function () {
+      numberInput.stepUp();
+    });
     recargaEnEUR.addEventListener("click", () => {
       if (recargaEnUSD.classList.contains("activeBtn")) {
         recargaEnUSD.classList.remove("activeBtn");
@@ -483,26 +599,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const txtDinamicoFst = document.getElementById("txtDinamicoFst");
     const txtDinamicoSnd = document.getElementById("txtDinamicoSnd");
     const decrementButton = document.getElementById("decrement-button");
-      const incrementButton = document.getElementById("increment-button");
-      const numberInput = document.getElementById("number-input");
-      const minValue = parseInt(numberInput.getAttribute("min"));
-      const maxValue = parseInt(numberInput.getAttribute("max"));
-      numberInput.addEventListener("input", function () {
-        let currentValue = parseInt(numberInput.value);
-        if (isNaN(currentValue) || currentValue < minValue) {
-          numberInput.value = minValue;
-        } else if (currentValue > maxValue) {
-          numberInput.value = maxValue;
-        }
-      });
-      decrementButton.addEventListener("click", function () {
-        numberInput.stepDown();
-        numberInput;
-      });
+    const incrementButton = document.getElementById("increment-button");
+    const numberInput = document.getElementById("number-input");
+    const minValue = parseInt(numberInput.getAttribute("min"));
+    const maxValue = parseInt(numberInput.getAttribute("max"));
+    numberInput.addEventListener("input", function () {
+      let currentValue = parseInt(numberInput.value);
+      if (isNaN(currentValue) || currentValue < minValue) {
+        numberInput.value = minValue;
+      } else if (currentValue > maxValue) {
+        numberInput.value = maxValue;
+      }
+    });
+    decrementButton.addEventListener("click", function () {
+      numberInput.stepDown();
+      numberInput;
+    });
 
-      incrementButton.addEventListener("click", function () {
-        numberInput.stepUp();
-      });
+    incrementButton.addEventListener("click", function () {
+      numberInput.stepUp();
+    });
     recargaEnEUR.addEventListener("click", () => {
       if (recargaEnUSD.classList.contains("activeBtn")) {
         recargaEnUSD.classList.remove("activeBtn");
@@ -531,26 +647,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const txtDinamicoFst = document.getElementById("txtDinamicoFst");
     const txtDinamicoSnd = document.getElementById("txtDinamicoSnd");
     const decrementButton = document.getElementById("decrement-button");
-      const incrementButton = document.getElementById("increment-button");
-      const numberInput = document.getElementById("number-input");
-      const minValue = parseInt(numberInput.getAttribute("min"));
-      const maxValue = parseInt(numberInput.getAttribute("max"));
-      numberInput.addEventListener("input", function () {
-        let currentValue = parseInt(numberInput.value);
-        if (isNaN(currentValue) || currentValue < minValue) {
-          numberInput.value = minValue;
-        } else if (currentValue > maxValue) {
-          numberInput.value = maxValue;
-        }
-      });
-      decrementButton.addEventListener("click", function () {
-        numberInput.stepDown();
-        numberInput;
-      });
+    const incrementButton = document.getElementById("increment-button");
+    const numberInput = document.getElementById("number-input");
+    const minValue = parseInt(numberInput.getAttribute("min"));
+    const maxValue = parseInt(numberInput.getAttribute("max"));
+    numberInput.addEventListener("input", function () {
+      let currentValue = parseInt(numberInput.value);
+      if (isNaN(currentValue) || currentValue < minValue) {
+        numberInput.value = minValue;
+      } else if (currentValue > maxValue) {
+        numberInput.value = maxValue;
+      }
+    });
+    decrementButton.addEventListener("click", function () {
+      numberInput.stepDown();
+      numberInput;
+    });
 
-      incrementButton.addEventListener("click", function () {
-        numberInput.stepUp();
-      });
+    incrementButton.addEventListener("click", function () {
+      numberInput.stepUp();
+    });
     recargaEnEUR.addEventListener("click", () => {
       if (recargaEnUSD.classList.contains("activeBtn")) {
         recargaEnUSD.classList.remove("activeBtn");
@@ -580,26 +696,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const txtDinamicoFst = document.getElementById("txtDinamicoFst");
     const txtDinamicoSnd = document.getElementById("txtDinamicoSnd");
     const decrementButton = document.getElementById("decrement-button");
-      const incrementButton = document.getElementById("increment-button");
-      const numberInput = document.getElementById("number-input");
-      const minValue = parseInt(numberInput.getAttribute("min"));
-      const maxValue = parseInt(numberInput.getAttribute("max"));
-      numberInput.addEventListener("input", function () {
-        let currentValue = parseInt(numberInput.value);
-        if (isNaN(currentValue) || currentValue < minValue) {
-          numberInput.value = minValue;
-        } else if (currentValue > maxValue) {
-          numberInput.value = maxValue;
-        }
-      });
-      decrementButton.addEventListener("click", function () {
-        numberInput.stepDown();
-        numberInput;
-      });
+    const incrementButton = document.getElementById("increment-button");
+    const numberInput = document.getElementById("number-input");
+    const minValue = parseInt(numberInput.getAttribute("min"));
+    const maxValue = parseInt(numberInput.getAttribute("max"));
+    numberInput.addEventListener("input", function () {
+      let currentValue = parseInt(numberInput.value);
+      if (isNaN(currentValue) || currentValue < minValue) {
+        numberInput.value = minValue;
+      } else if (currentValue > maxValue) {
+        numberInput.value = maxValue;
+      }
+    });
+    decrementButton.addEventListener("click", function () {
+      numberInput.stepDown();
+      numberInput;
+    });
 
-      incrementButton.addEventListener("click", function () {
-        numberInput.stepUp();
-      });
+    incrementButton.addEventListener("click", function () {
+      numberInput.stepUp();
+    });
     recargaEnEUR.addEventListener("click", () => {
       if (recargaEnUSD.classList.contains("activeBtn")) {
         recargaEnUSD.classList.remove("activeBtn");
