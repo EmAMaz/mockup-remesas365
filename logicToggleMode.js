@@ -6,9 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const svgStyleMenuMas = document.querySelectorAll(".svgStyleMenuMas");
   const svgStyleMenuMenos = document.querySelectorAll(".svgStyleMenuMenos");
   const iconDinamic = document.querySelectorAll(".iconDinamic");
-
+  window.toggleVar = false;
   btnToggleTheme.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
+
+    window.toggleVar = !window.toggleVar; // Cambia el estado de la variable
+    window.toggleVar; // Devuelve el nuevo estado
+
     const regex = /menu-burger-white/;
     const validacion = regex.test(menuIconBurger.src);
     menuIconBurger.src = validacion

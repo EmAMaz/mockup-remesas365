@@ -4,7 +4,9 @@ const controllerServicios = document.getElementById("controllerServicios");
 const controllerMiCuenta = document.getElementById("controllerMiCuenta");
 const controllerContactanos = document.getElementById("controllerContactanos");
 const controllerRetiroMenu = document.getElementById("controllerRetiroMenu");
-const controllerContactanosMenu = document.getElementById("controllerContactanosMenu");
+const controllerContactanosMenu = document.getElementById(
+  "controllerContactanosMenu"
+);
 const controllerRecargaMenu = document.getElementById("controllerRecargaMenu");
 const controllerPerfil = document.getElementById("controllerPerfil");
 const controllerSeguridad = document.getElementById("controllerSeguridad");
@@ -65,6 +67,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const movimientosBtns = document.querySelectorAll(".movimientosBtns");
   const btnRecargaRapida = document.getElementById("btnRecargaRapida");
   const btnRetiraRapida = document.getElementById("btnRetiraRapida");
+  const iconSoporte = document.querySelectorAll(".iconDinamicRapid");
+  document.addEventListener("cambiarIconosDinamic", () => {
+    iconSoporte.forEach((element) => {
+      const regex = /white/;
+      const url = element.src;
+      const validacion = regex.test(url);
+      let stringToAdd = "-white";
+      let lastDotIndex = url.lastIndexOf(".");
+      let beforeDot = url.substring(0, lastDotIndex);
+      let afterDot = url.substring(lastDotIndex);
+      let newUrl = beforeDot + stringToAdd + afterDot;
+      element.src = validacion ? url.replace("-white", "") : newUrl;
+    });
+  });
+  if (window.toggleVar) {
+    iconSoporte.forEach((element) => {
+      const regex = /white/;
+      const url = element.src;
+      const validacion = regex.test(url);
+      let stringToAdd = "-white";
+      let lastDotIndex = url.lastIndexOf(".");
+      let beforeDot = url.substring(0, lastDotIndex);
+      let afterDot = url.substring(lastDotIndex);
+      let newUrl = beforeDot + stringToAdd + afterDot;
+      element.src = validacion ? url.replace("-white", "") : newUrl;
+    });
+  }
 
   btnRecargaRapida.addEventListener("click", () => {
     mountComponent(recargaComponent);
@@ -131,39 +160,65 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     mountComponent(homeComponent);
     const btnRecargaRapida = document.getElementById("btnRecargaRapida");
-  const btnRetiraRapida = document.getElementById("btnRetiraRapida");
-
-  btnRecargaRapida.addEventListener("click", () => {
-    mountComponent(recargaComponent);
-    const recargaDolaresBtn = document.getElementById("recargaDolaresBtn");
-    const recargaEurosBtn = document.getElementById("recargaEurosBtn");
-    recargaDolaresBtn.addEventListener("click", () => {
-      mountComponent(metodosRecarga);
-    });
-    recargaEurosBtn.addEventListener("click", () => {
-      mountComponent(metodosRecarga);
-    });
-  });
-  btnRetiraRapida.addEventListener("click", () => {
-    mountComponent(retirarComponent);
-    menu.classList.remove("open");
-    const transferenciaBancaria = document.getElementById(
-      "transferenciaBancaria"
-    );
-    transferenciaBancaria.addEventListener("click", () => {
-      mountComponent(enviarComponent);
-      const nuevoBeneficiarioBtn = document.getElementById(
-        "nuevoBeneficiarioBtn"
-      );
-      const nuevoBeneficiarioForm = document.querySelector(
-        ".nuevoBeneficiarioForm"
-      );
-      nuevoBeneficiarioBtn.addEventListener("click", () => {
-        nuevoBeneficiarioForm.classList.toggle("active");
+    const btnRetiraRapida = document.getElementById("btnRetiraRapida");
+    const iconSoporte = document.querySelectorAll(".iconDinamicRapid");
+    document.addEventListener("cambiarIconosDinamic", () => {
+      iconSoporte.forEach((element) => {
+        const regex = /white/;
+        const url = element.src;
+        const validacion = regex.test(url);
+        let stringToAdd = "-white";
+        let lastDotIndex = url.lastIndexOf(".");
+        let beforeDot = url.substring(0, lastDotIndex);
+        let afterDot = url.substring(lastDotIndex);
+        let newUrl = beforeDot + stringToAdd + afterDot;
+        element.src = validacion ? url.replace("-white", "") : newUrl;
       });
     });
-  });
-    
+    if (window.toggleVar) {
+      iconSoporte.forEach((element) => {
+        const regex = /white/;
+        const url = element.src;
+        const validacion = regex.test(url);
+        let stringToAdd = "-white";
+        let lastDotIndex = url.lastIndexOf(".");
+        let beforeDot = url.substring(0, lastDotIndex);
+        let afterDot = url.substring(lastDotIndex);
+        let newUrl = beforeDot + stringToAdd + afterDot;
+        element.src = validacion ? url.replace("-white", "") : newUrl;
+      });
+    }
+    btnRecargaRapida.addEventListener("click", () => {
+      mountComponent(recargaComponent);
+      const recargaDolaresBtn = document.getElementById("recargaDolaresBtn");
+      const recargaEurosBtn = document.getElementById("recargaEurosBtn");
+      recargaDolaresBtn.addEventListener("click", () => {
+        mountComponent(metodosRecarga);
+      });
+      recargaEurosBtn.addEventListener("click", () => {
+        mountComponent(metodosRecarga);
+      });
+    });
+    btnRetiraRapida.addEventListener("click", () => {
+      mountComponent(retirarComponent);
+      menu.classList.remove("open");
+      const transferenciaBancaria = document.getElementById(
+        "transferenciaBancaria"
+      );
+      transferenciaBancaria.addEventListener("click", () => {
+        mountComponent(enviarComponent);
+        const nuevoBeneficiarioBtn = document.getElementById(
+          "nuevoBeneficiarioBtn"
+        );
+        const nuevoBeneficiarioForm = document.querySelector(
+          ".nuevoBeneficiarioForm"
+        );
+        nuevoBeneficiarioBtn.addEventListener("click", () => {
+          nuevoBeneficiarioForm.classList.toggle("active");
+        });
+      });
+    });
+
     const movimientosBtns = document.querySelectorAll(".movimientosBtns");
     movimientosBtns.forEach((element) => {
       element.addEventListener("click", () => {
@@ -254,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const numberInput = document.getElementById("number-input");
         const modalFavoritos = document.getElementById("myModal");
         const btn = document.getElementById("btnFavoritos");
-  
+
         btn.onclick = function () {
           modalFavoritos.style.display = "block";
         };
@@ -280,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
           numberInput.stepDown();
           numberInput;
         });
-  
+
         incrementButton.addEventListener("click", function () {
           numberInput.stepUp();
         });
@@ -307,7 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("accionServicioComponent template not found");
       }
     });
-  
+
     recargaDigitel.addEventListener("click", () => {
       mountComponent(accionServicioComponent);
       const textDinamicoBtn = document.getElementById("textDinamicoBtn");
@@ -324,8 +379,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const titleService = document.getElementById("titleService");
       const inputNumber = document.getElementById("inputNumber");
       const movilFijoCampo = document.getElementById("movilFijoCampo");
-      const descripcionRecargas = document.getElementById("descripcionRecargas");
-      
+      const descripcionRecargas = document.getElementById(
+        "descripcionRecargas"
+      );
+
       btn.onclick = function () {
         modalFavoritos.style.display = "block";
       };
@@ -351,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
         numberInput.stepDown();
         numberInput;
       });
-  
+
       incrementButton.addEventListener("click", function () {
         numberInput.stepUp();
       });
@@ -376,13 +433,14 @@ document.addEventListener("DOMContentLoaded", () => {
       inputNumber.placeholder = "";
       numberInput.value = "50";
       numberInput.min = "50";
-      descripcionRecargas.textContent = "*El monto a recargar debe ser mayor o igual a Bs. 50 hasta un máximo de Bs. 800, el incremento es de Bs. 50";
+      descripcionRecargas.textContent =
+        "*El monto a recargar debe ser mayor o igual a Bs. 50 hasta un máximo de Bs. 800, el incremento es de Bs. 50";
       imageRecarga.src = "./public/servicios/logodigitel.png";
       textDinamicoBtn.addEventListener("click", () => {
         modalRecargaExitosa.style.display = "block";
       });
     });
-  
+
     recargaMovilnet.addEventListener("click", () => {
       mountComponent(accionServicioComponent);
       const textDinamicoBtn = document.getElementById("textDinamicoBtn");
@@ -397,10 +455,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const modalFavoritos = document.getElementById("myModal");
       const movilFijoCampo = document.getElementById("movilFijoCampo");
       const movilnetCampo = document.getElementById("movilnetCampo");
-      const inputNumber  = document.getElementById("inputNumber");
-      const descripcionRecargas = document.getElementById("descripcionRecargas");
+      const inputNumber = document.getElementById("inputNumber");
+      const descripcionRecargas = document.getElementById(
+        "descripcionRecargas"
+      );
       const btn = document.getElementById("btnFavoritos");
-  
+
       btn.onclick = function () {
         modalFavoritos.style.display = "block";
       };
@@ -426,7 +486,7 @@ document.addEventListener("DOMContentLoaded", () => {
         numberInput.stepDown();
         numberInput;
       });
-  
+
       incrementButton.addEventListener("click", function () {
         numberInput.stepUp();
       });
@@ -451,13 +511,14 @@ document.addEventListener("DOMContentLoaded", () => {
       inputNumber.placeholder = "Número (0416 o 0426)";
       numberInput.value = "40";
       numberInput.min = "40";
-      descripcionRecargas.textContent = "*El monto a recargar debe ser mayor o igual a Bs. 40 hasta un máximo de Bs. 7000, el incremento es de Bs. 40";
+      descripcionRecargas.textContent =
+        "*El monto a recargar debe ser mayor o igual a Bs. 40 hasta un máximo de Bs. 7000, el incremento es de Bs. 40";
       imageRecarga.src = "./public/servicios/logomovilnet.png";
       textDinamicoBtn.addEventListener("click", () => {
         modalRecargaExitosa.style.display = "block";
       });
     });
-  
+
     recargaCantv.addEventListener("click", () => {
       mountComponent(accionServicioComponent);
       const textDinamicoBtn = document.getElementById("textDinamicoBtn");
@@ -473,12 +534,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const btn = document.getElementById("btnFavoritos");
       const movilFijoCampo = document.getElementById("movilFijoCampo");
       const movilnetCampo = document.getElementById("movilnetCampo");
-      const inputNumber  = document.getElementById("inputNumber");
-      const descripcionRecargas = document.getElementById("descripcionRecargas");
+      const inputNumber = document.getElementById("inputNumber");
+      const descripcionRecargas = document.getElementById(
+        "descripcionRecargas"
+      );
       const divMontos = document.getElementById("divMontos");
       const btnDeuda = document.getElementById("btnDeuda");
       const movilCantvCampo = document.getElementById("movilCantvCampo");
-    
+
       btn.onclick = function () {
         modalFavoritos.style.display = "block";
       };
@@ -504,7 +567,7 @@ document.addEventListener("DOMContentLoaded", () => {
         numberInput.stepDown();
         numberInput;
       });
-  
+
       incrementButton.addEventListener("click", function () {
         numberInput.stepUp();
       });
@@ -524,7 +587,7 @@ document.addEventListener("DOMContentLoaded", () => {
           txtDinamicoSnd.textContent = "Monto a Descontar en USD";
         }
       });
-      btnDeuda.classList.remove("hidden")
+      btnDeuda.classList.remove("hidden");
       movilCantvCampo.classList.remove("hidden");
       movilFijoCampo.style.display = "none";
       movilnetCampo.style.display = "none";
@@ -535,7 +598,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modalRecargaExitosa.style.display = "block";
       });
     });
-  
+
     recargaInter.addEventListener("click", () => {
       mountComponent(accionServicioComponent);
       const textDinamicoBtn = document.getElementById("textDinamicoBtn");
@@ -551,7 +614,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const btn = document.getElementById("btnFavoritos");
       const titleService = document.getElementById("titleService");
       const titleUsando = document.getElementById("titleUsando");
-  
+
       btn.onclick = function () {
         modalFavoritos.style.display = "block";
       };
@@ -577,7 +640,7 @@ document.addEventListener("DOMContentLoaded", () => {
         numberInput.stepDown();
         numberInput;
       });
-  
+
       incrementButton.addEventListener("click", function () {
         numberInput.stepUp();
       });
@@ -598,8 +661,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
       titleService.textContent = "Número de Contrato";
-      titleUsando.textContent = "Seleccione la Wallet de donde se debitaran los fondos";
-      btnDeuda.classList.remove("hidden")
+      titleUsando.textContent =
+        "Seleccione la Wallet de donde se debitaran los fondos";
+      btnDeuda.classList.remove("hidden");
       movilFijoCampo.style.display = "none";
       movilnetCampo.style.display = "none";
       inputNumber.placeholder = "(10 dígitos)";
@@ -623,10 +687,60 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   controllerContactanos.addEventListener("click", () => {
     mountComponent(contactanosComponent);
+    const iconSoporte = document.getElementById("iconSoporte");
+    document.addEventListener("cambiarIconosDinamic", (e) => {
+      const regex = /white/;
+      const url = iconSoporte.src;
+      const validacion = regex.test(url);
+      let stringToAdd = "-white";
+      let lastDotIndex = url.lastIndexOf(".");
+      let beforeDot = url.substring(0, lastDotIndex);
+      let afterDot = url.substring(lastDotIndex);
+      let newUrl = beforeDot + stringToAdd + afterDot;
+      iconSoporte.src = validacion ? url.replace("-white", "") : newUrl;
+    });
+    if (window.toggleVar) {
+      const regex = /white/;
+      const url = iconSoporte.src;
+      const validacion = regex.test(url);
+      let stringToAdd = "-white";
+      let lastDotIndex = url.lastIndexOf(".");
+      let beforeDot = url.substring(0, lastDotIndex);
+      let afterDot = url.substring(lastDotIndex);
+      let newUrl = beforeDot + stringToAdd + afterDot;
+      iconSoporte.src = validacion ? url.replace("-white", "") : newUrl;
+    } else {
+      iconSoporte.src = "./public/soporte.png";
+    }
   });
   controllerContactanosMenu.addEventListener("click", () => {
     mountComponent(contactanosComponent);
     menu.classList.remove("open");
+    const iconSoporte = document.getElementById("iconSoporte");
+    document.addEventListener("cambiarIconosDinamic", (e) => {
+      const regex = /white/;
+      const url = iconSoporte.src;
+      const validacion = regex.test(url);
+      let stringToAdd = "-white";
+      let lastDotIndex = url.lastIndexOf(".");
+      let beforeDot = url.substring(0, lastDotIndex);
+      let afterDot = url.substring(lastDotIndex);
+      let newUrl = beforeDot + stringToAdd + afterDot;
+      iconSoporte.src = validacion ? url.replace("-white", "") : newUrl;
+    });
+    if (window.toggleVar) {
+      const regex = /white/;
+      const url = iconSoporte.src;
+      const validacion = regex.test(url);
+      let stringToAdd = "-white";
+      let lastDotIndex = url.lastIndexOf(".");
+      let beforeDot = url.substring(0, lastDotIndex);
+      let afterDot = url.substring(lastDotIndex);
+      let newUrl = beforeDot + stringToAdd + afterDot;
+      iconSoporte.src = validacion ? url.replace("-white", "") : newUrl;
+    } else {
+      iconSoporte.src = "./public/soporte.png";
+    }
   });
   controllerPerfil.addEventListener("click", () => {
     mountComponent(perfilComponent);
@@ -663,38 +777,66 @@ document.addEventListener("DOMContentLoaded", () => {
   controllerHomeMenu.addEventListener("click", () => {
     mountComponent(homeComponent);
     const btnRecargaRapida = document.getElementById("btnRecargaRapida");
-  const btnRetiraRapida = document.getElementById("btnRetiraRapida");
-
-  btnRecargaRapida.addEventListener("click", () => {
-    mountComponent(recargaComponent);
-    const recargaDolaresBtn = document.getElementById("recargaDolaresBtn");
-    const recargaEurosBtn = document.getElementById("recargaEurosBtn");
-    recargaDolaresBtn.addEventListener("click", () => {
-      mountComponent(metodosRecarga);
-    });
-    recargaEurosBtn.addEventListener("click", () => {
-      mountComponent(metodosRecarga);
-    });
-  });
-  btnRetiraRapida.addEventListener("click", () => {
-    mountComponent(retirarComponent);
-    menu.classList.remove("open");
-    const transferenciaBancaria = document.getElementById(
-      "transferenciaBancaria"
-    );
-    transferenciaBancaria.addEventListener("click", () => {
-      mountComponent(enviarComponent);
-      const nuevoBeneficiarioBtn = document.getElementById(
-        "nuevoBeneficiarioBtn"
-      );
-      const nuevoBeneficiarioForm = document.querySelector(
-        ".nuevoBeneficiarioForm"
-      );
-      nuevoBeneficiarioBtn.addEventListener("click", () => {
-        nuevoBeneficiarioForm.classList.toggle("active");
+    const btnRetiraRapida = document.getElementById("btnRetiraRapida");
+    const iconSoporte = document.querySelectorAll(".iconDinamicRapid");
+    document.addEventListener("cambiarIconosDinamic", () => {
+      iconSoporte.forEach((element) => {
+        console.log(element.src);
+        const regex = /white/;
+        const url = element.src;
+        const validacion = regex.test(url);
+        let stringToAdd = "-white";
+        let lastDotIndex = url.lastIndexOf(".");
+        let beforeDot = url.substring(0, lastDotIndex);
+        let afterDot = url.substring(lastDotIndex);
+        let newUrl = beforeDot + stringToAdd + afterDot;
+        element.src = validacion ? url.replace("-white", "") : newUrl;
       });
     });
-  });
+    if (window.toggleVar) {
+      iconSoporte.forEach((element) => {
+        console.log("dentro if");
+        const regex = /white/;
+        const url = element.src;
+        const validacion = regex.test(url);
+        let stringToAdd = "-white";
+        let lastDotIndex = url.lastIndexOf(".");
+        let beforeDot = url.substring(0, lastDotIndex);
+        let afterDot = url.substring(lastDotIndex);
+        let newUrl = beforeDot + stringToAdd + afterDot;
+        element.src = validacion ? url.replace("-white", "") : newUrl;
+      });
+    }
+    btnRecargaRapida.addEventListener("click", () => {
+      mountComponent(recargaComponent);
+      const recargaDolaresBtn = document.getElementById("recargaDolaresBtn");
+      const recargaEurosBtn = document.getElementById("recargaEurosBtn");
+      recargaDolaresBtn.addEventListener("click", () => {
+        mountComponent(metodosRecarga);
+      });
+      recargaEurosBtn.addEventListener("click", () => {
+        mountComponent(metodosRecarga);
+      });
+    });
+    btnRetiraRapida.addEventListener("click", () => {
+      mountComponent(retirarComponent);
+      menu.classList.remove("open");
+      const transferenciaBancaria = document.getElementById(
+        "transferenciaBancaria"
+      );
+      transferenciaBancaria.addEventListener("click", () => {
+        mountComponent(enviarComponent);
+        const nuevoBeneficiarioBtn = document.getElementById(
+          "nuevoBeneficiarioBtn"
+        );
+        const nuevoBeneficiarioForm = document.querySelector(
+          ".nuevoBeneficiarioForm"
+        );
+        nuevoBeneficiarioBtn.addEventListener("click", () => {
+          nuevoBeneficiarioForm.classList.toggle("active");
+        });
+      });
+    });
     const movimientosBtns = document.querySelectorAll(".movimientosBtns");
     menu.classList.remove("open");
     movimientosBtns.forEach((element) => {
@@ -751,7 +893,7 @@ document.addEventListener("DOMContentLoaded", () => {
     recargaEurosBtn.addEventListener("click", () => {
       mountComponent(metodosRecarga);
     });
-  })
+  });
   recargaMovistarMenu.addEventListener("click", () => {
     if (accionServicioComponent) {
       mountComponent(accionServicioComponent);
@@ -838,7 +980,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputNumber = document.getElementById("inputNumber");
     const movilFijoCampo = document.getElementById("movilFijoCampo");
     const descripcionRecargas = document.getElementById("descripcionRecargas");
-    
+
     btn.onclick = function () {
       modalFavoritos.style.display = "block";
     };
@@ -889,7 +1031,8 @@ document.addEventListener("DOMContentLoaded", () => {
     inputNumber.placeholder = "";
     numberInput.value = "50";
     numberInput.min = "50";
-    descripcionRecargas.textContent = "*El monto a recargar debe ser mayor o igual a Bs. 50 hasta un máximo de Bs. 800, el incremento es de Bs. 50";
+    descripcionRecargas.textContent =
+      "*El monto a recargar debe ser mayor o igual a Bs. 50 hasta un máximo de Bs. 800, el incremento es de Bs. 50";
     imageRecarga.src = "./public/servicios/logodigitel.png";
     textDinamicoBtn.addEventListener("click", () => {
       modalRecargaExitosa.style.display = "block";
@@ -911,7 +1054,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalFavoritos = document.getElementById("myModal");
     const movilFijoCampo = document.getElementById("movilFijoCampo");
     const movilnetCampo = document.getElementById("movilnetCampo");
-    const inputNumber  = document.getElementById("inputNumber");
+    const inputNumber = document.getElementById("inputNumber");
     const descripcionRecargas = document.getElementById("descripcionRecargas");
     const btn = document.getElementById("btnFavoritos");
 
@@ -965,7 +1108,8 @@ document.addEventListener("DOMContentLoaded", () => {
     inputNumber.placeholder = "Número (0416 o 0426)";
     numberInput.value = "40";
     numberInput.min = "40";
-    descripcionRecargas.textContent = "*El monto a recargar debe ser mayor o igual a Bs. 40 hasta un máximo de Bs. 7000, el incremento es de Bs. 40";
+    descripcionRecargas.textContent =
+      "*El monto a recargar debe ser mayor o igual a Bs. 40 hasta un máximo de Bs. 7000, el incremento es de Bs. 40";
     imageRecarga.src = "./public/servicios/logomovilnet.png";
     textDinamicoBtn.addEventListener("click", () => {
       modalRecargaExitosa.style.display = "block";
@@ -988,12 +1132,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("btnFavoritos");
     const movilFijoCampo = document.getElementById("movilFijoCampo");
     const movilnetCampo = document.getElementById("movilnetCampo");
-    const inputNumber  = document.getElementById("inputNumber");
+    const inputNumber = document.getElementById("inputNumber");
     const descripcionRecargas = document.getElementById("descripcionRecargas");
     const divMontos = document.getElementById("divMontos");
     const btnDeuda = document.getElementById("btnDeuda");
     const movilCantvCampo = document.getElementById("movilCantvCampo");
-  
+
     btn.onclick = function () {
       modalFavoritos.style.display = "block";
     };
@@ -1039,7 +1183,7 @@ document.addEventListener("DOMContentLoaded", () => {
         txtDinamicoSnd.textContent = "Monto a Descontar en USD";
       }
     });
-    btnDeuda.classList.remove("hidden")
+    btnDeuda.classList.remove("hidden");
     movilCantvCampo.classList.remove("hidden");
     movilFijoCampo.style.display = "none";
     movilnetCampo.style.display = "none";
@@ -1114,8 +1258,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
     titleService.textContent = "Número de Contrato";
-    titleUsando.textContent = "Seleccione la Wallet de donde se debitaran los fondos";
-    btnDeuda.classList.remove("hidden")
+    titleUsando.textContent =
+      "Seleccione la Wallet de donde se debitaran los fondos";
+    btnDeuda.classList.remove("hidden");
     movilFijoCampo.style.display = "none";
     movilnetCampo.style.display = "none";
     inputNumber.placeholder = "(10 dígitos)";
@@ -1131,40 +1276,68 @@ document.addEventListener("DOMContentLoaded", () => {
     modalRecargaExitosa.style.display = "none";
     mountComponent(homeComponent);
     const btnRecargaRapida = document.getElementById("btnRecargaRapida");
-  const btnRetiraRapida = document.getElementById("btnRetiraRapida");
-
-  btnRecargaRapida.addEventListener("click", () => {
-    mountComponent(recargaComponent);
-    const recargaDolaresBtn = document.getElementById("recargaDolaresBtn");
-    const recargaEurosBtn = document.getElementById("recargaEurosBtn");
-    recargaDolaresBtn.addEventListener("click", () => {
-      mountComponent(metodosRecarga);
-    });
-    recargaEurosBtn.addEventListener("click", () => {
-      mountComponent(metodosRecarga);
-    });
-  });
-  btnRetiraRapida.addEventListener("click", () => {
-    mountComponent(retirarComponent);
-    menu.classList.remove("open");
-    const transferenciaBancaria = document.getElementById(
-      "transferenciaBancaria"
-    );
-    transferenciaBancaria.addEventListener("click", () => {
-      mountComponent(enviarComponent);
-      const nuevoBeneficiarioBtn = document.getElementById(
-        "nuevoBeneficiarioBtn"
-      );
-      const nuevoBeneficiarioForm = document.querySelector(
-        ".nuevoBeneficiarioForm"
-      );
-      nuevoBeneficiarioBtn.addEventListener("click", () => {
-        nuevoBeneficiarioForm.classList.toggle("active");
+    const btnRetiraRapida = document.getElementById("btnRetiraRapida");
+    const iconSoporte = document.querySelectorAll(".iconDinamicRapid");
+    document.addEventListener("cambiarIconosDinamic", () => {
+      iconSoporte.forEach((element) => {
+        console.log(element.src);
+        const regex = /white/;
+        const url = element.src;
+        const validacion = regex.test(url);
+        let stringToAdd = "-white";
+        let lastDotIndex = url.lastIndexOf(".");
+        let beforeDot = url.substring(0, lastDotIndex);
+        let afterDot = url.substring(lastDotIndex);
+        let newUrl = beforeDot + stringToAdd + afterDot;
+        element.src = validacion ? url.replace("-white", "") : newUrl;
       });
     });
-  });
+    if (window.toggleVar) {
+      iconSoporte.forEach((element) => {
+        console.log("dentro if");
+        const regex = /white/;
+        const url = element.src;
+        const validacion = regex.test(url);
+        let stringToAdd = "-white";
+        let lastDotIndex = url.lastIndexOf(".");
+        let beforeDot = url.substring(0, lastDotIndex);
+        let afterDot = url.substring(lastDotIndex);
+        let newUrl = beforeDot + stringToAdd + afterDot;
+        element.src = validacion ? url.replace("-white", "") : newUrl;
+      });
+    }
+    btnRecargaRapida.addEventListener("click", () => {
+      mountComponent(recargaComponent);
+      const recargaDolaresBtn = document.getElementById("recargaDolaresBtn");
+      const recargaEurosBtn = document.getElementById("recargaEurosBtn");
+      recargaDolaresBtn.addEventListener("click", () => {
+        mountComponent(metodosRecarga);
+      });
+      recargaEurosBtn.addEventListener("click", () => {
+        mountComponent(metodosRecarga);
+      });
+    });
+    btnRetiraRapida.addEventListener("click", () => {
+      mountComponent(retirarComponent);
+      menu.classList.remove("open");
+      const transferenciaBancaria = document.getElementById(
+        "transferenciaBancaria"
+      );
+      transferenciaBancaria.addEventListener("click", () => {
+        mountComponent(enviarComponent);
+        const nuevoBeneficiarioBtn = document.getElementById(
+          "nuevoBeneficiarioBtn"
+        );
+        const nuevoBeneficiarioForm = document.querySelector(
+          ".nuevoBeneficiarioForm"
+        );
+        nuevoBeneficiarioBtn.addEventListener("click", () => {
+          nuevoBeneficiarioForm.classList.toggle("active");
+        });
+      });
+    });
     const movimientosBtns = document.querySelectorAll(".movimientosBtns");
-    
+
     movimientosBtns.forEach((element) => {
       element.addEventListener("click", () => {
         modalDetalleMov.style.display = "block";
