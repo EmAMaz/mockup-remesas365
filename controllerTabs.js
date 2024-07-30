@@ -25,6 +25,14 @@ const contactanosComponent = document.getElementById("contactanosComponent");
 const enviarComponent = document.getElementById("enviarComponent");
 const recargaComponent = document.getElementById("recargaComponent");
 const metodosRecarga = document.getElementById("metodosRecarga");
+const modalRecargaExitosa = document.getElementById("modalRecargaExitosa");
+const modalDetalleMov = document.getElementById("modalDetalleMov");
+const bancoDetalle = document.getElementById("bancoDetalle");
+const estadoDetalle = document.getElementById("estadoDetalle");
+const detalleMoneda = document.getElementById("detalleMoneda");
+const monedaDetalle = document.getElementById("monedaDetalle");
+const imgDetalle = document.getElementById("imgDetalle");
+const priceDetalle = document.getElementById("priceDetalle");
 const accionServicioComponent = document.getElementById(
   "accionServicioComponent"
 );
@@ -32,6 +40,9 @@ const serviciosComponent = document.getElementById("serviciosComponent");
 const perfilComponent = document.getElementById("perfilComponent");
 const seguridadComponent = document.getElementById("seguridadComponent");
 const elements = document.querySelectorAll(".custom");
+const span = document.getElementsByClassName("close")[0];
+const closeModalDetalle = document.getElementsByClassName("closeModalDetalle")[0];
+const toHOme = document.getElementById("toHOme");
 
 function mountComponent(componentSelected) {
   app.innerHTML = "";
@@ -45,6 +56,32 @@ function mountComponent(componentSelected) {
 
 document.addEventListener("DOMContentLoaded", () => {
   mountComponent(homeComponent);
+  const movimientosBtns = document.querySelectorAll(".movimientosBtns");
+    movimientosBtns.forEach((element) => {
+      element.addEventListener("click", () => {
+        modalDetalleMov.style.display = "block";
+        let urlBanco = []
+        urlBanco.push(element.children[0].innerText);
+        let urlEstado = [];
+        urlEstado.push(element.children[1].innerText);
+
+        bancoDetalle.innerText = urlBanco[0].split("\n")[0];
+
+        monedaDetalle.innerText = urlEstado[0].split("\n")[0];
+        estadoDetalle.innerText = urlEstado[0].split("\n")[2];
+        imgDetalle.src = element.children[0].children[0].currentSrc; 
+        priceDetalle.innerText = urlEstado[0].split("\n")[1];
+      })
+      closeModalDetalle.onclick = function () {
+        modalDetalleMov.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modalDetalleMov) {
+          modalDetalleMov.style.display = "none";
+        }
+      };
+      
+    })
   const iconDinamicRapid = document.querySelectorAll(".iconDinamicRapid");
   document.addEventListener("cambiarIconosDinamic", () => {
     iconDinamicRapid.forEach((element) => {
@@ -120,20 +157,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const incrementButton = document.getElementById("increment-button");
         const numberInput = document.getElementById("number-input");
         const modal = document.getElementById("myModal");
-const btn = document.getElementById("btnFavoritos");
-const span = document.getElementsByClassName("close")[0];
+        const btn = document.getElementById("btnFavoritos");
 
-btn.onclick = function () {
-        modal.style.display = "block";
-      };
-      span.onclick = function () {
-        modal.style.display = "none";
-      };
-      window.onclick = function (event) {
-        if (event.target == modal) {
+        btn.onclick = function () {
+          modal.style.display = "block";
+        };
+        span.onclick = function () {
           modal.style.display = "none";
-        }
-      };
+        };
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
         const minValue = parseInt(numberInput.getAttribute("min"));
         const maxValue = parseInt(numberInput.getAttribute("max"));
         numberInput.addEventListener("input", function () {
@@ -185,10 +221,10 @@ btn.onclick = function () {
       const incrementButton = document.getElementById("increment-button");
       const numberInput = document.getElementById("number-input");
       const modal = document.getElementById("myModal");
-const btn = document.getElementById("btnFavoritos");
-const span = document.getElementsByClassName("close")[0];
+      const btn = document.getElementById("btnFavoritos");
+      const span = document.getElementsByClassName("close")[0];
 
-btn.onclick = function () {
+      btn.onclick = function () {
         modal.style.display = "block";
       };
       span.onclick = function () {
@@ -250,10 +286,10 @@ btn.onclick = function () {
       const minValue = parseInt(numberInput.getAttribute("min"));
       const maxValue = parseInt(numberInput.getAttribute("max"));
       const modal = document.getElementById("myModal");
-const btn = document.getElementById("btnFavoritos");
-const span = document.getElementsByClassName("close")[0];
+      const btn = document.getElementById("btnFavoritos");
+      const span = document.getElementsByClassName("close")[0];
 
-btn.onclick = function () {
+      btn.onclick = function () {
         modal.style.display = "block";
       };
       span.onclick = function () {
@@ -729,5 +765,13 @@ btn.onclick = function () {
     });
     imageRecarga.src = "./public/servicios/logointer.png";
     textDinamicoBtn.textContent = "EFECTUAR PAGO";
+    textDinamicoBtn.addEventListener("click", () => {
+      modalRecargaExitosa.style.display = "block";
+    });
+  });
+  toHOme.addEventListener("click", () => {
+    modalRecargaExitosa.style.display = "none";
+    mountComponent(homeComponent);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });

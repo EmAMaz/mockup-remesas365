@@ -98,7 +98,7 @@
             </div>
             <!-- CARDS -->
             <div
-              class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px movimientosBtns"
             >
               <div class="flex gap-2">
                 <img
@@ -109,9 +109,9 @@
                   alt=""
                 />
                 <div class="flex flex-col">
-                  <span class="nexa_bold text-zinc-700 text-sm">TeleIngreso</span>
+                  <span class="nexa_bold text-zinc-700 text-sm">TeleIngreso<br></span>
                   <span class="text-zinc-700" style="font-size: 0.7em"
-                    >09:00 pm 24 Abr 2024</span
+                    > 09:00 pm 24 Abr 2024</span
                   >
                 </div>
               </div>
@@ -119,7 +119,7 @@
                 class="flex flex-col items-center font-semibold text-zinc-700 text-xs text-center gap-1"
               >
                 <div class="flex gap-2">
-                  <span class="nexa_bold text_small">EUR</span>
+                  <span class="nexa_bold text_small" id="detalleMoneda">USD</span>
                   <span class="nexa_bold text-base leading-none">12.00</span>
                 </div>
                 <span
@@ -129,7 +129,7 @@
               </div>
             </div>
             <div
-              class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px movimientosBtns"
             >
               <div class="flex gap-2">
                 <img
@@ -160,7 +160,7 @@
               </div>
             </div>
             <div
-              class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px movimientosBtns"
             >
               <div class="flex gap-2">
                 <img
@@ -190,7 +190,7 @@
               </div>
             </div>
             <div
-              class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;"
+              class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px movimientosBtns"
             >
               <div class="flex gap-2">
                 <img
@@ -330,7 +330,7 @@
                   />
                 </div>
                 <div>
-                  <button class="bg-btn-recarga text-white text-sm font-bold p-4 rounded-2xl w-full" style="letter-spacing: 0.05em;" id="textDinamicoBtn">SIGUIENTE ></button>
+                  <button class="bg-btn-recarga text-white text-sm font-bold p-4 rounded-2xl w-full" style="letter-spacing: 0.05em;">SIGUIENTE ></button>
                 </div>
               </div>
               <li class="nexa_bold">Tus Beneficios</li>
@@ -598,7 +598,7 @@
             </ul>
           </div>
           <div>
-            <button class="bg-btn-recarga text-white text-sm font-bold p-4 rounded-2xl w-full" style="letter-spacing: 0.05em;" id="textDinamicoBtn">ACTUALIZAR DATOS</button>
+            <button class="bg-btn-recarga text-white text-sm font-bold p-4 rounded-2xl w-full" style="letter-spacing: 0.05em;">ACTUALIZAR DATOS</button>
           </div>
         </div>
       </template>
@@ -654,10 +654,67 @@
 
       <div id="myModal" class="modalCustom">
         <div class="modal-content bgCard">
-          <div>
+          <div >
             <span class="close">&times;</span>
           </div>
-          <p>Aun no tiene favoritos</p>
+          <div class="flex gap-2 items-center mb-4">
+            <img src="/public/servicios/FAVORITOS.png" style="width: 30px;" alt="">
+            <p class="nexa_bold text-sm text__nowrap">Escoje un Numero de Favoritos</p>
+          </div>
+          <div class="listFav">
+            <ul class="flex flex-col gap-2 mr-4">
+              <li class="flex justify-between p-4 border rounded-xl"><span class="nexa_bold">Papá</span><span class="nexa_bold">09999999</span></li>
+              <li class="flex justify-between p-4 border rounded-xl"><span class="nexa_bold">Hermano</span><span class="nexa_bold">09999999</span></li>
+              <li class="flex justify-between p-4 border rounded-xl"><span class="nexa_bold">Amigo</span><span class="nexa_bold">09999999</span></li>
+              <li class="flex justify-between p-4 border rounded-xl"><span class="nexa_bold">Amiga</span><span class="nexa_bold">09999999</span></li>
+              <li class="flex justify-between p-4 border rounded-xl"><span class="nexa_bold">Mamá</span><span class="nexa_bold">09999999</span></li>
+            </ul>
+          </div>
+      </div>
+      </div>
+      <div id="modalRecargaExitosa" class="modalCustom">
+        <div class="modal-content-succesfull bgCard">
+          <div class="flex gap-2 items-center mb-4">
+            <p class="nexa_bold text-lg text__nowrap" style="letter-spacing: -0.03em;">Su recarga fue Realizada con Éxito</p>
+          </div>
+          <div class="flex justify-center py-4">
+            <img src="/public/check.png" style="width: 100px;" alt="">
+          </div>
+          <div class="listFav">
+            <ul class="flex flex-col gap-2">
+              <li class="bg-btn-recarga btnModalExito text-sm font-bold p-4 rounded-2xl gap-1" style="background-color: #ffcc00;"><img style="width: 25px;height: 25px;" src="./public/servicios/FAVORITOS.png" alt=""><span class="text__nowrap text-center w-full">Agregar Numero a Favoritos</span></li>
+              <li class="bg-btn-recarga btnModalExito text-sm font-bold p-4 rounded-2xl text-white" id="toHOme" style="background-color: #333;"><img style="width: 22px;height: 22px;" src="./public/home-menu-white.png" alt=""><span class="text__nowrap text-center w-full">Volver al Inicio</span></li>
+            </ul>
+          </div>
+      </div>
+      </div>
+      <div id="modalDetalleMov" class="modalCustom">
+        <div class="modal-content-detalleMov bgCard">
+          <div>
+            <span class="closeModalDetalle">&times;</span>
+          </div>
+          <div class="flex gap-2 items-center mb-4">
+            <p class="nexa_bold text-lg text__nowrap" style="letter-spacing: -0.03em;">Detalle de Operación</p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div class="flex justify-start p-4 rounded-xl items-center gap-3" style="background-color: #F0F0F0;">
+              <img id="imgDetalle" src="/public/detalleEUR.png" style="width: 60px;" alt="">
+              <div class="flex flex-col gap-2">
+                <div class="flex gap-1">
+                  <span class="nexa_bold textColor" id="priceDetalle">11.00</span>
+                  <span id="monedaDetalle" class="nexa_bold textColor">EUR</span>
+                </div>
+                <span class="nexa_bold textColor text-xs" style="color: #949494;">Abono el 24/04/2024</span>
+              </div>
+            </div>
+            <div class="listFav">
+              <ul class="flex flex-col gap-2 p-4 rounded-xl" style="background-color: #FFFFEA;">
+                <li class="detalleModal justify-between text-sm font-bold rounded-2xl gap-1"><span>Banco:</span><span class="text__nowrap w-full" style="text-align: end;" id="bancoDetalle">TeleIngreso</span></li>
+                <li class="detalleModal text-sm font-bold rounded-2xl" id="toHOme"><span>Ref:</span><span class="text__nowrap w-full" style="text-align: end;">240974</span></li>
+                <li class="detalleModal text-sm font-bold rounded-2xl" id="toHOme"><span>Estado:</span><span id="estadoDetalle" class="text__nowrap w-full" style="text-align: end;">Confirmado</span></li>
+              </ul>
+            </div>
+          </div>
       </div>
       </div>
       <!-- TABS -->
