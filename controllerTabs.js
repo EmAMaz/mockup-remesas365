@@ -244,7 +244,6 @@ document.addEventListener("DOMContentLoaded", () => {
     recargaMovistar.addEventListener("click", () => {
       if (accionServicioComponent) {
         mountComponent(accionServicioComponent);
-        menu.classList.remove("open");
         const textDinamicoBtn = document.getElementById("textDinamicoBtn");
         const recargaEnEUR = document.getElementById("recargaEnEUR");
         const recargaEnUSD = document.getElementById("recargaEnUSD");
@@ -255,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const numberInput = document.getElementById("number-input");
         const modalFavoritos = document.getElementById("myModal");
         const btn = document.getElementById("btnFavoritos");
-
+  
         btn.onclick = function () {
           modalFavoritos.style.display = "block";
         };
@@ -281,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
           numberInput.stepDown();
           numberInput;
         });
-
+  
         incrementButton.addEventListener("click", function () {
           numberInput.stepUp();
         });
@@ -308,10 +307,9 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("accionServicioComponent template not found");
       }
     });
-
+  
     recargaDigitel.addEventListener("click", () => {
       mountComponent(accionServicioComponent);
-      menu.classList.remove("open");
       const textDinamicoBtn = document.getElementById("textDinamicoBtn");
       const imageRecarga = document.getElementById("imageRecarga");
       const recargaEnEUR = document.getElementById("recargaEnEUR");
@@ -321,19 +319,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const decrementButton = document.getElementById("decrement-button");
       const incrementButton = document.getElementById("increment-button");
       const numberInput = document.getElementById("number-input");
-      const modal = document.getElementById("myModal");
+      const modalFavoritos = document.getElementById("myModal");
       const btn = document.getElementById("btnFavoritos");
-      const span = document.getElementsByClassName("close")[0];
-
+      const titleService = document.getElementById("titleService");
+      const inputNumber = document.getElementById("inputNumber");
+      const movilFijoCampo = document.getElementById("movilFijoCampo");
+      const descripcionRecargas = document.getElementById("descripcionRecargas");
+      
       btn.onclick = function () {
-        modal.style.display = "block";
+        modalFavoritos.style.display = "block";
       };
       span.onclick = function () {
-        modal.style.display = "none";
+        modalFavoritos.style.display = "none";
       };
       window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
+        if (event.target == modalFavoritos) {
+          modalFavoritos.style.display = "none";
         }
       };
       const minValue = parseInt(numberInput.getAttribute("min"));
@@ -350,7 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
         numberInput.stepDown();
         numberInput;
       });
-
+  
       incrementButton.addEventListener("click", function () {
         numberInput.stepUp();
       });
@@ -370,15 +371,20 @@ document.addEventListener("DOMContentLoaded", () => {
           txtDinamicoSnd.textContent = "Monto a Descontar en USD";
         }
       });
+      titleService.textContent = "Digitel prepago a recargar";
+      movilFijoCampo.style.display = "none";
+      inputNumber.placeholder = "";
+      numberInput.value = "50";
+      numberInput.min = "50";
+      descripcionRecargas.textContent = "*El monto a recargar debe ser mayor o igual a Bs. 50 hasta un máximo de Bs. 800, el incremento es de Bs. 50";
       imageRecarga.src = "./public/servicios/logodigitel.png";
       textDinamicoBtn.addEventListener("click", () => {
         modalRecargaExitosa.style.display = "block";
       });
     });
-
+  
     recargaMovilnet.addEventListener("click", () => {
       mountComponent(accionServicioComponent);
-      menu.classList.remove("open");
       const textDinamicoBtn = document.getElementById("textDinamicoBtn");
       const imageRecarga = document.getElementById("imageRecarga");
       const recargaEnEUR = document.getElementById("recargaEnEUR");
@@ -388,23 +394,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const decrementButton = document.getElementById("decrement-button");
       const incrementButton = document.getElementById("increment-button");
       const numberInput = document.getElementById("number-input");
-      const minValue = parseInt(numberInput.getAttribute("min"));
-      const maxValue = parseInt(numberInput.getAttribute("max"));
-      const modal = document.getElementById("myModal");
+      const modalFavoritos = document.getElementById("myModal");
+      const movilFijoCampo = document.getElementById("movilFijoCampo");
+      const movilnetCampo = document.getElementById("movilnetCampo");
+      const inputNumber  = document.getElementById("inputNumber");
+      const descripcionRecargas = document.getElementById("descripcionRecargas");
       const btn = document.getElementById("btnFavoritos");
-      const span = document.getElementsByClassName("close")[0];
-
+  
       btn.onclick = function () {
-        modal.style.display = "block";
+        modalFavoritos.style.display = "block";
       };
       span.onclick = function () {
-        modal.style.display = "none";
+        modalFavoritos.style.display = "none";
       };
       window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
+        if (event.target == modalFavoritos) {
+          modalFavoritos.style.display = "none";
         }
       };
+      const minValue = parseInt(numberInput.getAttribute("min"));
+      const maxValue = parseInt(numberInput.getAttribute("max"));
       numberInput.addEventListener("input", function () {
         let currentValue = parseInt(numberInput.value);
         if (isNaN(currentValue) || currentValue < minValue) {
@@ -417,7 +426,7 @@ document.addEventListener("DOMContentLoaded", () => {
         numberInput.stepDown();
         numberInput;
       });
-
+  
       incrementButton.addEventListener("click", function () {
         numberInput.stepUp();
       });
@@ -437,15 +446,20 @@ document.addEventListener("DOMContentLoaded", () => {
           txtDinamicoSnd.textContent = "Monto a Descontar en USD";
         }
       });
+      movilFijoCampo.style.display = "none";
+      movilnetCampo.style.display = "block";
+      inputNumber.placeholder = "Número (0416 o 0426)";
+      numberInput.value = "40";
+      numberInput.min = "40";
+      descripcionRecargas.textContent = "*El monto a recargar debe ser mayor o igual a Bs. 40 hasta un máximo de Bs. 7000, el incremento es de Bs. 40";
       imageRecarga.src = "./public/servicios/logomovilnet.png";
       textDinamicoBtn.addEventListener("click", () => {
         modalRecargaExitosa.style.display = "block";
       });
     });
-
+  
     recargaCantv.addEventListener("click", () => {
       mountComponent(accionServicioComponent);
-      menu.classList.remove("open");
       const textDinamicoBtn = document.getElementById("textDinamicoBtn");
       const imageRecarga = document.getElementById("imageRecarga");
       const recargaEnEUR = document.getElementById("recargaEnEUR");
@@ -455,25 +469,29 @@ document.addEventListener("DOMContentLoaded", () => {
       const decrementButton = document.getElementById("decrement-button");
       const incrementButton = document.getElementById("increment-button");
       const numberInput = document.getElementById("number-input");
-      const minValue = parseInt(numberInput.getAttribute("min"));
-      const maxValue = parseInt(numberInput.getAttribute("max"));
-      const modal = document.getElementById("myModal");
+      const modalFavoritos = document.getElementById("myModal");
       const btn = document.getElementById("btnFavoritos");
-      const span = document.getElementsByClassName("close")[0];
-      const inputNumber = document.getElementById("inputNumber");
+      const movilFijoCampo = document.getElementById("movilFijoCampo");
+      const movilnetCampo = document.getElementById("movilnetCampo");
+      const inputNumber  = document.getElementById("inputNumber");
+      const descripcionRecargas = document.getElementById("descripcionRecargas");
       const divMontos = document.getElementById("divMontos");
-      const btnInter = document.getElementById("btnInter");
+      const btnDeuda = document.getElementById("btnDeuda");
+      const movilCantvCampo = document.getElementById("movilCantvCampo");
+    
       btn.onclick = function () {
-        modal.style.display = "block";
+        modalFavoritos.style.display = "block";
       };
       span.onclick = function () {
-        modal.style.display = "none";
+        modalFavoritos.style.display = "none";
       };
       window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
+        if (event.target == modalFavoritos) {
+          modalFavoritos.style.display = "none";
         }
       };
+      const minValue = parseInt(numberInput.getAttribute("min"));
+      const maxValue = parseInt(numberInput.getAttribute("max"));
       numberInput.addEventListener("input", function () {
         let currentValue = parseInt(numberInput.value);
         if (isNaN(currentValue) || currentValue < minValue) {
@@ -486,7 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
         numberInput.stepDown();
         numberInput;
       });
-
+  
       incrementButton.addEventListener("click", function () {
         numberInput.stepUp();
       });
@@ -506,18 +524,20 @@ document.addEventListener("DOMContentLoaded", () => {
           txtDinamicoSnd.textContent = "Monto a Descontar en USD";
         }
       });
+      btnDeuda.classList.remove("hidden")
+      movilCantvCampo.classList.remove("hidden");
+      movilFijoCampo.style.display = "none";
+      movilnetCampo.style.display = "none";
+      inputNumber.placeholder = "Nómero (02xx)";
       divMontos.style.display = "none";
-      btnInter.classList.remove("hidden");
-      inputNumber.placeholder = "Número (02XX)";
       imageRecarga.src = "./public/servicios/logocantv.png";
       textDinamicoBtn.addEventListener("click", () => {
         modalRecargaExitosa.style.display = "block";
       });
     });
-
+  
     recargaInter.addEventListener("click", () => {
       mountComponent(accionServicioComponent);
-      menu.classList.remove("open");
       const textDinamicoBtn = document.getElementById("textDinamicoBtn");
       const imageRecarga = document.getElementById("imageRecarga");
       const recargaEnEUR = document.getElementById("recargaEnEUR");
@@ -527,14 +547,24 @@ document.addEventListener("DOMContentLoaded", () => {
       const decrementButton = document.getElementById("decrement-button");
       const incrementButton = document.getElementById("increment-button");
       const numberInput = document.getElementById("number-input");
+      const modalFavoritos = document.getElementById("myModal");
+      const btn = document.getElementById("btnFavoritos");
+      const titleService = document.getElementById("titleService");
+      const titleUsando = document.getElementById("titleUsando");
+  
+      btn.onclick = function () {
+        modalFavoritos.style.display = "block";
+      };
+      span.onclick = function () {
+        modalFavoritos.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modalFavoritos) {
+          modalFavoritos.style.display = "none";
+        }
+      };
       const minValue = parseInt(numberInput.getAttribute("min"));
       const maxValue = parseInt(numberInput.getAttribute("max"));
-      const divMontos = document.getElementById("divMontos");
-      const btnInter = document.getElementById("btnInter");
-      const inputNumber = document.getElementById("inputNumber");
-      const modal = document.getElementById("myModal");
-      const btn = document.getElementById("btnFavoritos");
-      const span = document.getElementsByClassName("close")[0];
       numberInput.addEventListener("input", function () {
         let currentValue = parseInt(numberInput.value);
         if (isNaN(currentValue) || currentValue < minValue) {
@@ -547,7 +577,7 @@ document.addEventListener("DOMContentLoaded", () => {
         numberInput.stepDown();
         numberInput;
       });
-
+  
       incrementButton.addEventListener("click", function () {
         numberInput.stepUp();
       });
@@ -567,20 +597,13 @@ document.addEventListener("DOMContentLoaded", () => {
           txtDinamicoSnd.textContent = "Monto a Descontar en USD";
         }
       });
-      btn.onclick = function () {
-        modal.style.display = "block";
-      };
-      span.onclick = function () {
-        modal.style.display = "none";
-      };
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
-      inputNumber.placeholder = "(10 Dígitos)";
+      titleService.textContent = "Número de Contrato";
+      titleUsando.textContent = "Seleccione la Wallet de donde se debitaran los fondos";
+      btnDeuda.classList.remove("hidden")
+      movilFijoCampo.style.display = "none";
+      movilnetCampo.style.display = "none";
+      inputNumber.placeholder = "(10 dígitos)";
       divMontos.style.display = "none";
-      btnInter.classList.remove("hidden");
       imageRecarga.src = "./public/servicios/logointer.png";
       textDinamicoBtn.textContent = "EFECTUAR PAGO";
       textDinamicoBtn.addEventListener("click", () => {
@@ -811,7 +834,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const numberInput = document.getElementById("number-input");
     const modalFavoritos = document.getElementById("myModal");
     const btn = document.getElementById("btnFavoritos");
-
+    const titleService = document.getElementById("titleService");
+    const inputNumber = document.getElementById("inputNumber");
+    const movilFijoCampo = document.getElementById("movilFijoCampo");
+    const descripcionRecargas = document.getElementById("descripcionRecargas");
+    
     btn.onclick = function () {
       modalFavoritos.style.display = "block";
     };
@@ -857,6 +884,12 @@ document.addEventListener("DOMContentLoaded", () => {
         txtDinamicoSnd.textContent = "Monto a Descontar en USD";
       }
     });
+    titleService.textContent = "Digitel prepago a recargar";
+    movilFijoCampo.style.display = "none";
+    inputNumber.placeholder = "";
+    numberInput.value = "50";
+    numberInput.min = "50";
+    descripcionRecargas.textContent = "*El monto a recargar debe ser mayor o igual a Bs. 50 hasta un máximo de Bs. 800, el incremento es de Bs. 50";
     imageRecarga.src = "./public/servicios/logodigitel.png";
     textDinamicoBtn.addEventListener("click", () => {
       modalRecargaExitosa.style.display = "block";
@@ -876,6 +909,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const incrementButton = document.getElementById("increment-button");
     const numberInput = document.getElementById("number-input");
     const modalFavoritos = document.getElementById("myModal");
+    const movilFijoCampo = document.getElementById("movilFijoCampo");
+    const movilnetCampo = document.getElementById("movilnetCampo");
+    const inputNumber  = document.getElementById("inputNumber");
+    const descripcionRecargas = document.getElementById("descripcionRecargas");
     const btn = document.getElementById("btnFavoritos");
 
     btn.onclick = function () {
@@ -923,6 +960,12 @@ document.addEventListener("DOMContentLoaded", () => {
         txtDinamicoSnd.textContent = "Monto a Descontar en USD";
       }
     });
+    movilFijoCampo.style.display = "none";
+    movilnetCampo.style.display = "block";
+    inputNumber.placeholder = "Número (0416 o 0426)";
+    numberInput.value = "40";
+    numberInput.min = "40";
+    descripcionRecargas.textContent = "*El monto a recargar debe ser mayor o igual a Bs. 40 hasta un máximo de Bs. 7000, el incremento es de Bs. 40";
     imageRecarga.src = "./public/servicios/logomovilnet.png";
     textDinamicoBtn.addEventListener("click", () => {
       modalRecargaExitosa.style.display = "block";
@@ -943,7 +986,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const numberInput = document.getElementById("number-input");
     const modalFavoritos = document.getElementById("myModal");
     const btn = document.getElementById("btnFavoritos");
-
+    const movilFijoCampo = document.getElementById("movilFijoCampo");
+    const movilnetCampo = document.getElementById("movilnetCampo");
+    const inputNumber  = document.getElementById("inputNumber");
+    const descripcionRecargas = document.getElementById("descripcionRecargas");
+    const divMontos = document.getElementById("divMontos");
+    const btnDeuda = document.getElementById("btnDeuda");
+    const movilCantvCampo = document.getElementById("movilCantvCampo");
+  
     btn.onclick = function () {
       modalFavoritos.style.display = "block";
     };
@@ -989,6 +1039,12 @@ document.addEventListener("DOMContentLoaded", () => {
         txtDinamicoSnd.textContent = "Monto a Descontar en USD";
       }
     });
+    btnDeuda.classList.remove("hidden")
+    movilCantvCampo.classList.remove("hidden");
+    movilFijoCampo.style.display = "none";
+    movilnetCampo.style.display = "none";
+    inputNumber.placeholder = "Nómero (02xx)";
+    divMontos.style.display = "none";
     imageRecarga.src = "./public/servicios/logocantv.png";
     textDinamicoBtn.addEventListener("click", () => {
       modalRecargaExitosa.style.display = "block";
@@ -1009,6 +1065,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const numberInput = document.getElementById("number-input");
     const modalFavoritos = document.getElementById("myModal");
     const btn = document.getElementById("btnFavoritos");
+    const titleService = document.getElementById("titleService");
+    const titleUsando = document.getElementById("titleUsando");
 
     btn.onclick = function () {
       modalFavoritos.style.display = "block";
@@ -1055,12 +1113,20 @@ document.addEventListener("DOMContentLoaded", () => {
         txtDinamicoSnd.textContent = "Monto a Descontar en USD";
       }
     });
+    titleService.textContent = "Número de Contrato";
+    titleUsando.textContent = "Seleccione la Wallet de donde se debitaran los fondos";
+    btnDeuda.classList.remove("hidden")
+    movilFijoCampo.style.display = "none";
+    movilnetCampo.style.display = "none";
+    inputNumber.placeholder = "(10 dígitos)";
+    divMontos.style.display = "none";
     imageRecarga.src = "./public/servicios/logointer.png";
     textDinamicoBtn.textContent = "EFECTUAR PAGO";
     textDinamicoBtn.addEventListener("click", () => {
       modalRecargaExitosa.style.display = "block";
     });
   });
+
   toHOme.addEventListener("click", () => {
     modalRecargaExitosa.style.display = "none";
     mountComponent(homeComponent);

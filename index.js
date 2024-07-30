@@ -24,6 +24,8 @@ const menosPerfil = document.getElementById("menosPerfil");
 const masServicios = document.getElementById("masServicios");
 const menosServicios = document.getElementById("menosServicios");
 
+const itemsFav = document.querySelectorAll(".itemsFav");
+
 document.addEventListener("DOMContentLoaded", function (event) {
   menuButton.addEventListener("click", function () {
     conteinerMain.classList.toggle("overflow-y-hidden");
@@ -79,7 +81,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
       dropdownServicios.classList.toggle("showServicio");
     }
   });
-
+  itemsFav.forEach((element) => {
+    element.addEventListener("click", () => {
+      itemsFav.forEach((item) => {
+        item.classList.remove("active");
+      });
+      element.classList.add("active");
+    });
+  });
 });
 
 let touchStartX = 0;
