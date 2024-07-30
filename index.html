@@ -76,13 +76,13 @@
           <section class="my-4">
             <span class="title_section">Acciones rápidas</span>
             <div class="flex justify-center gap-5 py-5">
-              <div class="text-center">
+              <div class="text-center" id="btnRecargaRapida">
                 <div class="bgCard w-24 rounded-lg justify-center flex py-3">
                   <img class="iconDinamicRapid" src="./public/recargarRapidas.svg" alt="">
                 </div>
                 <span class="font-semibold">Recargar</span>
               </div>
-              <div class="text-center">
+              <div class="text-center" id="btnRetiraRapida">
                 <div class="bgCard w-24 rounded-lg justify-center flex py-3">
                   <img class="iconDinamicRapid" src="./public/retirarRapidas.svg" alt="">
                 </div>
@@ -224,7 +224,7 @@
         </div>
       </template>
 
-      <template id="recargarComponent">
+      <template id="retirarComponent">
         <div class="p-4">
           <div class="flex items-center gap-4">
             <img src="/public/enviarRemesa.png" width="90" height="90" alt="" />
@@ -470,7 +470,7 @@
             <span class="text-center" style="font-size: 0.7em; letter-spacing: -0.02em;">*El monto a recargar debe ser mayor o igual a Bs. 45 hasta un máximo de Bs. 2200, el incremento es de Bs. 45</span>
           </div>
           <div id="btnInter" class="hidden">
-            <button class="bg-btn-recarga text-white text-sm font-bold p-4 rounded-2xl w-full" style="letter-spacing: 0.05em;" >CONSULTAR DEUDA</button>
+            <button class="bg-btn-recarga text-white text-sm font-bold p-4 rounded-2xl w-full" style="letter-spacing: 0.05em;">CONSULTAR DEUDA</button>
           </div>
           <div class="flex flex-col text-center">
             <h3 class="nexa_bold mb-5">Recargar Usando:</h3>
@@ -697,7 +697,7 @@
             <p class="nexa_bold text-lg text__nowrap" style="letter-spacing: -0.03em;">Detalle de Operación</p>
           </div>
           <div class="flex flex-col gap-4">
-            <div class="flex justify-start p-4 rounded-xl items-center gap-3" style="background-color: #F0F0F0;">
+            <div class="flex justify-start p-4 rounded-xl items-center gap-3 bgCardDetalle bgCard">
               <img id="imgDetalle" src="/public/detalleEUR.png" style="width: 60px;" alt="">
               <div class="flex flex-col gap-2">
                 <div class="flex gap-1">
@@ -708,7 +708,7 @@
               </div>
             </div>
             <div class="listFav">
-              <ul class="flex flex-col gap-2 p-4 rounded-xl" style="background-color: #FFFFEA;">
+              <ul class="flex flex-col gap-2 p-4 rounded-xl bgCardDetalleBottom bgCard">
                 <li class="detalleModal justify-between text-sm font-bold rounded-2xl gap-1"><span>Banco:</span><span class="text__nowrap w-full" style="text-align: end;" id="bancoDetalle">TeleIngreso</span></li>
                 <li class="detalleModal text-sm font-bold rounded-2xl" id="toHOme"><span>Ref:</span><span class="text__nowrap w-full" style="text-align: end;">240974</span></li>
                 <li class="detalleModal text-sm font-bold rounded-2xl" id="toHOme"><span>Estado:</span><span id="estadoDetalle" class="text__nowrap w-full" style="text-align: end;">Confirmado</span></li>
@@ -821,9 +821,9 @@
               </div>
             </div>
               <ul class="mb-8 list__menu max-h-min">
-                <li class="items-center gap-2 enlace_menu">
+                <li class="items-center gap-2 enlace_menu" id="controllerHomeMenu">
                   <img class="iconDinamic" src="/public/home-menu.png"width="15" height="15" alt="">
-                  <a href="index.html" class="w-full textColor">Home</a>
+                  <a class="w-full textColor" id="contro">Home</a>
                   <div class="flex justify-end">
                     <img class="flex arrow_menu arrow_menu-active svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt="">
                   </div>
@@ -840,7 +840,7 @@
                     <span class="dropdown-item textColor" id="controllerSeguridad">Seguridad<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
                   </div>
                 </li>
-                <li class="items-center gap-2 enlace_menu">
+                <li class="items-center gap-2 enlace_menu" id="controllerRecargaMenu">
                   <img class="iconDinamic" src="/public/recargar-menu.png" width="15" height="15" alt="">
                   <a class="text__nowrap w-full textColor">Recargar</a>
                   <div class="flex justify-end">
