@@ -30,6 +30,9 @@ const enviarComponent = document.getElementById("enviarComponent");
 const recargaComponent = document.getElementById("recargaComponent");
 const metodosRecarga = document.getElementById("metodosRecarga");
 const tasasComponent = document.getElementById("tasasComponent");
+const recargaConVisa = document.getElementById("recargaConVisa");
+const recargaConBinance = document.getElementById("recargaConBinance");
+const recargaConEur = document.getElementById("recargaConEur");
 //MODALES
 const modalRecargaExitosa = document.getElementById("modalRecargaExitosa");
 const modalDetalleMov = document.getElementById("modalDetalleMov");
@@ -103,9 +106,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const recargaEurosBtn = document.getElementById("recargaEurosBtn");
     recargaDolaresBtn.addEventListener("click", () => {
       mountComponent(metodosRecarga);
+      const recargaConVisaBtn = document.getElementById("recargaConVisaBtn");
+      const recargaConBinanceBtn = document.getElementById("recargaConBinanceBtn");
+      recargaConVisaBtn.addEventListener("click", () => {
+        mountComponent(recargaConVisa);
+      })
+      recargaConBinanceBtn.addEventListener("click", () => {
+        mountComponent(recargaConBinance);
+      })
     });
     recargaEurosBtn.addEventListener("click", () => {
-      mountComponent(metodosRecarga);
+      mountComponent(recargaConEur);
     });
   });
   btnRetiraRapida.addEventListener("click", () => {
@@ -196,10 +207,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const recargaEurosBtn = document.getElementById("recargaEurosBtn");
       recargaDolaresBtn.addEventListener("click", () => {
         mountComponent(metodosRecarga);
+        const recargaConVisaBtn = document.getElementById("recargaConVisaBtn");
+      const recargaConBinanceBtn = document.getElementById("recargaConBinanceBtn");
+      recargaConVisaBtn.addEventListener("click", () => {
+        mountComponent(recargaConVisa);
+      })
+      recargaConBinanceBtn.addEventListener("click", () => {
+        mountComponent(recargaConBinance);
+      })
       });
       recargaEurosBtn.addEventListener("click", () => {
-        mountComponent(metodosRecarga);
-      });
+        mountComponent(recargaConEur);
+      })
     });
     btnRetiraRapida.addEventListener("click", () => {
       mountComponent(retirarComponent);
@@ -278,9 +297,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const recargaEurosBtn = document.getElementById("recargaEurosBtn");
     recargaDolaresBtn.addEventListener("click", () => {
       mountComponent(metodosRecarga);
+      const recargaConVisaBtn = document.getElementById("recargaConVisaBtn");
+      const recargaConBinanceBtn = document.getElementById("recargaConBinanceBtn");
+      recargaConVisaBtn.addEventListener("click", () => {
+        mountComponent(recargaConVisa);
+      })
+      recargaConBinanceBtn.addEventListener("click", () => {
+        mountComponent(recargaConBinance);
+      })
     });
     recargaEurosBtn.addEventListener("click", () => {
-      mountComponent(metodosRecarga);
+      mountComponent(recargaConEur);
     });
   });
   controllerServicios.addEventListener("click", () => {
@@ -815,9 +842,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const recargaEurosBtn = document.getElementById("recargaEurosBtn");
       recargaDolaresBtn.addEventListener("click", () => {
         mountComponent(metodosRecarga);
+        const recargaConVisaBtn = document.getElementById("recargaConVisaBtn");
+      const recargaConBinanceBtn = document.getElementById("recargaConBinanceBtn");
+      recargaConVisaBtn.addEventListener("click", () => {
+        mountComponent(recargaConVisa);
+      })
+      recargaConBinanceBtn.addEventListener("click", () => {
+        mountComponent(recargaConBinance);
+      })
       });
       recargaEurosBtn.addEventListener("click", () => {
-        mountComponent(metodosRecarga);
+        mountComponent(recargaConEur);
       });
     });
     btnRetiraRapida.addEventListener("click", () => {
@@ -891,9 +926,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const recargaEurosBtn = document.getElementById("recargaEurosBtn");
     recargaDolaresBtn.addEventListener("click", () => {
       mountComponent(metodosRecarga);
+      const recargaConVisaBtn = document.getElementById("recargaConVisaBtn");
+      const recargaConBinanceBtn = document.getElementById("recargaConBinanceBtn");
+      recargaConVisaBtn.addEventListener("click", () => {
+        mountComponent(recargaConVisa);
+      })
+      recargaConBinanceBtn.addEventListener("click", () => {
+        mountComponent(recargaConBinance);
+      })
     });
     recargaEurosBtn.addEventListener("click", () => {
-      mountComponent(metodosRecarga);
+      mountComponent(recargaConEur);
     });
   });
   recargaMovistarMenu.addEventListener("click", () => {
@@ -1314,9 +1357,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const recargaEurosBtn = document.getElementById("recargaEurosBtn");
       recargaDolaresBtn.addEventListener("click", () => {
         mountComponent(metodosRecarga);
+        const recargaConVisaBtn = document.getElementById("recargaConVisaBtn");
+      const recargaConBinanceBtn = document.getElementById("recargaConBinanceBtn");
+      recargaConVisaBtn.addEventListener("click", () => {
+        mountComponent(recargaConVisa);
+      })
+      recargaConBinanceBtn.addEventListener("click", () => {
+        mountComponent(recargaConBinance);
+      })
       });
       recargaEurosBtn.addEventListener("click", () => {
-        mountComponent(metodosRecarga);
+        mountComponent(recargaConEur);
       });
     });
     btnRetiraRapida.addEventListener("click", () => {
@@ -1465,4 +1516,5 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
 });

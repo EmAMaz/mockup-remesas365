@@ -713,14 +713,14 @@
         <div class="p-4">
           <h2 class="mb-12 nexa_bold text-lg text-center">Selecciona tu Método de Recarga</h2>
           <div class="flex flex-col gap-4">
-            <div class="grid bgCard p-4 gap-6 rounded-xl items-center" style="grid-template-columns: 0.5fr 1fr;">
+            <div class="grid bgCard p-4 gap-6 rounded-xl items-center" id="recargaConVisaBtn" style="grid-template-columns: 0.5fr 1fr;">
               <img src="/public/recarga/logovisa.png" alt="">
               <div class="flex flex-col">
                 <span class="nexa_bold text-sm text-center mb-4">Recarga con Tarjeta Visa o Mastercard</span>
                 <span class="text-xs nexa_bold" style="color: #7fb733;">Abono Inmediato Activo las 24hs</span>
               </div>
             </div>
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-4" id="recargaConBinanceBtn">
               <div class="grid bgCard p-4 gap-6 rounded-xl items-center" style="grid-template-columns: 0.5fr 1fr;">
                 <img src="/public/recarga/logobinance.png" alt="">
                 <div class="flex flex-col">
@@ -731,7 +731,59 @@
           </div>
         </div>
       </template>
-
+      <!-- CONUSD -->
+      <template id="recargaConVisa">
+        <div class="p-4 mb-20 flex flex-col gap-4">
+          <div class="flex flex-col items-center justify-center gap-4">
+            <h2 class="nexa_bold">Recarga con</h2>
+            <img style="height: 100px;width: 150px;" src="/public/recarga/logovisa.png" alt="">
+          </div>
+          <div class="text-center py-4"><input class="p-4 bgCard border" type="number" placeholder="Monto en USD(ej. 100)" style="color: black; font-weight: bold;"></div>
+          <div class="flex flex-col gap-4 text-center">
+              <ul>
+                <li class="grid justify-between" style="grid-template-columns: 1fr 0.2fr;"><span style="text-align: start;">Comisión Procesador de Pago(%)</span><span>- USD</span></li>
+                <li class="grid justify-between" style="grid-template-columns: 1fr 0.2fr;"><span style="text-align: start;">Cargo Final USD</span><span>- USD</span></li>
+              </ul>
+              <span>Al presionar <strong>CONTINUAR</strong> serás redirigido a un sitio de pago seguro en donde debes colocar los datos de tu tarjeta de crédito.</span>
+              <span class="nexa_bold textColor" >Recuerda colocar el código postal y dirección de facturación de tu tarjeta</span>
+          </div>
+          <div class="">
+              <button class="bg-btn-recarga text-white text-sm font-bold p-4 rounded-2xl w-full" style="letter-spacing: 0.05em;" id="textDinamicoBtn">CONTINUAR</button>
+          </div>
+        </div>
+      </template>
+      <template id="recargaConBinance">
+        <div class="p-4 mb-20 flex flex-col gap-4">
+          <div class="flex flex-col items-center justify-center gap-4">
+            <h2 class="nexa_bold">Añadir Dinero</h2>
+            <img style="height: 60px;width: 150px;" src="./public/recarga/logobinance.png" alt="">
+          </div>
+          <span class="text-center">Abono automático con Binance Pay, de forma simple y segura.</span>
+          <ul>
+            <li class="grid" style="grid-template-columns: 1fr 1fr;"><span class="nexa_bold">Monto en USDT que recargas:</span><input class="flex items-center justify-center text-center border" type="number" placeholder="Ej. 50" style="color: black; font-weight: bold;"></li>
+          </ul>
+          <span class="text-center">Luego, haz click en <strong>CONTINUAR</strong> para obtener el código de pago para la recarga.</span>
+          <div>
+            <button class="bg-btn-recarga text-white text-sm font-bold p-4 rounded-2xl w-full" style="letter-spacing: 0.05em;" id="textDinamicoBtn">CONTINUAR</button>
+          </div>
+        </div>
+      </template>
+      <!-- CONUSD -->
+      <!-- CONEUR -->
+      <template id="recargaConEur">
+        <div class="p-4 text-center flex flex-col gap-4">
+          <span class="nexa_bold">¿Dónde deseas recargar?</span>
+          <div class="flex flex-col">
+            <span>Estos son los canales Teleingreso de <strong>pago en efectivo</strong> y con <strong>banca en linea</strong> que están disponibles para ti, con abono inmediato las 24hs:</span>
+          </div>
+          <ul class="bgCard rounded-lg p-4">
+            <li class="grid py-3" style="grid-template-columns: 1fr 0.3fr;"><span class="nexa_bold" style="text-align: start;">Comercios</span><span class="nexa_bold">-</span></li>
+            <li class="grid py-3" style="grid-template-columns: 1fr 0.3fr;"><span class="nexa_bold" style="text-align: start;">Comercios Automáticos</span><span class="nexa_bold">-</span></li>
+            <li class="grid py-3" style="grid-template-columns: 1fr 0.3fr;"><span class="nexa_bold" style="text-align: start;">Cajeros Automaticos</span><span class="nexa_bold">-</span></li>
+          </ul>
+        </div>
+      </template>
+      <!-- CONEUR -->
       <div id="myModal" class="modalCustom">
         <div class="modal-content bgCard">
           <div >
