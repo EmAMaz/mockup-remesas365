@@ -11,6 +11,7 @@ const controllerRecargaMenu = document.getElementById("controllerRecargaMenu");
 const controllerPerfil = document.getElementById("controllerPerfil");
 const controllerSeguridad = document.getElementById("controllerSeguridad");
 const controllerHomeMenu = document.getElementById("controllerHomeMenu");
+const controllerTasasMenu = document.getElementById("controllerTasasMenu");
 const recargaMovistar = document.getElementById("recargaMovistar");
 
 // controllerMENU
@@ -28,7 +29,7 @@ const contactanosComponent = document.getElementById("contactanosComponent");
 const enviarComponent = document.getElementById("enviarComponent");
 const recargaComponent = document.getElementById("recargaComponent");
 const metodosRecarga = document.getElementById("metodosRecarga");
-
+const tasasComponent = document.getElementById("tasasComponent");
 //MODALES
 const modalRecargaExitosa = document.getElementById("modalRecargaExitosa");
 const modalDetalleMov = document.getElementById("modalDetalleMov");
@@ -64,6 +65,7 @@ function mountComponent(componentSelected) {
 
 document.addEventListener("DOMContentLoaded", () => {
   mountComponent(homeComponent);
+  //mountComponent(tasasComponent);
   const movimientosBtns = document.querySelectorAll(".movimientosBtns");
   const btnRecargaRapida = document.getElementById("btnRecargaRapida");
   const btnRetiraRapida = document.getElementById("btnRetiraRapida");
@@ -1381,5 +1383,86 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
     window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  controllerTasasMenu.addEventListener("click", () => {
+    mountComponent(tasasComponent);
+    menu.classList.remove("open");
+    const dropdownButton = document.getElementById("dropdown-button");
+    const dropdownContent = document.getElementById("dropdown-content");
+    const selectedFlag = document.getElementById("selected-flag");
+    const selectedName = document.getElementById("selected-name");
+    const numberInput = document.getElementById("number-input");
+    const decrementButton = document.getElementById("decrement-button");
+    const incrementButton = document.getElementById("increment-button");
+    const customDropdownButton = document.getElementById(
+      "custom-dropdown-button"
+    );
+    const customDropdownContent = document.getElementById(
+      "custom-dropdown-content"
+    );
+    const customSelectedFlag = document.getElementById("custom-selected-flag");
+    const customSelectedName = document.getElementById("custom-selected-name");
+    const minValue = parseInt(numberInput.getAttribute("min"));
+    const maxValue = parseInt(numberInput.getAttribute("max"));
+    numberInput.addEventListener("input", function () {
+      let currentValue = parseInt(numberInput.value);
+      if (isNaN(currentValue) || currentValue < minValue) {
+        numberInput.value = minValue;
+      } else if (currentValue > maxValue) {
+        numberInput.value = maxValue;
+      }
+    });
+    decrementButton.addEventListener("click", function () {
+      numberInput.stepDown();
+      numberInput;
+    });
+
+    incrementButton.addEventListener("click", function () {
+      numberInput.stepUp();
+    });
+    customDropdownButton.addEventListener("click", function () {
+      customDropdownContent.style.display =
+        customDropdownContent.style.display === "block" ? "none" : "block";
+    });
+
+    document.querySelectorAll(".custom-country-option").forEach((option) => {
+      option.addEventListener("click", function () {
+        const countryImage = this.getAttribute("data-image");
+        const countryName = this.textContent.trim();
+
+        // Mostrar la bandera y el nombre del país seleccionado en el botón
+        customSelectedFlag.src = countryImage;
+        customSelectedFlag.alt = countryName;
+        customSelectedFlag.style.display = "inline"; // Muestra la bandera
+        customSelectedName.textContent = countryName; // Actualiza el texto del botón
+
+        customDropdownContent.style.display = "none"; // Cierra el dropdown
+      });
+    });
+    dropdownButton.addEventListener("click", function () {
+      dropdownContent.style.display =
+        dropdownContent.style.display === "block" ? "none" : "block";
+    });
+    document.querySelectorAll(".country-option").forEach((option) => {
+      option.addEventListener("click", function () {
+        const countryImage = this.getAttribute("data-image");
+        const countryName = this.textContent.trim();
+
+        // Mostrar la bandera y el nombre del país seleccionado en el botón
+        selectedFlag.src = countryImage;
+        selectedFlag.alt = countryName;
+        selectedFlag.style.display = "inline"; // Muestra la bandera
+        selectedName.textContent = countryName; // Actualiza el texto del botón
+
+        dropdownContent.style.display = "none"; // Cierra el dropdown
+      });
+    });
+    // Cierra el dropdown si se hace clic fuera de él
+    window.addEventListener("click", function (event) {
+      if (!event.target.matches(".dropdown-button")) {
+        dropdownContent.style.display = "none";
+      }
+    });
   });
 });

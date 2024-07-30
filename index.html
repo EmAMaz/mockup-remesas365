@@ -368,7 +368,85 @@
           
         </div>
       </template>
-
+      <template id="tasasComponent">
+        <div class="p-4">
+          <div class="flex flex-col text-center mb-8">
+            <h2 class="text-xl text-center font-bold py-2 nexa_bold">Nuestras Tasas</h2>
+            <span>Pensando en tu convivencia, contamos con las tasas más competitivas del mercado.</span>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div class="flex justify-between">
+              <div class="input-container gap-2 flex flex-col">
+                <span class="nexa_bold">Monto:</span>
+                <div class="flex">
+                  <input type="number" style="color: #000;" id="number-input" value="45" min="45" max="2200" class="p-2">
+                  <div class="flex flex-col">
+                    <svg id="increment-button" class="bgCard" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.6806 13.9783L15.4706 10.7683L13.5106 8.79828C12.6806 7.96828 11.3306 7.96828 10.5006 8.79828L5.32056 13.9783C4.64056 14.6583 5.13056 15.8183 6.08056 15.8183H11.6906H17.9206C18.8806 15.8183 19.3606 14.6583 18.6806 13.9783Z" fill="#292D32"></path> </g></svg>
+                    <svg id="decrement-button" class="bgCard" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.6806 13.9783L15.4706 10.7683L13.5106 8.79828C12.6806 7.96828 11.3306 7.96828 10.5006 8.79828L5.32056 13.9783C4.64056 14.6583 5.13056 15.8183 6.08056 15.8183H11.6906H17.9206C18.8806 15.8183 19.3606 14.6583 18.6806 13.9783Z" fill="#292D32"></path> </g></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="input-container gap-2 flex flex-col">
+                <span class="nexa_bold">Moneda origen:</span>
+                <div class="flex">
+                  <div class="dropdown bgCard">
+                    <div class="dropdown-button" id="dropdown-button">
+                        <img id="selected-flag" src="" alt="" style="display: none;">
+                        <span id="selected-name">Elija una moneda</span>
+                    </div>
+                    <div class="dropdown-content bgCard" id="dropdown-content">
+                        <div class="country-option" data-value="es" data-image="./public/cotizacion/banderaeuro.png"> 
+                            <img src="./public/cotizacion/banderaeuro.png" alt="EUR"> EUR
+                        </div>
+                        <div class="country-option" data-value="mx" data-image="./public/cotizacion/banderaargentina.png"> 
+                            <img src="./public/cotizacion/banderaargentina.png" alt="ARS"> ARS
+                        </div>
+                        <div class="country-option" data-value="ar" data-image="./public/cotizacion/banderausa.png"> 
+                            <img src="./public/cotizacion/banderausa.png" alt="USD"> USD
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="input-container gap-2 flex flex-col">
+              <span class="nexa_bold">a Moneda:</span>
+              <div class="flex">
+                <div class="custom-dropdown bgCard">
+                  <div class="custom-dropdown-button" id="custom-dropdown-button">
+                      <img id="custom-selected-flag" src="" alt="" style="display: none;"> <!-- Bandera oculta por defecto -->
+                      <span id="custom-selected-name">Elija una moneda</span>
+                  </div>
+                  <div class="custom-dropdown-content bgCard" id="custom-dropdown-content">
+                      <div class="custom-country-option" data-value="es" data-image="./public/cotizacion/banderaeuro.png"> 
+                        <img src="./public/cotizacion/banderaeuro.png" alt="EUR"> EUR
+                    </div>
+                      <div class="custom-country-option" data-value="mx" data-image="./public/cotizacion/banderaargentina.png"> 
+                        <img src="./public/cotizacion/banderaargentina.png" alt="ARS"> ARS
+                    </div>
+                      <div class="custom-country-option" data-value="ar" data-image="./public/cotizacion/banderausa.png"> 
+                        <img src="./public/cotizacion/banderausa.png" alt="USD"> USD
+                    </div>
+                  </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-xl flex items-center p-2 justify-center gap-4 mt-10" style="background-color: #7fb733;">
+            <img style="width: 40px;height: 50px;" src="./public/cotizacion/calculadoraicono.png" alt="">
+            <span class="nexa_bold text-center" style="color: #fff;">CALCULAR COTIZACIÓN</span>
+          </div>
+          <div class="text-center flex flex-col gap-4 mt-10 mb-16">
+            <span class="nexa_bold">Tasas por Monedas:</span>
+            <ul class="flex flex-col gap-3">
+              <li class="grid items-center p-2 rounded-lg  bgCard" style="grid-template-columns: 0.3fr 1fr 0.3fr;"><img src="./public/cotizacion/banderausa.png" alt=""><span class="nexa_bold">USD a VES</span><img src="./public/cotizacion/banderavenezuela.png" alt=""></li>
+              <li class="grid items-center p-2 rounded-lg  bgCard" style="grid-template-columns: 0.3fr 1fr 0.3fr;"><img src="./public/cotizacion/banderaperu.png" alt=""><span class="nexa_bold">PEN a VES</span><img src="./public/cotizacion/banderavenezuela.png" alt=""></li>
+              <li class="grid items-center p-2 rounded-lg  bgCard" style="grid-template-columns: 0.3fr 1fr 0.3fr;"><img src="./public/cotizacion/banderaargentina.png" alt=""><span class="nexa_bold">ARS a VES</span><img src="./public/cotizacion/banderavenezuela.png" alt=""></li>
+              <li class="grid items-center p-2 rounded-lg  bgCard" style="grid-template-columns: 0.3fr 1fr 0.3fr;"><img src="./public/cotizacion/banderaeuro.png" alt=""><span class="nexa_bold">EUR a VES</span><img src="./public/cotizacion/banderavenezuela.png" alt=""></li>
+            </ul>
+          </div>
+        </div>
+      </template>
       <template id="contactanosComponent">
         <div class="p-4">
           <h2 class="text-xl text-center font-bold py-2">Contactanos!</h2>
@@ -467,7 +545,7 @@
                   <svg id="increment-button" class="bgCard" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.6806 13.9783L15.4706 10.7683L13.5106 8.79828C12.6806 7.96828 11.3306 7.96828 10.5006 8.79828L5.32056 13.9783C4.64056 14.6583 5.13056 15.8183 6.08056 15.8183H11.6906H17.9206C18.8806 15.8183 19.3606 14.6583 18.6806 13.9783Z" fill="#292D32"></path> </g></svg>
                   <svg id="decrement-button" class="bgCard" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.6806 13.9783L15.4706 10.7683L13.5106 8.79828C12.6806 7.96828 11.3306 7.96828 10.5006 8.79828L5.32056 13.9783C4.64056 14.6583 5.13056 15.8183 6.08056 15.8183H11.6906H17.9206C18.8806 15.8183 19.3606 14.6583 18.6806 13.9783Z" fill="#292D32"></path> </g></svg>
                 </div>
-            </div>
+              </div>
             </div>
             <span class="text-center" style="font-size: 0.7em; letter-spacing: -0.02em;" id="descripcionRecargas">*El monto a recargar debe ser mayor o igual a Bs. 45 hasta un máximo de Bs. 2200, el incremento es de Bs. 45</span>
           </div>
@@ -871,7 +949,7 @@
                     <span class="dropdown-item textColor" id="recargaInterMenu">Pago Inter<img class="svgStyleMenu" src="/public/arrow-menu.png" width="7" height="7" alt=""></span>
                   </div>
                 </li>
-                <li class="items-center gap-2 enlace_menu">
+                <li class="items-center gap-2 enlace_menu" id="controllerTasasMenu">
                   <img class="iconDinamic" src="/public/tasas-menu.png" width="15" height="15" alt="">
                   <a class="text__nowrap w-full textColor">Calcular Tasas</a>
                   <div class="flex justify-end">

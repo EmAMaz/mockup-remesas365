@@ -678,3 +678,84 @@ input[type="checkbox"]:checked + label span:nth-of-type(2) {
 .itemsFav.active{
   border: 2px solid #72b432;
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  width: 200px;
+  text-align: left;
+  display: flex; /* Cambia el display a flex */
+  align-items: center; /* Centra verticalmente */
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+.country-option {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.country-option img {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+}
+.country-option:hover {
+  background-color: #f1f1f1;
+}
+#selected-flag {
+  width: 20px; /* Tamaño de la imagen de la bandera */
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+/* otro */
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.custom-dropdown-button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  width: 200px;
+  text-align: left;
+  display: flex; /* Cambia el display a flex */
+  align-items: center; /* Centra verticalmente */
+}
+.custom-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+.custom-country-option {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.custom-country-option img {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+}
+.custom-country-option:hover {
+  background-color: #f1f1f1;
+}
+#custom-selected-flag {
+  width: 20px; /* Tamaño de la imagen de la bandera */
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
