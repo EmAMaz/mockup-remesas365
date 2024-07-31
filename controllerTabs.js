@@ -13,7 +13,7 @@ const controllerSeguridad = document.getElementById("controllerSeguridad");
 const controllerHomeMenu = document.getElementById("controllerHomeMenu");
 const controllerTasasMenu = document.getElementById("controllerTasasMenu");
 const recargaMovistar = document.getElementById("recargaMovistar");
-
+const recargaEurosBtn = document.getElementById("recargaEurosBtn");
 // controllerMENU
 const recargaMovistarMenu = document.getElementById("recargaMovistarMenu");
 const recargaDigitelMenu = document.getElementById("recargaDigitelMenu");
@@ -37,7 +37,7 @@ const recargaConEur = document.getElementById("recargaConEur");
 const modalRecargaExitosa = document.getElementById("modalRecargaExitosa");
 const modalDetalleMov = document.getElementById("modalDetalleMov");
 //MODALES
-
+const usdEfectivoBtn = document.getElementById("usdEfectivoBtn");
 const bancoDetalle = document.getElementById("bancoDetalle");
 const estadoDetalle = document.getElementById("estadoDetalle");
 const detalleMoneda = document.getElementById("detalleMoneda");
@@ -55,7 +55,7 @@ const span = document.getElementsByClassName("close")[0];
 const closeModalDetalle =
   document.getElementsByClassName("closeModalDetalle")[0];
 const toHOme = document.getElementById("toHOme");
-
+const comerciosComponent = document.getElementById("comerciosComponent");
 function mountComponent(componentSelected) {
   app.innerHTML = "";
   isMounted = false;
@@ -65,7 +65,48 @@ function mountComponent(componentSelected) {
     isMounted = true;
   }
 }
+function renderComerciosComponent(modoPago) {
+  app.style.display = "none";
 
+  if (
+    comerciosComponent !== null &&
+    comerciosComponent.classList.contains("hidden")
+  ) {
+    comerciosComponent.classList.remove("hidden");
+  } else {
+    comerciosComponent.classList.add("hidden");
+  }
+
+  // Seleccionar elementos dinámicos de comercios
+  const imgComerciosDinamic = document.getElementById("imgComerciosDinamic");
+  const otroPuntoComercios = document.getElementById("otroPuntoComercios");
+
+  // Cambiar la fuente de la imagen dinámica
+  switch (modoPago) {
+    case "comercio":
+      imgComerciosDinamic.src = "./public/recarga/disashop.png";
+      break;
+    case "comercioAut":
+      imgComerciosDinamic.src = "./public/recarga/abanca.png";
+      break;
+    case "cajeroAut":
+      imgComerciosDinamic.src = "./public/recarga/cajamar.png";
+      break;
+  }
+  // Añadir evento de clic al botón de otro punto de comercios
+  if (otroPuntoComercios !== null) {
+    otroPuntoComercios.addEventListener("click", () => {
+      comerciosComponent.classList.add("hidden");
+      app.style.display = "block";
+    });
+  }
+}
+function hideComerciosComponent() {
+  const comerciosComponent = document.getElementById("comerciosComponent");
+  if (comerciosComponent) {
+    comerciosComponent.style.display = "none";
+  }
+}
 document.addEventListener("DOMContentLoaded", () => {
   mountComponent(homeComponent);
   //mountComponent(tasasComponent);
@@ -73,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnRecargaRapida = document.getElementById("btnRecargaRapida");
   const btnRetiraRapida = document.getElementById("btnRetiraRapida");
   const iconSoporte = document.querySelectorAll(".iconDinamicRapid");
+
   document.addEventListener("cambiarIconosDinamic", () => {
     iconSoporte.forEach((element) => {
       const regex = /white/;
@@ -107,21 +149,60 @@ document.addEventListener("DOMContentLoaded", () => {
     recargaDolaresBtn.addEventListener("click", () => {
       mountComponent(metodosRecarga);
       const recargaConVisaBtn = document.getElementById("recargaConVisaBtn");
-      const recargaConBinanceBtn = document.getElementById("recargaConBinanceBtn");
+      const recargaConBinanceBtn = document.getElementById(
+        "recargaConBinanceBtn"
+      );
       recargaConVisaBtn.addEventListener("click", () => {
         mountComponent(recargaConVisa);
-      })
+      });
       recargaConBinanceBtn.addEventListener("click", () => {
         mountComponent(recargaConBinance);
-      })
+      });
     });
     recargaEurosBtn.addEventListener("click", () => {
       mountComponent(recargaConEur);
+
+      const comerciosBtn = document.getElementById("comerciosBtn");
+      const comerciosAutBtn = document.getElementById("comerciosAutBtn");
+      const cajerosAutBtn = document.getElementById("cajerosAutBtn");
+
+      comerciosBtn.addEventListener("click", () => {
+        renderComerciosComponent("comercio");
+      });
+      comerciosAutBtn.addEventListener("click", () => {
+        renderComerciosComponent("comercioAut");
+      });
+      cajerosAutBtn.addEventListener("click", () => {
+        renderComerciosComponent("cajeroAut");
+      });
     });
   });
   btnRetiraRapida.addEventListener("click", () => {
     mountComponent(retirarComponent);
     menu.classList.remove("open");
+    const imgBancoRetirar = document.getElementById("imgBancoRetirar");
+    document.addEventListener("cambiarIconosDinamic", () => {
+      const regex = /white/;
+      const url = imgBancoRetirar.src;
+      const validacion = regex.test(url);
+      let stringToAdd = "-white";
+      let lastDotIndex = url.lastIndexOf(".");
+      let beforeDot = url.substring(0, lastDotIndex);
+      let afterDot = url.substring(lastDotIndex);
+      let newUrl = beforeDot + stringToAdd + afterDot;
+      imgBancoRetirar.src = validacion ? url.replace("-white", "") : newUrl;
+    });
+    if (window.toggleVar) {
+      const regex = /white/;
+      const url = imgBancoRetirar.src;
+      const validacion = regex.test(url);
+      let stringToAdd = "-white";
+      let lastDotIndex = url.lastIndexOf(".");
+      let beforeDot = url.substring(0, lastDotIndex);
+      let afterDot = url.substring(lastDotIndex);
+      let newUrl = beforeDot + stringToAdd + afterDot;
+      imgBancoRetirar.src = validacion ? url.replace("-white", "") : newUrl;
+    }
     const transferenciaBancaria = document.getElementById(
       "transferenciaBancaria"
     );
@@ -134,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ".nuevoBeneficiarioForm"
       );
       nuevoBeneficiarioBtn.addEventListener("click", () => {
+        nuevoBeneficiarioBtn.classList.toggle("btnIluminado");
         nuevoBeneficiarioForm.classList.toggle("active");
       });
     });
@@ -208,21 +290,59 @@ document.addEventListener("DOMContentLoaded", () => {
       recargaDolaresBtn.addEventListener("click", () => {
         mountComponent(metodosRecarga);
         const recargaConVisaBtn = document.getElementById("recargaConVisaBtn");
-      const recargaConBinanceBtn = document.getElementById("recargaConBinanceBtn");
-      recargaConVisaBtn.addEventListener("click", () => {
-        mountComponent(recargaConVisa);
-      })
-      recargaConBinanceBtn.addEventListener("click", () => {
-        mountComponent(recargaConBinance);
-      })
+        const recargaConBinanceBtn = document.getElementById(
+          "recargaConBinanceBtn"
+        );
+        recargaConVisaBtn.addEventListener("click", () => {
+          mountComponent(recargaConVisa);
+        });
+        recargaConBinanceBtn.addEventListener("click", () => {
+          mountComponent(recargaConBinance);
+        });
       });
       recargaEurosBtn.addEventListener("click", () => {
         mountComponent(recargaConEur);
-      })
+        const comerciosBtn = document.getElementById("comerciosBtn");
+        const comerciosAutBtn = document.getElementById("comerciosAutBtn");
+        const cajerosAutBtn = document.getElementById("cajerosAutBtn");
+
+        comerciosBtn.addEventListener("click", () => {
+          renderComerciosComponent("comercio");
+        });
+        comerciosAutBtn.addEventListener("click", () => {
+          renderComerciosComponent("comercioAut");
+        });
+        cajerosAutBtn.addEventListener("click", () => {
+          renderComerciosComponent("cajeroAut");
+        });
+      });
     });
     btnRetiraRapida.addEventListener("click", () => {
       mountComponent(retirarComponent);
       menu.classList.remove("open");
+      const imgBancoRetirar = document.getElementById("imgBancoRetirar");
+      document.addEventListener("cambiarIconosDinamic", () => {
+        const regex = /white/;
+        const url = imgBancoRetirar.src;
+        const validacion = regex.test(url);
+        let stringToAdd = "-white";
+        let lastDotIndex = url.lastIndexOf(".");
+        let beforeDot = url.substring(0, lastDotIndex);
+        let afterDot = url.substring(lastDotIndex);
+        let newUrl = beforeDot + stringToAdd + afterDot;
+        imgBancoRetirar.src = validacion ? url.replace("-white", "") : newUrl;
+      });
+      if (window.toggleVar) {
+        const regex = /white/;
+        const url = imgBancoRetirar.src;
+        const validacion = regex.test(url);
+        let stringToAdd = "-white";
+        let lastDotIndex = url.lastIndexOf(".");
+        let beforeDot = url.substring(0, lastDotIndex);
+        let afterDot = url.substring(lastDotIndex);
+        let newUrl = beforeDot + stringToAdd + afterDot;
+        imgBancoRetirar.src = validacion ? url.replace("-white", "") : newUrl;
+      }
       const transferenciaBancaria = document.getElementById(
         "transferenciaBancaria"
       );
@@ -298,16 +418,31 @@ document.addEventListener("DOMContentLoaded", () => {
     recargaDolaresBtn.addEventListener("click", () => {
       mountComponent(metodosRecarga);
       const recargaConVisaBtn = document.getElementById("recargaConVisaBtn");
-      const recargaConBinanceBtn = document.getElementById("recargaConBinanceBtn");
+      const recargaConBinanceBtn = document.getElementById(
+        "recargaConBinanceBtn"
+      );
       recargaConVisaBtn.addEventListener("click", () => {
         mountComponent(recargaConVisa);
-      })
+      });
       recargaConBinanceBtn.addEventListener("click", () => {
         mountComponent(recargaConBinance);
-      })
+      });
     });
     recargaEurosBtn.addEventListener("click", () => {
       mountComponent(recargaConEur);
+      const comerciosBtn = document.getElementById("comerciosBtn");
+      const comerciosAutBtn = document.getElementById("comerciosAutBtn");
+      const cajerosAutBtn = document.getElementById("cajerosAutBtn");
+
+      comerciosBtn.addEventListener("click", () => {
+        renderComerciosComponent("comercio");
+      });
+      comerciosAutBtn.addEventListener("click", () => {
+        renderComerciosComponent("comercioAut");
+      });
+      cajerosAutBtn.addEventListener("click", () => {
+        renderComerciosComponent("cajeroAut");
+      });
     });
   });
   controllerServicios.addEventListener("click", () => {
@@ -326,7 +461,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const recargaInter = document.getElementById("recargaInter");
 
     recargaMovistar.addEventListener("click", () => {
-      if (accionServicioComponent) {
         mountComponent(accionServicioComponent);
         const textDinamicoBtn = document.getElementById("textDinamicoBtn");
         const recargaEnEUR = document.getElementById("recargaEnEUR");
@@ -387,9 +521,6 @@ document.addEventListener("DOMContentLoaded", () => {
         textDinamicoBtn.addEventListener("click", () => {
           modalRecargaExitosa.style.display = "block";
         });
-      } else {
-        console.error("accionServicioComponent template not found");
-      }
     });
 
     recargaDigitel.addEventListener("click", () => {
@@ -787,6 +918,29 @@ document.addEventListener("DOMContentLoaded", () => {
   controllerRetiroMenu.addEventListener("click", () => {
     mountComponent(retirarComponent);
     menu.classList.remove("open");
+    const imgBancoRetirar = document.getElementById("imgBancoRetirar");
+    document.addEventListener("cambiarIconosDinamic", () => {
+      const regex = /white/;
+      const url = imgBancoRetirar.src;
+      const validacion = regex.test(url);
+      let stringToAdd = "-white";
+      let lastDotIndex = url.lastIndexOf(".");
+      let beforeDot = url.substring(0, lastDotIndex);
+      let afterDot = url.substring(lastDotIndex);
+      let newUrl = beforeDot + stringToAdd + afterDot;
+      imgBancoRetirar.src = validacion ? url.replace("-white", "") : newUrl;
+    });
+    if (window.toggleVar) {
+      const regex = /white/;
+      const url = imgBancoRetirar.src;
+      const validacion = regex.test(url);
+      let stringToAdd = "-white";
+      let lastDotIndex = url.lastIndexOf(".");
+      let beforeDot = url.substring(0, lastDotIndex);
+      let afterDot = url.substring(lastDotIndex);
+      let newUrl = beforeDot + stringToAdd + afterDot;
+      imgBancoRetirar.src = validacion ? url.replace("-white", "") : newUrl;
+    }
     const transferenciaBancaria = document.getElementById(
       "transferenciaBancaria"
     );
@@ -843,21 +997,59 @@ document.addEventListener("DOMContentLoaded", () => {
       recargaDolaresBtn.addEventListener("click", () => {
         mountComponent(metodosRecarga);
         const recargaConVisaBtn = document.getElementById("recargaConVisaBtn");
-      const recargaConBinanceBtn = document.getElementById("recargaConBinanceBtn");
-      recargaConVisaBtn.addEventListener("click", () => {
-        mountComponent(recargaConVisa);
-      })
-      recargaConBinanceBtn.addEventListener("click", () => {
-        mountComponent(recargaConBinance);
-      })
+        const recargaConBinanceBtn = document.getElementById(
+          "recargaConBinanceBtn"
+        );
+        recargaConVisaBtn.addEventListener("click", () => {
+          mountComponent(recargaConVisa);
+        });
+        recargaConBinanceBtn.addEventListener("click", () => {
+          mountComponent(recargaConBinance);
+        });
       });
       recargaEurosBtn.addEventListener("click", () => {
         mountComponent(recargaConEur);
+        const comerciosBtn = document.getElementById("comerciosBtn");
+        const comerciosAutBtn = document.getElementById("comerciosAutBtn");
+        const cajerosAutBtn = document.getElementById("cajerosAutBtn");
+
+        comerciosBtn.addEventListener("click", () => {
+          renderComerciosComponent("comercio");
+        });
+        comerciosAutBtn.addEventListener("click", () => {
+          renderComerciosComponent("comercioAut");
+        });
+        cajerosAutBtn.addEventListener("click", () => {
+          renderComerciosComponent("cajeroAut");
+        });
       });
     });
     btnRetiraRapida.addEventListener("click", () => {
       mountComponent(retirarComponent);
       menu.classList.remove("open");
+      const imgBancoRetirar = document.getElementById("imgBancoRetirar");
+      document.addEventListener("cambiarIconosDinamic", () => {
+        const regex = /white/;
+        const url = imgBancoRetirar.src;
+        const validacion = regex.test(url);
+        let stringToAdd = "-white";
+        let lastDotIndex = url.lastIndexOf(".");
+        let beforeDot = url.substring(0, lastDotIndex);
+        let afterDot = url.substring(lastDotIndex);
+        let newUrl = beforeDot + stringToAdd + afterDot;
+        imgBancoRetirar.src = validacion ? url.replace("-white", "") : newUrl;
+      });
+      if (window.toggleVar) {
+        const regex = /white/;
+        const url = imgBancoRetirar.src;
+        const validacion = regex.test(url);
+        let stringToAdd = "-white";
+        let lastDotIndex = url.lastIndexOf(".");
+        let beforeDot = url.substring(0, lastDotIndex);
+        let afterDot = url.substring(lastDotIndex);
+        let newUrl = beforeDot + stringToAdd + afterDot;
+        imgBancoRetirar.src = validacion ? url.replace("-white", "") : newUrl;
+      }
       const transferenciaBancaria = document.getElementById(
         "transferenciaBancaria"
       );
@@ -927,16 +1119,31 @@ document.addEventListener("DOMContentLoaded", () => {
     recargaDolaresBtn.addEventListener("click", () => {
       mountComponent(metodosRecarga);
       const recargaConVisaBtn = document.getElementById("recargaConVisaBtn");
-      const recargaConBinanceBtn = document.getElementById("recargaConBinanceBtn");
+      const recargaConBinanceBtn = document.getElementById(
+        "recargaConBinanceBtn"
+      );
       recargaConVisaBtn.addEventListener("click", () => {
         mountComponent(recargaConVisa);
-      })
+      });
       recargaConBinanceBtn.addEventListener("click", () => {
         mountComponent(recargaConBinance);
-      })
+      });
     });
     recargaEurosBtn.addEventListener("click", () => {
       mountComponent(recargaConEur);
+      const comerciosBtn = document.getElementById("comerciosBtn");
+      const comerciosAutBtn = document.getElementById("comerciosAutBtn");
+      const cajerosAutBtn = document.getElementById("cajerosAutBtn");
+
+      comerciosBtn.addEventListener("click", () => {
+        renderComerciosComponent("comercio");
+      });
+      comerciosAutBtn.addEventListener("click", () => {
+        renderComerciosComponent("comercioAut");
+      });
+      cajerosAutBtn.addEventListener("click", () => {
+        renderComerciosComponent("cajeroAut");
+      });
     });
   });
   recargaMovistarMenu.addEventListener("click", () => {
@@ -1358,21 +1565,59 @@ document.addEventListener("DOMContentLoaded", () => {
       recargaDolaresBtn.addEventListener("click", () => {
         mountComponent(metodosRecarga);
         const recargaConVisaBtn = document.getElementById("recargaConVisaBtn");
-      const recargaConBinanceBtn = document.getElementById("recargaConBinanceBtn");
-      recargaConVisaBtn.addEventListener("click", () => {
-        mountComponent(recargaConVisa);
-      })
-      recargaConBinanceBtn.addEventListener("click", () => {
-        mountComponent(recargaConBinance);
-      })
+        const recargaConBinanceBtn = document.getElementById(
+          "recargaConBinanceBtn"
+        );
+        recargaConVisaBtn.addEventListener("click", () => {
+          mountComponent(recargaConVisa);
+        });
+        recargaConBinanceBtn.addEventListener("click", () => {
+          mountComponent(recargaConBinance);
+        });
       });
       recargaEurosBtn.addEventListener("click", () => {
         mountComponent(recargaConEur);
+        const comerciosBtn = document.getElementById("comerciosBtn");
+        const comerciosAutBtn = document.getElementById("comerciosAutBtn");
+        const cajerosAutBtn = document.getElementById("cajerosAutBtn");
+
+        comerciosBtn.addEventListener("click", () => {
+          renderComerciosComponent("comercio");
+        });
+        comerciosAutBtn.addEventListener("click", () => {
+          renderComerciosComponent("comercioAut");
+        });
+        cajerosAutBtn.addEventListener("click", () => {
+          renderComerciosComponent("cajeroAut");
+        });
       });
     });
     btnRetiraRapida.addEventListener("click", () => {
       mountComponent(retirarComponent);
       menu.classList.remove("open");
+      const imgBancoRetirar = document.getElementById("imgBancoRetirar");
+      document.addEventListener("cambiarIconosDinamic", () => {
+        const regex = /white/;
+        const url = imgBancoRetirar.src;
+        const validacion = regex.test(url);
+        let stringToAdd = "-white";
+        let lastDotIndex = url.lastIndexOf(".");
+        let beforeDot = url.substring(0, lastDotIndex);
+        let afterDot = url.substring(lastDotIndex);
+        let newUrl = beforeDot + stringToAdd + afterDot;
+        imgBancoRetirar.src = validacion ? url.replace("-white", "") : newUrl;
+      });
+      if (window.toggleVar) {
+        const regex = /white/;
+        const url = imgBancoRetirar.src;
+        const validacion = regex.test(url);
+        let stringToAdd = "-white";
+        let lastDotIndex = url.lastIndexOf(".");
+        let beforeDot = url.substring(0, lastDotIndex);
+        let afterDot = url.substring(lastDotIndex);
+        let newUrl = beforeDot + stringToAdd + afterDot;
+        imgBancoRetirar.src = validacion ? url.replace("-white", "") : newUrl;
+      }
       const transferenciaBancaria = document.getElementById(
         "transferenciaBancaria"
       );
@@ -1516,5 +1761,30 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+  if (recargaEurosBtn) {
+    recargaEurosBtn.addEventListener("click", () => {
+      mountComponent(recargaConEur);
+      const comerciosBtn = document.getElementById("comerciosBtn");
+      const comerciosAutBtn = document.getElementById("comerciosAutBtn");
+      const cajerosAutBtn = document.getElementById("cajerosAutBtn");
 
+      comerciosBtn.addEventListener("click", () => {
+        renderComerciosComponent("comercio");
+      });
+      comerciosAutBtn.addEventListener("click", () => {
+        renderComerciosComponent("comercioAut");
+      });
+      cajerosAutBtn.addEventListener("click", () => {
+        renderComerciosComponent("cajeroAut");
+      });
+    });
+  }
+  usdEfectivoBtn.addEventListener("click", () => {
+    var modal = document.getElementById("modalUsdEfectivo");
+
+    modal.style.display = "block";
+    setTimeout(function () {
+      modal.style.display = "none";
+    }, 1500);
+  });
 });
