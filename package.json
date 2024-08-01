@@ -1,8 +1,0 @@
-{ 
-  "scripts": {
-  "build:css": "postcss styles.css -o output.css"
-  },
-  "dependencies": {
-    "tailwindcss": "^3.4.4"
-  }
-}

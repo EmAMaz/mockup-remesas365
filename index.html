@@ -260,7 +260,7 @@
               </div>
             </div>
             <div
-              class="flex justify-between p-2 bgCard rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;" id="pagoMovil"
+              class="flex justify-between p-2 bgCard rounded-lg items-center border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;" id="controllerPagoMovil"
             >
               <div class="flex flex-col w-1/3 p-2">
                 <img src="./public/pagoMovil.png" width="120" height="120" alt="" />
@@ -288,6 +288,7 @@
           </div>
         </div>
       </template>
+      
       <template id="enviarComponent">
         <div class="p-4 flex flex-col gap-8 mb-16">
           <div class="flex flex-col items-center justify-center text-center ">
@@ -677,7 +678,78 @@
           </div>
         </div>
       </template>
+      <template id="pagoMovilComponent">
+        <div class="p-4 flex flex-col gap-6 mb-14">
 
+          <div class="flex flex-col items-center">
+            <h2 class="nexa_bold text-2xl">Enviar PagoMóvil</h2>
+            
+          </div>
+          <div class="flex btn_favoritos items-center p-2 gap-2" style="width: 100%;" id="btnFavoritosPM">
+            <img class="object-contain" width="30px" height="25px" src="/public/servicios/FAVORITOS.png" alt="">
+            <span class="" style="width: min-content;">Favoritos</span>
+          </div>
+          <div class="flex flex-col gap-2">
+            <input type="number" class="p-4 text_small" placeholder="Número del PagoMóvil(04xx)" style="letter-spacing: -0.05em;">
+            <input type="number" class="p-4 text_small" placeholder="Número del PagoMóvil(04xx)" style="letter-spacing: -0.05em;">
+            <input type="number" class="p-4 text_small" placeholder="Cédula o RIF del PagoMóvil" style="letter-spacing: -0.05em;">
+            <input type="number" class="p-4 text_small" placeholder="Monto en Bolívares" style="letter-spacing: -0.05em;">
+          </div>
+          <div class="flex-reverse items-center">
+            <input type="checkbox" name="" id="textCheck">
+            <label for="textCheck" class="px-2">Enviar todo el saldo de la wallet seleccionada</label>
+          </div>
+          <div class="flex flex-col text-center">
+            <h3 class="nexa_bold mb-5">Selecciona la billetera de orígen</h3>
+            <div class="flex flex-col gap-4">
+              <div class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; focused-btn activeBtn" id="recargaEnEURPM">
+              <div class="flex flex-col" >
+                <span class="nexa_bold"
+                  >Saldo en EUR</span
+                >
+                <div class="flex items-center gap-2 pt-3">
+                  <img src="./public/eurmon.png" width="30" height="30" alt="" />
+                  <span class="nexa_bold text-lg">11.00 EUR</span>
+                </div>
+              </div>
+              <div
+                class="flex flex-col font-semibold text-zinc-700 text-xs text-center"
+              >
+                <span>Creada</span>
+                <span>10/06/2024</span>
+              </div>
+              </div>
+              <div class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; focused-btn" id="recargaEnUSDPM">
+                <div class="flex flex-col">
+                  <span class="nexa_bold"
+                    >Saldo en USD</span
+                  >
+                  <div class="flex items-center gap-2 pt-3">
+                    <img src="./public/dolmon.png" width="30" height="30" alt="" />
+                    <span class="nexa_bold text-lg">11.00 USD</span>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col font-semibold text-zinc-700 text-xs text-center"
+                >
+                  <span>Creada</span>
+                  <span>10/06/2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <ul>
+              <li class="flex justify-between"><span id="txtDinamicoFstPM">Tasa EUR / VES</span><span>-</span></li>
+              <li class="flex justify-between"><span>Comisión por Servicio (en Bs.)</span><span>-</span></li>
+              <li class="flex justify-between"><span id="txtDinamicoSndPM">Monto a Descontar en EUR</span><span>-</span></li>
+            </ul>
+          </div>
+          <div>
+            <button class="bg-btn-recarga text-white text-sm font-bold p-4 rounded-2xl w-full" style="letter-spacing: 0.05em;" id="textDinamicoBtnPM">ENVIAR PAGOMÓVIL</button>
+          </div>
+        </div>
+      </template>
       <template id="perfilComponent">
         <div class="p-4 flex flex-col gap-5 mb-14">
           <div class="flex items-center gap-4 rounded-xl p-2 bgCard">

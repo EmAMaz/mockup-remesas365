@@ -14,6 +14,7 @@ const controllerPerfil = document.getElementById("controllerPerfil");
 const controllerSeguridad = document.getElementById("controllerSeguridad");
 const controllerHomeMenu = document.getElementById("controllerHomeMenu");
 const controllerTasasMenu = document.getElementById("controllerTasasMenu");
+const pagoMovil = document.getElementById("pagoMovil");
 const recargaMovistar = document.getElementById("recargaMovistar");
 const recargaEurosBtn = document.getElementById("recargaEurosBtn");
 // controllerMENU
@@ -30,6 +31,7 @@ const micuentaComponent = document.getElementById("micuentaComponent");
 const contactanosComponent = document.getElementById("contactanosComponent");
 const enviarComponent = document.getElementById("enviarComponent");
 const recargaComponent = document.getElementById("recargaComponent");
+const pagoMovilComponent = document.getElementById("pagoMovilComponent");
 const metodosRecarga = document.getElementById("metodosRecarga");
 const tasasComponent = document.getElementById("tasasComponent");
 const enviop2pComponent = document.getElementById("enviop2pComponent");
@@ -184,6 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mountComponent(retirarComponent);
     menu.classList.remove("open");
     const imgBancoRetirar = document.getElementById("imgBancoRetirar");
+    const controllerPagoMovil = document.getElementById("controllerPagoMovil");
     document.addEventListener("cambiarIconosDinamic", () => {
       const regex = /white/;
       const url = imgBancoRetirar.src;
@@ -220,6 +223,46 @@ document.addEventListener("DOMContentLoaded", () => {
       nuevoBeneficiarioBtn.addEventListener("click", () => {
         nuevoBeneficiarioBtn.classList.toggle("btnIluminado");
         nuevoBeneficiarioForm.classList.toggle("active");
+      });
+    });
+    controllerPagoMovil.addEventListener("click", () => {
+      mountComponent(pagoMovilComponent);
+      const recargaEnEUR = document.getElementById("recargaEnEURPM");
+      const recargaEnUSD = document.getElementById("recargaEnUSDPM");
+      const textDinamicoBtn = document.getElementById("textDinamicoBtnPM");
+      const txtDinamicoFst = document.getElementById("txtDinamicoFstPM");
+      const txtDinamicoSnd = document.getElementById("txtDinamicoSndPM");
+      const modalFavoritos = document.getElementById("myModal");
+      const btn = document.getElementById("btnFavoritosPM");
+      btn.onclick = function () {
+        modalFavoritos.style.display = "block";
+      };
+      span.onclick = function () {
+        modalFavoritos.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modalFavoritos) {
+          modalFavoritos.style.display = "none";
+        }
+      };
+      recargaEnEURPM.addEventListener("click", () => {
+        if (recargaEnUSD.classList.contains("activeBtn")) {
+          recargaEnUSD.classList.remove("activeBtn");
+          recargaEnEUR.classList.add("activeBtn");
+          txtDinamicoFst.textContent = "Tasa EUR / VES";
+          txtDinamicoSnd.textContent = "Monto a Descontar en EUR";
+        }
+      });
+      recargaEnUSD.addEventListener("click", () => {
+        if (recargaEnEUR.classList.contains("activeBtn")) {
+          recargaEnEUR.classList.remove("activeBtn");
+          recargaEnUSD.classList.add("activeBtn");
+          txtDinamicoFst.textContent = "Tasa USD / VES";
+          txtDinamicoSnd.textContent = "Monto a Descontar en USD";
+        }
+      });
+      textDinamicoBtn.addEventListener("click", () => {
+        modalRecargaExitosa.style.display = "block";
       });
     });
   });
@@ -359,6 +402,46 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         nuevoBeneficiarioBtn.addEventListener("click", () => {
           nuevoBeneficiarioForm.classList.toggle("active");
+        });
+      });
+      controllerPagoMovil.addEventListener("click", () => {
+        mountComponent(pagoMovilComponent);
+        const recargaEnEUR = document.getElementById("recargaEnEURPM");
+        const recargaEnUSD = document.getElementById("recargaEnUSDPM");
+        const textDinamicoBtn = document.getElementById("textDinamicoBtnPM");
+        const txtDinamicoFst = document.getElementById("txtDinamicoFstPM");
+        const txtDinamicoSnd = document.getElementById("txtDinamicoSndPM");
+        const modalFavoritos = document.getElementById("myModal");
+        const btn = document.getElementById("btnFavoritosPM");
+        btn.onclick = function () {
+          modalFavoritos.style.display = "block";
+        };
+        span.onclick = function () {
+          modalFavoritos.style.display = "none";
+        };
+        window.onclick = function (event) {
+          if (event.target == modalFavoritos) {
+            modalFavoritos.style.display = "none";
+          }
+        };
+        recargaEnEURPM.addEventListener("click", () => {
+          if (recargaEnUSD.classList.contains("activeBtn")) {
+            recargaEnUSD.classList.remove("activeBtn");
+            recargaEnEUR.classList.add("activeBtn");
+            txtDinamicoFst.textContent = "Tasa EUR / VES";
+            txtDinamicoSnd.textContent = "Monto a Descontar en EUR";
+          }
+        });
+        recargaEnUSD.addEventListener("click", () => {
+          if (recargaEnEUR.classList.contains("activeBtn")) {
+            recargaEnEUR.classList.remove("activeBtn");
+            recargaEnUSD.classList.add("activeBtn");
+            txtDinamicoFst.textContent = "Tasa USD / VES";
+            txtDinamicoSnd.textContent = "Monto a Descontar en USD";
+          }
+        });
+        textDinamicoBtn.addEventListener("click", () => {
+          modalRecargaExitosa.style.display = "block";
         });
       });
     });
@@ -886,7 +969,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const txtDinamicoSnd = document.getElementById("txtDinamicoSndP2P");
     const modalFavoritos = document.getElementById("myModal");
     const btn = document.getElementById("btnFavoritosP2P");
-
+    const controllerPagoMovil = document.getElementById("controllerPagoMovil");
     btn.onclick = function () {
       modalFavoritos.style.display = "block";
     };
@@ -1002,6 +1085,46 @@ document.addEventListener("DOMContentLoaded", () => {
         nuevoBeneficiarioForm.classList.toggle("active");
       });
     });
+    controllerPagoMovil.addEventListener("click", () => {
+      mountComponent(pagoMovilComponent);
+      const recargaEnEUR = document.getElementById("recargaEnEURPM");
+      const recargaEnUSD = document.getElementById("recargaEnUSDPM");
+      const textDinamicoBtn = document.getElementById("textDinamicoBtnPM");
+      const txtDinamicoFst = document.getElementById("txtDinamicoFstPM");
+      const txtDinamicoSnd = document.getElementById("txtDinamicoSndPM");
+      const modalFavoritos = document.getElementById("myModal");
+      const btn = document.getElementById("btnFavoritosPM");
+      btn.onclick = function () {
+        modalFavoritos.style.display = "block";
+      };
+      span.onclick = function () {
+        modalFavoritos.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modalFavoritos) {
+          modalFavoritos.style.display = "none";
+        }
+      };
+      recargaEnEURPM.addEventListener("click", () => {
+        if (recargaEnUSD.classList.contains("activeBtn")) {
+          recargaEnUSD.classList.remove("activeBtn");
+          recargaEnEUR.classList.add("activeBtn");
+          txtDinamicoFst.textContent = "Tasa EUR / VES";
+          txtDinamicoSnd.textContent = "Monto a Descontar en EUR";
+        }
+      });
+      recargaEnUSD.addEventListener("click", () => {
+        if (recargaEnEUR.classList.contains("activeBtn")) {
+          recargaEnEUR.classList.remove("activeBtn");
+          recargaEnUSD.classList.add("activeBtn");
+          txtDinamicoFst.textContent = "Tasa USD / VES";
+          txtDinamicoSnd.textContent = "Monto a Descontar en USD";
+        }
+      });
+      textDinamicoBtn.addEventListener("click", () => {
+        modalRecargaExitosa.style.display = "block";
+      });
+    });
   });
   controllerHomeMenu.addEventListener("click", () => {
     mountComponent(homeComponent);
@@ -1074,6 +1197,9 @@ document.addEventListener("DOMContentLoaded", () => {
       mountComponent(retirarComponent);
       menu.classList.remove("open");
       const imgBancoRetirar = document.getElementById("imgBancoRetirar");
+      const controllerPagoMovil = document.getElementById(
+        "controllerPagoMovil"
+      );
       document.addEventListener("cambiarIconosDinamic", () => {
         const regex = /white/;
         const url = imgBancoRetirar.src;
@@ -1109,6 +1235,46 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         nuevoBeneficiarioBtn.addEventListener("click", () => {
           nuevoBeneficiarioForm.classList.toggle("active");
+        });
+      });
+      controllerPagoMovil.addEventListener("click", () => {
+        mountComponent(pagoMovilComponent);
+        const recargaEnEUR = document.getElementById("recargaEnEURPM");
+        const recargaEnUSD = document.getElementById("recargaEnUSDPM");
+        const textDinamicoBtn = document.getElementById("textDinamicoBtnPM");
+        const txtDinamicoFst = document.getElementById("txtDinamicoFstPM");
+        const txtDinamicoSnd = document.getElementById("txtDinamicoSndPM");
+        const modalFavoritos = document.getElementById("myModal");
+        const btn = document.getElementById("btnFavoritosPM");
+        btn.onclick = function () {
+          modalFavoritos.style.display = "block";
+        };
+        span.onclick = function () {
+          modalFavoritos.style.display = "none";
+        };
+        window.onclick = function (event) {
+          if (event.target == modalFavoritos) {
+            modalFavoritos.style.display = "none";
+          }
+        };
+        recargaEnEURPM.addEventListener("click", () => {
+          if (recargaEnUSD.classList.contains("activeBtn")) {
+            recargaEnUSD.classList.remove("activeBtn");
+            recargaEnEUR.classList.add("activeBtn");
+            txtDinamicoFst.textContent = "Tasa EUR / VES";
+            txtDinamicoSnd.textContent = "Monto a Descontar en EUR";
+          }
+        });
+        recargaEnUSD.addEventListener("click", () => {
+          if (recargaEnEUR.classList.contains("activeBtn")) {
+            recargaEnEUR.classList.remove("activeBtn");
+            recargaEnUSD.classList.add("activeBtn");
+            txtDinamicoFst.textContent = "Tasa USD / VES";
+            txtDinamicoSnd.textContent = "Monto a Descontar en USD";
+          }
+        });
+        textDinamicoBtn.addEventListener("click", () => {
+          modalRecargaExitosa.style.display = "block";
         });
       });
     });
@@ -1642,6 +1808,9 @@ document.addEventListener("DOMContentLoaded", () => {
       mountComponent(retirarComponent);
       menu.classList.remove("open");
       const imgBancoRetirar = document.getElementById("imgBancoRetirar");
+      const controllerPagoMovil = document.getElementById(
+        "controllerPagoMovil"
+      );
       document.addEventListener("cambiarIconosDinamic", () => {
         const regex = /white/;
         const url = imgBancoRetirar.src;
@@ -1677,6 +1846,46 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         nuevoBeneficiarioBtn.addEventListener("click", () => {
           nuevoBeneficiarioForm.classList.toggle("active");
+        });
+      });
+      controllerPagoMovil.addEventListener("click", () => {
+        mountComponent(pagoMovilComponent);
+        const recargaEnEUR = document.getElementById("recargaEnEURPM");
+        const recargaEnUSD = document.getElementById("recargaEnUSDPM");
+        const textDinamicoBtn = document.getElementById("textDinamicoBtnPM");
+        const txtDinamicoFst = document.getElementById("txtDinamicoFstPM");
+        const txtDinamicoSnd = document.getElementById("txtDinamicoSndPM");
+        const modalFavoritos = document.getElementById("myModal");
+        const btn = document.getElementById("btnFavoritosPM");
+        btn.onclick = function () {
+          modalFavoritos.style.display = "block";
+        };
+        span.onclick = function () {
+          modalFavoritos.style.display = "none";
+        };
+        window.onclick = function (event) {
+          if (event.target == modalFavoritos) {
+            modalFavoritos.style.display = "none";
+          }
+        };
+        recargaEnEURPM.addEventListener("click", () => {
+          if (recargaEnUSD.classList.contains("activeBtn")) {
+            recargaEnUSD.classList.remove("activeBtn");
+            recargaEnEUR.classList.add("activeBtn");
+            txtDinamicoFst.textContent = "Tasa EUR / VES";
+            txtDinamicoSnd.textContent = "Monto a Descontar en EUR";
+          }
+        });
+        recargaEnUSD.addEventListener("click", () => {
+          if (recargaEnEUR.classList.contains("activeBtn")) {
+            recargaEnEUR.classList.remove("activeBtn");
+            recargaEnUSD.classList.add("activeBtn");
+            txtDinamicoFst.textContent = "Tasa USD / VES";
+            txtDinamicoSnd.textContent = "Monto a Descontar en USD";
+          }
+        });
+        textDinamicoBtn.addEventListener("click", () => {
+          modalRecargaExitosa.style.display = "block";
         });
       });
     });
