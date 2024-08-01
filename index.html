@@ -510,7 +510,76 @@
           </div>
         </div>
       </template>
-
+      <template id="enviop2pComponent">
+        <div class="p-4 flex flex-col gap-6 mb-14">
+          <div class="flex flex-col items-center">
+            <h2 class="nexa_bold textColor text-2xl">Enviar Dinero</h2>
+          </div>
+          <div class="flex flex-col justify-center items-center gap-2">
+            <span class="font-bold">¿A quién le envías?</span>
+            <div class="flex justify-between gap-2">
+              <input type="email" class="p-4 text_small" placeholder="Email" style="letter-spacing: -0.05em;">
+              <div class="flex btn_favoritos items-center p-2 gap-2" style="width: max-content;" id="btnFavoritosP2P">
+                <img class="object-contain" width="30px" height="25px" src="/public/servicios/FAVORITOS.png" alt="">
+                <span class="" style="width: min-content;">Favoritos</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col text-center">
+            <h3 class="nexa_bold mb-5">Enviar Usando:</h3>
+            <div class="flex flex-col gap-4">
+              <div class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; focused-btn activeBtn" id="recargaEnEURP2P">
+              <div class="flex flex-col" >
+                <span class="nexa_bold"
+                  >Saldo en EUR</span
+                >
+                <div class="flex items-center gap-2 pt-3">
+                  <img src="./public/eurmon.png" width="30" height="30" alt="" />
+                  <span class="nexa_bold text-lg">11.00 EUR</span>
+                </div>
+              </div>
+              <div
+                class="flex flex-col font-semibold text-zinc-700 text-xs text-center"
+              >
+                <span>Creada</span>
+                <span>10/06/2024</span>
+              </div>
+              </div>
+              <div class="flex justify-between p-2 bgCard rounded-lg border-white box-shadow:rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; focused-btn" id="recargaEnUSDP2P">
+                <div class="flex flex-col">
+                  <span class="nexa_bold"
+                    >Saldo en USD</span
+                  >
+                  <div class="flex items-center gap-2 pt-3">
+                    <img src="./public/dolmon.png" width="30" height="30" alt="" />
+                    <span class="nexa_bold text-lg">11.00 USD</span>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col font-semibold text-zinc-700 text-xs text-center"
+                >
+                  <span>Creada</span>
+                  <span>10/06/2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2 items-center w-full">
+            <h2 class="nexa_bold text-xl">Monto que envías</h2>
+            <input type="number" class="p-4" placeholder="Ingresa el Monto" style="letter-spacing: -0.05em;">
+          </div>
+          <div>
+            <ul>
+              <li class="flex justify-between"><span id="txtDinamicoFstP2P">Tasa EUR / VES</span><span>-</span></li>
+              <li class="flex justify-between"><span>Comisión por Servicio (en Bs.)</span><span>-</span></li>
+              <li class="flex justify-between"><span id="txtDinamicoSndP2P">Monto a Descontar en EUR</span><span>-</span></li>
+            </ul>
+          </div>
+          <div>
+            <button class="bg-btn-recarga text-white text-sm font-bold p-4 rounded-2xl w-full" style="letter-spacing: 0.05em;" id="textDinamicoBtnP2P">ENVIAR DINERO</button>
+          </div>
+        </div>
+      </template>
       <template id="accionServicioComponent">
         <div class="p-4 flex flex-col gap-6 mb-14">
 
@@ -912,21 +981,19 @@
                       </span>              
                     </a>
                   </li>
-                  <li class="w-max">
-                    <a href="/" class="flex flex-col items-center">
+                  <li class="w-max" id="controllerP2P">
+                    <a class="flex flex-col items-center">
                       <img src="/public/enviop2p.svg" width="25" height="25" alt="">
                       <span class="nexa_bold text-white" style="font-size: 0.8em;text-wrap: nowrap;">
                         Envío P2P
                       </span>              
                     </a>
                   </li>
-                  <li class="w-max">
-                    <a href="/" class="flex flex-col items-center">
-                      <img src="/public/tasas.svg" width="25" height="25" alt="">
-                      <span class="nexa_bold text-white" style="font-size: 0.8em;text-wrap: nowrap;">
+                  <li class="w-max flex flex-col items-center" id="controllerTasasPopUp">
+                      <img class="text-center" src="/public/tasas.svg" width="25" height="25" alt="">
+                      <span class="nexa_bold text-white" style="font-size: 0.8em;text-wrap: nowrap;text-align: center;">
                         Tasas
                       </span>              
-                    </a>
                   </li>
                   <li class="w-max flex flex-col items-center" id="controllerContactanos">
                     <img class="text-center" src="/public/whatsapp.svg" width="25" height="25" alt="">

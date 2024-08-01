@@ -3,6 +3,8 @@ const controllerRecarga = document.getElementById("controllerRecarga");
 const controllerServicios = document.getElementById("controllerServicios");
 const controllerMiCuenta = document.getElementById("controllerMiCuenta");
 const controllerContactanos = document.getElementById("controllerContactanos");
+const controllerTasasPopUp = document.getElementById("controllerTasasPopUp");
+const controllerP2P = document.getElementById("controllerP2P");
 const controllerRetiroMenu = document.getElementById("controllerRetiroMenu");
 const controllerContactanosMenu = document.getElementById(
   "controllerContactanosMenu"
@@ -30,6 +32,7 @@ const enviarComponent = document.getElementById("enviarComponent");
 const recargaComponent = document.getElementById("recargaComponent");
 const metodosRecarga = document.getElementById("metodosRecarga");
 const tasasComponent = document.getElementById("tasasComponent");
+const enviop2pComponent = document.getElementById("enviop2pComponent");
 const recargaConVisa = document.getElementById("recargaConVisa");
 const recargaConBinance = document.getElementById("recargaConBinance");
 const recargaConEur = document.getElementById("recargaConEur");
@@ -461,66 +464,66 @@ document.addEventListener("DOMContentLoaded", () => {
     const recargaInter = document.getElementById("recargaInter");
 
     recargaMovistar.addEventListener("click", () => {
-        mountComponent(accionServicioComponent);
-        const textDinamicoBtn = document.getElementById("textDinamicoBtn");
-        const recargaEnEUR = document.getElementById("recargaEnEUR");
-        const recargaEnUSD = document.getElementById("recargaEnUSD");
-        const txtDinamicoFst = document.getElementById("txtDinamicoFst");
-        const txtDinamicoSnd = document.getElementById("txtDinamicoSnd");
-        const decrementButton = document.getElementById("decrement-button");
-        const incrementButton = document.getElementById("increment-button");
-        const numberInput = document.getElementById("number-inputServicios");
-        const modalFavoritos = document.getElementById("myModal");
-        const btn = document.getElementById("btnFavoritos");
+      mountComponent(accionServicioComponent);
+      const textDinamicoBtn = document.getElementById("textDinamicoBtn");
+      const recargaEnEUR = document.getElementById("recargaEnEUR");
+      const recargaEnUSD = document.getElementById("recargaEnUSD");
+      const txtDinamicoFst = document.getElementById("txtDinamicoFst");
+      const txtDinamicoSnd = document.getElementById("txtDinamicoSnd");
+      const decrementButton = document.getElementById("decrement-button");
+      const incrementButton = document.getElementById("increment-button");
+      const numberInput = document.getElementById("number-inputServicios");
+      const modalFavoritos = document.getElementById("myModal");
+      const btn = document.getElementById("btnFavoritos");
 
-        btn.onclick = function () {
-          modalFavoritos.style.display = "block";
-        };
-        span.onclick = function () {
+      btn.onclick = function () {
+        modalFavoritos.style.display = "block";
+      };
+      span.onclick = function () {
+        modalFavoritos.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modalFavoritos) {
           modalFavoritos.style.display = "none";
-        };
-        window.onclick = function (event) {
-          if (event.target == modalFavoritos) {
-            modalFavoritos.style.display = "none";
-          }
-        };
-        const minValue = parseInt(numberInput.getAttribute("min"));
-        const maxValue = parseInt(numberInput.getAttribute("max"));
-        numberInput.addEventListener("input", function () {
-          let currentValue = parseInt(numberInput.value);
-          if (isNaN(currentValue) || currentValue < minValue) {
-            numberInput.value = minValue;
-          } else if (currentValue > maxValue) {
-            numberInput.value = maxValue;
-          }
-        });
-        decrementButton.addEventListener("click", function () {
-          numberInput.stepDown();
-          numberInput;
-        });
+        }
+      };
+      const minValue = parseInt(numberInput.getAttribute("min"));
+      const maxValue = parseInt(numberInput.getAttribute("max"));
+      numberInput.addEventListener("input", function () {
+        let currentValue = parseInt(numberInput.value);
+        if (isNaN(currentValue) || currentValue < minValue) {
+          numberInput.value = minValue;
+        } else if (currentValue > maxValue) {
+          numberInput.value = maxValue;
+        }
+      });
+      decrementButton.addEventListener("click", function () {
+        numberInput.stepDown();
+        numberInput;
+      });
 
-        incrementButton.addEventListener("click", function () {
-          numberInput.stepUp();
-        });
-        recargaEnEUR.addEventListener("click", () => {
-          if (recargaEnUSD.classList.contains("activeBtn")) {
-            recargaEnUSD.classList.remove("activeBtn");
-            recargaEnEUR.classList.add("activeBtn");
-            txtDinamicoFst.textContent = "Tasa EUR / VES";
-            txtDinamicoSnd.textContent = "Monto a Descontar en EUR";
-          }
-        });
-        recargaEnUSD.addEventListener("click", () => {
-          if (recargaEnEUR.classList.contains("activeBtn")) {
-            recargaEnEUR.classList.remove("activeBtn");
-            recargaEnUSD.classList.add("activeBtn");
-            txtDinamicoFst.textContent = "Tasa USD / VES";
-            txtDinamicoSnd.textContent = "Monto a Descontar en USD";
-          }
-        });
-        textDinamicoBtn.addEventListener("click", () => {
-          modalRecargaExitosa.style.display = "block";
-        });
+      incrementButton.addEventListener("click", function () {
+        numberInput.stepUp();
+      });
+      recargaEnEUR.addEventListener("click", () => {
+        if (recargaEnUSD.classList.contains("activeBtn")) {
+          recargaEnUSD.classList.remove("activeBtn");
+          recargaEnEUR.classList.add("activeBtn");
+          txtDinamicoFst.textContent = "Tasa EUR / VES";
+          txtDinamicoSnd.textContent = "Monto a Descontar en EUR";
+        }
+      });
+      recargaEnUSD.addEventListener("click", () => {
+        if (recargaEnEUR.classList.contains("activeBtn")) {
+          recargaEnEUR.classList.remove("activeBtn");
+          recargaEnUSD.classList.add("activeBtn");
+          txtDinamicoFst.textContent = "Tasa USD / VES";
+          txtDinamicoSnd.textContent = "Monto a Descontar en USD";
+        }
+      });
+      textDinamicoBtn.addEventListener("click", () => {
+        modalRecargaExitosa.style.display = "block";
+      });
     });
 
     recargaDigitel.addEventListener("click", () => {
@@ -873,6 +876,49 @@ document.addEventListener("DOMContentLoaded", () => {
       iconSoporte.src = "./public/soporte.png";
     }
   });
+
+  controllerP2P.addEventListener("click", () => {
+    mountComponent(enviop2pComponent);
+    const textDinamicoBtn = document.getElementById("textDinamicoBtnP2P");
+    const recargaEnEURP2P = document.getElementById("recargaEnEURP2P");
+    const recargaEnUSDP2P = document.getElementById("recargaEnUSDP2P");
+    const txtDinamicoFst = document.getElementById("txtDinamicoFstP2P");
+    const txtDinamicoSnd = document.getElementById("txtDinamicoSndP2P");
+    const modalFavoritos = document.getElementById("myModal");
+    const btn = document.getElementById("btnFavoritosP2P");
+
+    btn.onclick = function () {
+      modalFavoritos.style.display = "block";
+    };
+    span.onclick = function () {
+      modalFavoritos.style.display = "none";
+    };
+    window.onclick = function (event) {
+      if (event.target == modalFavoritos) {
+        modalFavoritos.style.display = "none";
+      }
+    };
+    recargaEnEURP2P.addEventListener("click", () => {
+      if (recargaEnUSDP2P.classList.contains("activeBtn")) {
+        recargaEnUSDP2P.classList.remove("activeBtn");
+        recargaEnEURP2P.classList.add("activeBtn");
+        txtDinamicoFst.textContent = "Tasa EUR / VES";
+        txtDinamicoSnd.textContent = "Monto a Descontar en EUR";
+      }
+    });
+    recargaEnUSDP2P.addEventListener("click", () => {
+      if (recargaEnEURP2P.classList.contains("activeBtn")) {
+        recargaEnEURP2P.classList.remove("activeBtn");
+        recargaEnUSDP2P.classList.add("activeBtn");
+        txtDinamicoFst.textContent = "Tasa USD / VES";
+        txtDinamicoSnd.textContent = "Monto a Descontar en USD";
+      }
+    });
+    textDinamicoBtn.addEventListener("click", () => {
+      modalRecargaExitosa.style.display = "block";
+    });
+  });
+
   controllerContactanosMenu.addEventListener("click", () => {
     mountComponent(contactanosComponent);
     menu.classList.remove("open");
@@ -1684,6 +1730,85 @@ document.addEventListener("DOMContentLoaded", () => {
   controllerTasasMenu.addEventListener("click", () => {
     mountComponent(tasasComponent);
     menu.classList.remove("open");
+    const dropdownButton = document.getElementById("dropdown-button");
+    const dropdownContent = document.getElementById("dropdown-content");
+    const selectedFlag = document.getElementById("selected-flag");
+    const selectedName = document.getElementById("selected-name");
+    const numberInput = document.getElementById("number-inputTasas");
+    const decrementButton = document.getElementById("decrement-button");
+    const incrementButton = document.getElementById("increment-button");
+    const customDropdownButton = document.getElementById(
+      "custom-dropdown-button"
+    );
+    const customDropdownContent = document.getElementById(
+      "custom-dropdown-content"
+    );
+    const customSelectedFlag = document.getElementById("custom-selected-flag");
+    const customSelectedName = document.getElementById("custom-selected-name");
+    const minValue = parseInt(numberInput.getAttribute("min"));
+    const maxValue = parseInt(numberInput.getAttribute("max"));
+    numberInput.addEventListener("input", function () {
+      let currentValue = parseInt(numberInput.value);
+      if (isNaN(currentValue) || currentValue < minValue) {
+        numberInput.value = minValue;
+      } else if (currentValue > maxValue) {
+        numberInput.value = maxValue;
+      }
+    });
+    decrementButton.addEventListener("click", function () {
+      numberInput.stepDown();
+      numberInput;
+    });
+
+    incrementButton.addEventListener("click", function () {
+      numberInput.stepUp();
+    });
+    customDropdownButton.addEventListener("click", function () {
+      customDropdownContent.style.display =
+        customDropdownContent.style.display === "block" ? "none" : "block";
+    });
+
+    document.querySelectorAll(".custom-country-option").forEach((option) => {
+      option.addEventListener("click", function () {
+        const countryImage = this.getAttribute("data-image");
+        const countryName = this.textContent.trim();
+
+        // Mostrar la bandera y el nombre del país seleccionado en el botón
+        customSelectedFlag.src = countryImage;
+        customSelectedFlag.alt = countryName;
+        customSelectedFlag.style.display = "inline"; // Muestra la bandera
+        customSelectedName.textContent = countryName; // Actualiza el texto del botón
+
+        customDropdownContent.style.display = "none"; // Cierra el dropdown
+      });
+    });
+    dropdownButton.addEventListener("click", function () {
+      dropdownContent.style.display =
+        dropdownContent.style.display === "block" ? "none" : "block";
+    });
+    document.querySelectorAll(".country-option").forEach((option) => {
+      option.addEventListener("click", function () {
+        const countryImage = this.getAttribute("data-image");
+        const countryName = this.textContent.trim();
+
+        // Mostrar la bandera y el nombre del país seleccionado en el botón
+        selectedFlag.src = countryImage;
+        selectedFlag.alt = countryName;
+        selectedFlag.style.display = "inline"; // Muestra la bandera
+        selectedName.textContent = countryName; // Actualiza el texto del botón
+
+        dropdownContent.style.display = "none"; // Cierra el dropdown
+      });
+    });
+    // Cierra el dropdown si se hace clic fuera de él
+    window.addEventListener("click", function (event) {
+      if (!event.target.matches(".dropdown-button")) {
+        dropdownContent.style.display = "none";
+      }
+    });
+  });
+  controllerTasasPopUp.addEventListener("click", () => {
+    mountComponent(tasasComponent);
     const dropdownButton = document.getElementById("dropdown-button");
     const dropdownContent = document.getElementById("dropdown-content");
     const selectedFlag = document.getElementById("selected-flag");
